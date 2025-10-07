@@ -1,34 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- <style>
-        .container{
-            display: flex;
-            flex-direction: column;
-            width: 300px;
-            padding: 15px;
-            border: 1px solid
-            rgb(238, 76, 76);
-            border-radius: 5px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 15%;
-        }
-        input{
-            margin: 5px 0px;
-            height: 35px;
-            padding: 7px;
-        }
-        button{
-            height: 35px;
-            margin: 5px 0px;
-            background-color: rgb(238, 76, 76);
-            border: none;
-            border-radius: 50px;
-            color: #333;
-        }
-    </style> -->
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Admin</title>
@@ -40,7 +12,7 @@
     <link rel="icon" href="Crossfire_Logo-removebg-preview.ico" />
   </head>
   <body>
-    <div class="form">
+    <div class="form" id="loginForm" style="display: block">
       <h1>Sign In</h1>
       <form method="post">
         <div class="username">
@@ -59,7 +31,48 @@
 
         <input type="submit" value="Log In" />
       </form>
+      <div class="remember">
+        <a href="#" onclick="showRegister()">Don't have an account? Register</a>
+      </div>
     </div>
+
+    <!-- Register Form -->
+    <div class="form" id="registerForm" style="display: none">
+      <h1>Register</h1>
+      <form method="post">
+        <div class="username">
+          <input id="newUsername" type="text" required />
+          <label for="newUsername">Username</label>
+        </div>
+
+        <div class="password">
+          <input id="newPassword" type="password" required />
+          <label for="newPassword">Password</label>
+        </div>
+
+        <div class="username">
+          <input id="email" type="email" required />
+          <label for="email">Email</label>
+        </div>
+
+        <input type="submit" value="Sign Up" />
+      </form>
+      <div class="remember">
+        <a href="#" onclick="showLogin()">Already have an account? Log In</a>
+      </div>
+    </div>
+
+    <script>
+      function showRegister() {
+        document.getElementById("loginForm").style.display = "none";
+        document.getElementById("registerForm").style.display = "block";
+      }
+
+      function showLogin() {
+        document.getElementById("registerForm").style.display = "none";
+        document.getElementById("loginForm").style.display = "block";
+      }
+    </script>
     <script src="scripts/login_script.js"></script>
   </body>
 </html>
