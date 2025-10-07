@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <style>
+  <head>
+    <!-- <style>
         .container{
             display: flex;
             flex-direction: column;
@@ -27,22 +27,38 @@
             border-radius: 50px;
             color: #333;
         }
+    </style> -->
 
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Admin</title>
+    <link rel="stylesheet" href="styleLogin.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="Crossfire_Logo-removebg-preview.ico" />
+  </head>
+  <body>
+    <div class="form">
+      <h1>Sign In</h1>
+      <form method="post">
+        <div class="username">
+          <input id="username" type="text" required />
+          <label for="username">Username</label>
+        </div>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NCR ADMIN LOGIN PAGE</title>
-</head>
-<body>
-    <label> - NCR ADMIN LOGIN -</label>
-    <div class="container">
-        <input type="email"
-        placeholder="email">
-        <input type="password"
-        placeholder="password">
-        <button>Login</button>
+        <div class="password">
+          <input id="password" type="password" required />
+          <label for="password">Password</label>
+        </div>
+
+        <div class="remember">
+          <a href="#">Forgot your password?</a>
+        </div>
+
+        <input type="submit" value="Log In" />
+      </form>
     </div>
-    
-</body>
+  </body>
 </html>
