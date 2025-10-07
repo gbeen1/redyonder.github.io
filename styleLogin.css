@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #45100a, #071a6a, #2b6cb0);
+  background-size: 200% 200%;
+  animation: moveBg 16s ease-in-out infinite;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
+}
+
+@keyframes moveBg {
+  0% {
+    background-position: 0% 50%;
+  }
+  60% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.form {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 16px;
+  padding: 30px;
+  width: 500px;
+  box-shadow: 0 12px 28px rgba(5, 18, 83, 0.3);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1.2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form h1 {
+  text-align: center;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid silver;
+  font-size: 28px;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.form form {
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+form .username,
+form .password {
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin: 30px 0;
+}
+
+.username input,
+.password input {
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
+  color: #111;
+  letter-spacing: 0.5px;
+}
+
+.username label,
+.password label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #949494;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.2s ease;
+  padding: 0 4px;
+}
+
+.username span::before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgb(197, 58, 31);
+  transition: 0.5s ease;
+}
+
+.username input:focus ~ label,
+.password input:focus ~ label {
+  top: -5px;
+  color: rgb(197, 58, 31);
+  font-weight: 600;
+}
+
+.username input:focus ~ span::before,
+.password input:focus ~ span::before {
+  height: 100%;
+  transition: 0.2s ease;
+}
+
+input[type="submit"] {
+  width: 100%;
+  height: 50px;
+  background: rgb(197, 58, 31);
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: 0.3s ease;
+  box-shadow: 0 6px 14px rgba(5, 18, 83, 0.18);
+}
+
+input[type="submit"]:hover {
+  filter: brightness(1.06);
+  border: none;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(5, 18, 83, 0.25);
+}
+
+.remember {
+  margin: 20px 0 8px 0;
+  font-size: 14px;
+  text-align: center;
+}
+
+.remember a {
+  color: #f54927;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.remember a:hover {
+  color: #ff7b5c;
+  text-decoration: underline;
+}
