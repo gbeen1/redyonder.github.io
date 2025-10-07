@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCR Report</title>
+    <script src="/scripts/form.js" defer></script>
+</head>
+<body>
+
+    <!--Note that this is a barebones version so I can write my JS for it - feel free to build on it if it fits your design. All QA fields are included, and I would prefer if IDs remain for inputs, textareas and buttons, as well as the classes for them, but I can change my JS to fit new ids if necessary. - Matt-->
+
+    <form id="qaForm">
+
+        <div id="applicableProcess" class="formItems">
+            <label for="rdoApplProcess" id="lblApplProcess">Select Applicable Process: </label>
+            <br>
+            <label>
+                <input type="radio" id="rdoApplProcess1" name="rdoApplProcess" class="qaFormInput" value="supp"> Supplier or Rec-Insp
+            </label>
+            <label>
+                <input type="radio" id="rdoApplProcess2" name="rdoApplProcess" class="qaFormInput" value="wip"> WIP (Production Order)
+            </label>
+        </div>
+
+        <div id="supplier" class="formItems">
+            <label for="txtSupplier" id ="lblSupplier">Supplier: </label>
+            <input type="text" id="txtSupplier" name="txtSupplier" class="qaFormInput" list="dtlSupplier">
+            <datalist id="dtlSupplier" name="dtlSupplier">
+                <option value="Supplier A">Supplier A</option>
+            </datalist>
+        </div>
+
+        <div id="POorProdNo" class="formItems">
+            <label for="numPO" id="lblPO">PO or Prod No.: </label>
+            <input type="number" id="numPO" name="numPO" class="qaFormInput" list="dtlPO" disabled="true">
+            <datalist id="dtlPO">
+
+            </datalist>
+        </div>
+
+        <div id="salesOrderNo" class="formItems">
+            <label for="numSalesNo" id="lblSalesNo">salesOrderNo.: </label>
+            <input type="number" id="numSalesNo" name="numSalesNo" class="qaFormInput">
+        </div>
+
+        <div id="SAPNo" class="formItems">
+            <label for="numSAP" id="lblSAP">SAP No.: </label>
+            <input type="number" id="numSAP" name="numSAP" class="qaFormInput">
+        </div>
+
+        <div id="itemDesc" class="formItems formTxa">
+            <label for="txaItemDesc" id="lblItemDesc">Item Description: </label>
+            <br>
+            <textarea id="txaItemDesc" name="txaItemDesc" class="qaFormInput" disabled="true"></textarea>
+        </div>
+
+        <div id="defectDesc" class="formItems formTxa">
+            <label for="txaDefectDesc" id="lblDefectDesc">Defect Description: </label>
+            <br>
+            <textarea id="txaDefectDesc" name="txaDefectDesc" class="qaFormInput"></textarea>
+        </div>
+
+    </form>
+        <div id="formButtons">
+            <button id="btnSubmit">Submit</button>
+            <button id="btnSave">Save</button>
+            <button id="btnCancel">Cancel</button>
+        </div>
+</body>
+</html>
