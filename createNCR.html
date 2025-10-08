@@ -4,27 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create NCR</title>
-    <link rel="stylesheet" href="createNCR.css" />
+    <link rel="stylesheet" href="ncr.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400P;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href=images/Crossfire_Logo-removebg-preview.ico" />
+    <link rel="icon" href="images/crossfire-logo.png" />
   </head>
   <body>
+    <nav class="navbar" aria-label="main menu">
+      <h1 class="logo">Crossfire NCR System</h1>
+      <ul class="menu">
+        <li><a href="view.html">See NCRs</a></li>
+        <li><a href="create.html">New NCR</a></li>
+        <li><a href="edit.html">Edit NCR</a></li>
+      </ul>
+    </nav>
     <div id="wrapper">
       <header>
-        <div>
-          <a href="homePage.html">
-            <img
-              class="logo"
-              src="images/Crossfire_Logo-removebg-preview.ico"
-              alt="logo"
-              height="150"
-              width="150"
-            />
-          </a>
-        </div>
         <div>
           <p>CROSSFIRE CANADA</p>
         </div>
@@ -44,15 +41,15 @@
       <main>
         <form method="post">
           <fieldset>
-            <p><strong>Identify Process Applicable</strong></p>
+            <p><strong>Identify Process Applicable:</strong></p>
 
             <div class="two-columns padding">
               <div>
                 <input
                   id="supplierOrRecInsp"
                   class="qualityRep"
-                  name="supplierOrRecInsp"
-                  type="checkbox"
+                  name="radQuality"
+                  type="radio"
                   required
                   aria-required="true"
                 />
@@ -61,8 +58,8 @@
                 <input
                   id="wip"
                   class="qualityRep"
-                  name="wip"
-                  type="checkbox"
+                  name="radQuality"
+                  type="radio"
                   required
                   aria-required="true"
                 />
@@ -164,7 +161,7 @@
                 ><br />
                 <textarea
                   id="defectDescription"
-                  class="qualityRep"
+                  class="qualityRep textarea-height"
                   name="defectDescription"
                   required
                   aria-required="true"
@@ -179,7 +176,7 @@
                   id="yesMarked"
                   class="qualityRep"
                   name="marked"
-                  type="checkbox"
+                  type="radio"
                   value="yes"
                   required
                   aria-required="true"
@@ -189,7 +186,7 @@
                   id="noMarked"
                   class="qualityRep"
                   name="marked"
-                  type="checkbox"
+                  type="radio"
                   value="no"
                   required
                   aria-required="true"
@@ -240,7 +237,7 @@
                 id="asIs"
                 class="engineer"
                 name="review"
-                type="checkbox"
+                type="radio"
                 required
                 aria-required="true"
               />
@@ -249,7 +246,7 @@
                 id="repair"
                 class="engineer"
                 name="review"
-                type="checkbox"
+                type="radio"
                 required
                 aria-required="true"
               />
@@ -258,7 +255,7 @@
                 id="rework"
                 class="engineer"
                 name="review"
-                type="checkbox"
+                type="radio"
                 required
                 aria-required="true"
               />
@@ -267,7 +264,7 @@
                 id="scrap"
                 class="engineer"
                 name="review"
-                type="checkbox"
+                type="radio"
                 required
                 aria-required="true"
               />
@@ -281,7 +278,7 @@
                   id="yesNoti"
                   class="engineer"
                   name="notification"
-                  type="checkbox"
+                  type="radio"
                   value="yes"
                   required
                   aria-required="true"
@@ -291,7 +288,7 @@
                   id="noNoti"
                   class="engineer"
                   name="notification"
-                  type="checkbox"
+                  type="radio"
                   value="no"
                   required
                   aria-required="true"
@@ -305,7 +302,7 @@
                 <label for="disposition">Disposition</label><br />
                 <textarea
                   id="disposition"
-                  class="engineer"
+                  class="engineer textarea-height"
                   name="disposition"
                   required
                   aria-required="true"
@@ -320,7 +317,7 @@
                   id="yesUpdate"
                   class="engineer"
                   name="update"
-                  type="checkbox"
+                  type="radio"
                   value="yes"
                   aria-required="true"
                 />
@@ -329,7 +326,7 @@
                   id="noUpdate"
                   class="engineer"
                   name="update"
-                  type="checkbox"
+                  type="radio"
                   value="no"
                   required
                   aria-required="true"
@@ -418,7 +415,7 @@
                     id="return"
                     class="purchasing"
                     name="prelimary"
-                    type="checkbox"
+                    type="radio"
                     required
                     aria-required="true"
                   />
@@ -432,7 +429,7 @@
                     id="reworkInHouse"
                     class="purchasing"
                     name="prelimary"
-                    type="checkbox"
+                    type="radio"
                     required
                     aria-required="true"
                   />
@@ -443,7 +440,7 @@
                     id="scrapInHouse"
                     class="purchasing"
                     name="prelimary"
-                    type="checkbox"
+                    type="radio"
                     required
                     aria-required="true"
                   />
@@ -454,7 +451,7 @@
                     id="defer"
                     class="purchasing"
                     name="prelimary"
-                    type="checkbox"
+                    type="radio"
                     required
                     aria-required="true"
                   />
@@ -470,7 +467,7 @@
                   id="yesCAR"
                   class="purchasing"
                   name="CAR"
-                  type="checkbox"
+                  type="radio"
                   value="yes"
                   required
                   aria-required="true"
@@ -481,7 +478,7 @@
                   id="noCAR"
                   class="purchasing"
                   name="CAR"
-                  type="checkbox"
+                  type="radio"
                   value="no"
                   required
                   aria-required="true"
@@ -508,7 +505,7 @@
                   id="yesFollow"
                   class="purchasing"
                   name="follow-up"
-                  type="checkbox"
+                  type="radio"
                   value="yes"
                   required
                   aria-required="true"
@@ -519,7 +516,7 @@
                   id="noFollow"
                   class="purchasing"
                   name="follow-up"
-                  type="checkbox"
+                  type="radio"
                   value="no"
                   required
                   aria-required="true"
@@ -586,7 +583,7 @@
                   id="yesInspect"
                   class="inspector"
                   name="re-inspected"
-                  type="checkbox"
+                  type="radio"
                   value="yes"
                   required
                   aria-required="true"
@@ -597,7 +594,7 @@
                   id="noInspect"
                   class="inspector"
                   name="re-inspected"
-                  type="checkbox"
+                  type="radio"
                   value="no"
                   required
                   aria-required="true"
@@ -683,93 +680,4 @@
       </main>
     </div>
   </body>
-
-  <script>
-    document.querySelectorAll('input[name="marked"]').forEach((checkbox) => {
-      checkbox.addEventListener("change", function () {
-        if (this.checked) {
-          document
-            .querySelectorAll(`input[name="${this.name}"]`)
-            .forEach((cb) => {
-              if (cb !== this) cb.checked = false;
-            });
-        }
-      });
-    });
-
-    document.querySelectorAll('input[name="review"]').forEach((checkbox) => {
-      checkbox.addEventListener("change", function () {
-        if (this.checked) {
-          document
-            .querySelectorAll(`input[name="${this.name}"]`)
-            .forEach((cb) => {
-              if (cb !== this) cb.checked = false;
-            });
-        }
-      });
-    });
-
-    document
-      .querySelectorAll('input[name="notification"]')
-      .forEach((checkbox) => {
-        checkbox.addEventListener("change", function () {
-          if (this.checked) {
-            document
-              .querySelectorAll(`input[name="${this.name}"]`)
-              .forEach((cb) => {
-                if (cb !== this) cb.checked = false;
-              });
-          }
-        });
-      });
-
-    document.querySelectorAll('input[name="update"]').forEach((checkbox) => {
-      checkbox.addEventListener("change", function () {
-        if (this.checked) {
-          document
-            .querySelectorAll(`input[name="${this.name}"]`)
-            .forEach((cb) => {
-              if (cb !== this) cb.checked = false;
-            });
-        }
-      });
-    });
-
-    document.querySelectorAll('input[name="prelimary"]').forEach((checkbox) => {
-      checkbox.addEventListener("change", function () {
-        if (this.checked) {
-          document
-            .querySelectorAll(`input[name="${this.name}"]`)
-            .forEach((cb) => {
-              if (cb !== this) cb.checked = false;
-            });
-        }
-      });
-    });
-
-    document.querySelectorAll('input[name="CAR"]').forEach((checkbox) => {
-      checkbox.addEventListener("change", function () {
-        if (this.checked) {
-          document
-            .querySelectorAll(`input[name="${this.name}"]`)
-            .forEach((cb) => {
-              if (cb !== this) cb.checked = false;
-            });
-        }
-      });
-    });
-
-    document.querySelectorAll('input[name="follow-up"]').forEach((checkbox) => {
-      checkbox.addEventListener("change", function () {
-        if (this.checked) {
-          document
-            .querySelectorAll(`input[name="${this.name}"]`)
-            .forEach((cb) => {
-              if (cb !== this) cb.checked = false;
-            });
-        }
-      });
-    });
-  </script>
 </html>
-
