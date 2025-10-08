@@ -1,0 +1,63 @@
+input[type="text"],
+input[type="number"],
+input[type="date"]  {
+    display: block;
+}
+
+textarea {
+    width: 100%;
+}
+
+.three-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.two-columns,
+.five-columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.one-column,
+.inspector-columns {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.center {
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.padding {
+    padding-bottom: 20px;
+}
+
+
+#wrapper {
+	margin: 15px auto;
+	width: 95%;
+}
+
+@media screen and (min-width: 1440px) {
+    #wrapper{
+		width: 65%;
+	}
+
+    .five-columns {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .one-column {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .inspector-columns {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
