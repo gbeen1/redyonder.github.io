@@ -1,63 +1,80 @@
+body {
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
+  background: #f5f7fa;
+  color: #111827;
+  line-height: 1.45;
+}
+
+header {
+  background: #0b1a3a;
+  color: #ffffff;
+  padding: 16px;
+  border-radius: 10px 10px 0 0;
+}
+header .logo {
+  display: block;
+  margin: 0 auto 8px;
+}
+
 input[type="text"],
 input[type="number"],
-input[type="date"]  {
-    display: block;
+input[type="date"] {
+  display: block;
 }
 
 textarea {
-    width: 100%;
+  width: 100%;
 }
 
 .three-columns {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 
 .two-columns,
 .five-columns {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
 .one-column,
 .inspector-columns {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
 }
 
 .center {
-    text-align: center;
-    padding-bottom: 15px;
+  text-align: center;
+  padding-bottom: 15px;
 }
 
 .padding {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 
-
 #wrapper {
-	margin: 15px auto;
-	width: 95%;
+  margin: 15px auto;
+  width: 95%;
 }
 
 @media screen and (min-width: 1440px) {
-    #wrapper{
-		width: 65%;
-	}
+  #wrapper {
+    width: 65%;
+  }
 
-    .five-columns {
-        grid-template-columns: repeat(5, 1fr);
-    }
+  .five-columns {
+    grid-template-columns: repeat(5, 1fr);
+  }
 
-    .one-column {
-        grid-template-columns: repeat(4, 1fr);
-    }
+  .one-column {
+    grid-template-columns: repeat(4, 1fr);
+  }
 
-    .inspector-columns {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
+  .inspector-columns {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
