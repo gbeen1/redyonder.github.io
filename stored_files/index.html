@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Admin</title>
+    <link rel="stylesheet" href="styleLogin.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="Crossfire_Logo-removebg-preview.ico" />
+  </head>
+  <body>
+    <div class="form" id="loginForm" style="display: block">
+      <h1>Sign In</h1>
+      <form method="post">
+        <div class="username">
+          <input id="username" type="text" required />
+          <label for="username">Username</label>
+        </div>
+
+        <div class="password">
+          <input id="password" type="password" required />
+          <label for="password">Password</label>
+        </div>
+
+        <div class="remember">
+          <a href="#">Forgot your password?</a>
+        </div>
+
+        <input type="submit" value="Log In" />
+      </form>
+      <div class="remember">
+        <a href="#" onclick="showRegister()">Don't have an account? Register</a>
+      </div>
+    </div>
+
+    <!-- Register Form -->
+    <div class="form" id="registerForm" style="display: none">
+      <h1>Register</h1>
+      <form method="post">
+        <div class="grid-container">
+          <div class="username">
+            <input id="firstName" type="text" required />
+            <label for="firstName">First Name</label>
+          </div>
+
+          <div class="username">
+            <input id="lastName" type="text" required />
+            <label for="lastName">Last Name</label>
+          </div>
+
+          <div class="username">
+            <input
+              id="phone"
+              type="tel"
+              required
+              pattern="[0-9]{10}"
+              title="Enter a 10-digit phone number"
+            />
+            <label for="phone">Phone</label>
+          </div>
+
+          <div class="username">
+            <input id="email" type="email" required placeholder="" />
+            <label for="email">Email</label>
+          </div>
+
+          <div class="username">
+            <input
+              id="newUsername"
+              type="text"
+              required
+              minlength="4"
+              maxlength="20"
+            />
+            <label for="newUsername">Username</label>
+          </div>
+
+          <div class="password">
+            <input
+              id="newPassword"
+              type="password"
+              required
+              minlength="8"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              title="Must contain at least 8 characters, including uppercase, lowercase, and a number"
+            />
+            <label for="newPassword">Password</label>
+          </div>
+
+          <div class="password">
+            <input id="confirmPassword" type="password" required />
+            <label for="confirmPassword">Confirm Password</label>
+          </div>
+        </div>
+
+        <input type="submit" value="Sign Up" />
+      </form>
+      <div class="remember">
+        <a href="#" onclick="showLogin()">Already have an account? Log In</a>
+      </div>
+    </div>
+
+    <!-- Move to JS folder, it just makes hide every form -->
+    <script>
+      function showRegister() {
+        document.getElementById("loginForm").style.display = "none";
+        document.getElementById("registerForm").style.display = "block";
+      }
+
+      function showLogin() {
+        document.getElementById("registerForm").style.display = "none";
+        document.getElementById("loginForm").style.display = "block";
+      }
+    </script>
+    <script src="scripts/login_script.js"></script>
+  </body>
+</html>
