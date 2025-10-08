@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create NCR</title>
+    <link rel="stylesheet" href="ncr.css">
+</head>
+<body>
+    <div id="wrapper">
+    <header>
+        <div><img class="logo" src="images/crossfire-logo.png" alt="logo" height="150" width="150"/></div>
+        <div>
+            <p>CROSSFIRE CANADA</p>
+        </div>
+        <div class="three-columns">
+            <div class="center">Document No.</div>
+            <div class="center">Document Title:</div>
+            <div class="center">Page</div>
+        </div>
+        <hr />
+        <div class="three-columns">
+            <div class="center">OCS1112</div>
+            <div class="center">Non-Conformance Report</div>
+            <div class="center">1 of 2</div>
+        </div>
+    </header>
+
+    <main>
+        <form method="post">
+            <fieldset>
+                <p><strong>Identify Process Applicable</strong></p>
+
+                <div class="two-columns padding">
+                    <div>
+                        <input id="supplierOrRecInsp" class="qualityRep" name="supplierOrRecInsp" type="checkbox" required aria-required="true"/>
+                        <label for="supplierOrRecInsp">Supplier or Rec-Insp</label>
+                        <br />
+                        <input id="wip" class="qualityRep" name="wip" type="checkbox" required aria-required="true"/>
+                        <label for="wip">WIP (Production Order)</label> 
+                    </div>
+
+                    <div>
+                        <label for="supplierName">Supplier Name: </label>
+                        <input id="supplierName" class="qualityRep" name="supplierName" type="text" placeholder="John" required aria-required="true" />
+                    </div>
+                </div>
+
+                <div class="five-columns padding">
+                    
+                    <div>
+                        <label for="ncrNum">NCR No.</label>
+                        <input id="ncrNum" class="qualityRep" name="ncrNum" type="text" required aria-required="true" />
+                    </div>
+
+                    <div>
+                        <label for="prodNum">PO or Prod. No.</label>
+                        <input id="prodNum" class="qualityRep" name="prodNum" type="text" required aria-required="true" />
+                    </div>
+
+                    <div>
+                        <label for="salesNum">Sales Order No.</label>
+                        <input id="salesNum" class="qualityRep" name="salesNum" type="text" required aria-required="true" />
+                    </div>
+                   
+                    <div>
+                        <label for="qualityRec">Quality Recieved</label>
+                        <input id="qualityRec" class="qualityRep" name="qualityRec" type="number" required aria-required="true" />
+                    </div>
+
+                    <div>
+                        <label for="qualityDef">Quality Defective</label>
+                        <input id="qualityDef" class="qualityRep" name="qualityDef" type="number" required aria-required="true" />
+                    </div>
+                    
+                </div>
+
+                <div class="padding">
+                    <div>
+                        <label for="itemDescription">Description of Item</label><br />
+                        <textarea id="itemDescription" class="qualityRep" name="itemDescription" required aria-required="true"></textarea>
+                    </div>
+                </div>
+
+                <div class="padding">
+                    <div>
+                        <label for="defectDescription">Description of Defect</label><br />
+                        <textarea id="defectDescription" class="qualityRep" name="defectDescription" required aria-required="true"></textarea>
+                    </div>
+                </div>
+
+                <div class=" two-columns padding">
+                    <div>
+                        <p>Item Marked Nonconfroming</p>
+                        <input id="yesMarked" class="qualityRep" name="marked" type="checkbox" value="yes" required aria-required="true"/>
+                        <label for="yesMarked">Yes</label>
+                        <input id="noMarked" class="qualityRep" name="marked" type="checkbox" value="no" required aria-required="true"/>
+                        <label for="noMarked">No</label>
+                    </div>
+
+                    <div>
+                        <p>
+                            Completed NCR to be forwarded to HBC Engineering and Operations Manager complete with any 
+                            relevant documents attached (pictures, actual measurements, material certs, etc.)
+                        </p>
+                    </div>
+                </div>
+
+                <div class="two-columns padding">
+                    <div>
+                        <label for="qualityRepName">Quality Rep Name:</label>
+                        <input id="qualityRepName" class="qualityRep" name="qualityRepName" type="text" required aria-required="true" />
+                    </div>
+
+                    <div>
+                        <label for="qualityDate">Date:</label>
+                        <input id="qualityDate" class="qualityRep" name="qualityDate" type="date" required aria-required="true" />
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <p>Review By CF Engineering: </p>
+                <div class="center">
+                    <input id="asIs" class="engineer" name="review" type="checkbox" required aria-required="true"/>
+                    <label for="asIs">Use as is</label>
+                    <input id="repair" class="engineer" name="review" type="checkbox" required aria-required="true"/>
+                    <label for="repair">Repair</label>
+                    <input id="rework" class="engineer" name="review" type="checkbox" required aria-required="true"/>
+                    <label for="rework">Rework</label>
+                    <input id="scrap" class="engineer" name="review" type="checkbox" required aria-required="true"/>
+                    <label for="scrap">Repair</label>
+                </div>
+
+                <div class="padding">
+                    <p>
+                      Does Customer require notification of NCR?
+                      <input id="yesNoti" class="engineer" name="notification" type="checkbox" value="yes" required aria-required="true"/>
+                      <label for="yesNoti">Yes</label>  
+                      <input id="noNoti" class="engineer" name="notification" type="checkbox" value="no" required aria-required="true"/>
+                      <label for="noNoti">No</label> 
+                    </p>
+                </div>
+
+                <div class="padding">
+                    <div>
+                        <label for="disposition">Disposition</label><br />
+                        <textarea id="disposition" class="engineer" name="disposition" required aria-required="true"></textarea>
+                    </div>
+                </div>
+
+                <div class="padding">
+                    <p>
+                      Does the drawing require updating?
+                      <input id="yesUpdate" class="engineer" name="update" type="checkbox" value="yes" aria-required="true"/>
+                      <label for="yesUpdate">Yes</label>  
+                      <input id="noUpdate" class="engineer" name="update" type="checkbox" value="no" required aria-required="true"/>
+                      <label for="noUpdate">No</label> 
+                    </p>
+                </div>
+
+                <div class="two-columns padding">
+                    <div>
+                        <label for="originalRev">Original Rev. Number</label>
+                        <input id="originalRev" class="engineer" name="originalRev" type="text" />
+                    </div>
+
+                    <div>
+                        <label for="engineerName">Name of Engineer</label>
+                        <input id="engineerName" class="engineer" name="engineerName" type="text" required aria-required="true" />
+                    </div>
+
+                    <div>
+                        <label for="updatedRev">Updated Rev.</label>
+                        <input id="updatedRev" class="engineer" name="updatedRev" type="text" />
+                    </div>
+
+                    <div>
+                        <label for="revisionDate">Revision Date</label>
+                        <input id="revisionDate" class="engineer" name="revisionDate" type="date" />
+                    </div>
+                </div>
+
+                <div class="padding">
+                    <div>
+                        <label for="engineering">Engineering:</label>
+                        <input id="engineering" class="engineer" name="engineering" type="text" required aria-required="true" />
+                    </div>
+                    <br />
+                    <div>
+                        <label for="engineeringDate">Date:</label>
+                        <input id="engineeringDate" class="engineer" name="engineeringDate" type="date" required aria-required="true" />
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div class="padding">
+                    <p>Purchasing's Prelimary Decision:</p>
+                    <div class="one-column">
+                        <div>
+                            <input id="return" class="purchasing" name="prelimary" type="checkbox" required aria-required="true"/>
+                            <label for="return">Return to Supplier for either "rework" or "replacement"</label>
+                        </div>
+                        <div>
+                            <input id="reworkInHouse" class="purchasing" name="prelimary" type="checkbox" required aria-required="true"/>
+                            <label for="reworkInHouse">Rework "In-House"</label>
+                        </div>
+                        <div>
+                            <input id="scrapInHouse" class="purchasing" name="prelimary" type="checkbox" required aria-required="true"/>
+                            <label for="scrapInHouse">Scrap "In-House"</label>
+                        </div>
+                        <div>
+                            <input id="defer" class="purchasing" name="prelimary" type="checkbox" required aria-required="true"/>
+                            <label for="defer">Defer</label>
+                        </div>    
+                    </div>
+                </div>
+
+                <div>
+                    <p>
+                        Was a CAR Raised?
+                        <input id="yesCAR" class="purchasing" name="CAR" type="checkbox" value="yes" required aria-required="true"/>
+                        <label for="yesCAR">Yes</label>  
+                            
+                        <input id="noCAR" class="purchasing" name="CAR" type="checkbox" value="no" required aria-required="true"/>
+                        <label for="noCAR">No</label> 
+                    </p>    
+                    <div>
+                        <label for="CARNum">CAR #</label>
+                        <input id="CARNum" class="purchasing" name="CARNum" type="text" required aria-required="true"/> 
+                    </div>
+                </div>
+
+                <div class="padding">
+                    <p>
+                        Follow-up Required?
+                        <input id="yesFollow" class="purchasing" name="follow-up" type="checkbox" value="yes" required aria-required="true"/>
+                        <label for="yeFollow">Yes</label>  
+                            
+                        <input id="noFollow" class="purchasing" name="follow-up" type="checkbox" value="no" required aria-required="true"/>
+                        <label for="noFollow">No</label> 
+                    </p>    
+                    <div class="two-columns">
+                        <div>
+                            <label for="followType">Type of Follow-up</label>
+                            <input id="followType" class="purchasing" name="followType" type="text" required aria-required="true"/> 
+                        </div>    
+                        <div>
+                            <label for="expectedDate">Expected Date</label>
+                            <input id="expectedDate" class="purchasing" name="expectedDate" type="date" required aria-required="true"/> 
+                        </div>    
+                    </div>
+                </div>
+
+                <div class="padding">
+                    <div>
+                        <label for="operations">Operations Manager:</label>
+                        <input id="operations" class="purchasing" name="operations" type="text" required aria-required="true" />
+                    </div>
+                    <br />
+                    <div>
+                        <label for="operationsDate">Date:</label>
+                        <input id="operationsDate" class="purchasing" name="operationsDate" type="date" required aria-required="true" />
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="padding">
+                    <p>
+                        Re-Inspected Acceptable?
+                        <input id="yesInspect" class="inspector" name="re-inspected" type="checkbox" value="yes" required aria-required="true"/>
+                        <label for="yesInspect">Yes</label>  
+                            
+                        <input id="noInspect" class="inspector" name="re-inspected" type="checkbox" value="no" required aria-required="true"/>
+                        <label for="noInspect">No</label> 
+                        <strong>(If "No" then record new NCR number)</strong>
+                    </p>  
+                </div>
+
+                <div class="padding inspector-columns">
+                    <div>
+                        <label for="newNCRNum">New NCR Number:</label>
+                        <input id="newNCRNum" class="inspector" name="newNCRNum" type="text"/>
+                    </div>
+                    <div>
+                        <label for="inspectorName">Inspectors Name:</label>
+                        <input id="inspectorName" class="inspector" name="inspectorName" type="text" required aria-required="true"/>
+                    </div>    
+                    <div>
+                        <label for="inspectorDate">Date:</label>
+                        <input id="inspectorDate" class="inspector" name="inspectorDate" type="date" required aria-required="true"/>
+                    </div> 
+                </div>
+
+                <div class="padding inspector-columns">
+                    <p>
+                        NCR Closed
+                        <input id="yesClose" class="inspector" name="yesClose" type="checkbox" value="yes" required aria-required="true"/>
+                        <label for="yesClose">Yes</label>  
+                     </p> 
+                     <div>
+                        <label for="qualityDept">Quality Department:</label>
+                        <input id="qualityDept" class="inspector" name="qualityDept" type="text" required aria-required="true"/>
+                    </div>    
+                    <div>
+                        <label for="deptDate">Date:</label>
+                        <input id="deptDate" class="inspector" name="deptDate" type="date" required aria-required="true"/>
+                    </div> 
+                </div>
+            </fieldset>
+        </form>
+    </main>
+    </div>
+</body>
+
+<script>
+    document.querySelectorAll('input[name="marked"]').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        if (this.checked) {
+          document.querySelectorAll(`input[name="${this.name}"]`).forEach(cb => {
+            if (cb !== this) cb.checked = false;
+          });
+        }
+      });
+    });
+
+    document.querySelectorAll('input[name="review"]').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        if (this.checked) {
+          document.querySelectorAll(`input[name="${this.name}"]`).forEach(cb => {
+            if (cb !== this) cb.checked = false;
+          });
+        }
+      });
+    });
+
+    document.querySelectorAll('input[name="notification"]').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        if (this.checked) {
+          document.querySelectorAll(`input[name="${this.name}"]`).forEach(cb => {
+            if (cb !== this) cb.checked = false;
+          });
+        }
+      });
+    });
+
+    document.querySelectorAll('input[name="update"]').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        if (this.checked) {
+          document.querySelectorAll(`input[name="${this.name}"]`).forEach(cb => {
+            if (cb !== this) cb.checked = false;
+          });
+        }
+      });
+    });
+
+    document.querySelectorAll('input[name="prelimary"]').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        if (this.checked) {
+          document.querySelectorAll(`input[name="${this.name}"]`).forEach(cb => {
+            if (cb !== this) cb.checked = false;
+          });
+        }
+      });
+    });
+
+    document.querySelectorAll('input[name="CAR"]').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        if (this.checked) {
+          document.querySelectorAll(`input[name="${this.name}"]`).forEach(cb => {
+            if (cb !== this) cb.checked = false;
+          });
+        }
+      });
+    });
+
+    document.querySelectorAll('input[name="follow-up"]').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        if (this.checked) {
+          document.querySelectorAll(`input[name="${this.name}"]`).forEach(cb => {
+            if (cb !== this) cb.checked = false;
+          });
+        }
+      });
+    });
+</script>
+
+</html>
