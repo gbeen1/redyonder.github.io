@@ -13,7 +13,16 @@
   </head>
   <body>
     <nav class="navbar" aria-label="main menu">
-      <h1 class="logo">Crossfire NCR System</h1>
+      <!-- <h1 class="logo">Crossfire NCR System</h1> -->
+      <div class="logo">
+        <a href="homePage.html" target="_blank">
+          <img
+            src="images/Crossfire_Logo-removebg-preview.ico"
+            alt="Logo Crossfire"
+          />
+        </a>
+      </div>
+
       <ul class="menu">
         <li><a href="view.html">See NCRs</a></li>
         <li><a href="createNCR.html">New NCR</a></li>
@@ -24,7 +33,7 @@
         <div class="three-columns">
           <div class="center">NCR No.</div>
           <div class="center">Document Title:</div>
-          <div class="center"></div>
+          <div class="center">Date:</div>
         </div>
         <hr />
         <div class="three-columns">
@@ -211,23 +220,11 @@
                   aria-required="true"
                 />
               </div>
-
-              <div>
-                <label for="qualityDate">Date:</label>
-                <input
-                  id="qualityDate"
-                  class="qualityRep"
-                  name="qualityDate"
-                  type="date"
-                  required
-                  aria-required="true"
-                />
-              </div>
             </div>
             <div>
-              <button class="btnSubmit">Submit</button>
-              <button class="btnSave">Save</button>
-              <button class="btnClear">Clear</button>
+              <button id="btnSubmit" class="btn">Submit</button>
+              <button id="btnSave" class="btn">Save</button>
+              <button id="btnClear" class="btn">Clear</button>
             </div>
           </fieldset>
 

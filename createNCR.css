@@ -4,19 +4,15 @@ body {
   background: #f5f7fa;
   color: #111827;
   line-height: 1.45;
+  margin: 0;
 }
 
 header {
   background: #0b1a3a;
-  color: #ffffff;
-  padding: 16px;
+  color: #fff;
+  padding: 8px 16px;
   border-radius: 10px 10px 0 0;
-  margin-top: 150px;
-}
-
-header .logo {
-  display: block;
-  margin: 0 auto 8px;
+  margin-top: 0;
 }
 
 input[type="text"],
@@ -31,24 +27,43 @@ textarea {
   width: 99%;
 }
 
+.logo {
+  margin-left: 3%;
+  padding: 0;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: 15px 30px;
+  background-color: rgba(0, 0, 0, 0.25);
+  height: 100px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.navbar img {
+  height: 200px;
+  display: block;
 }
 
 .menu {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 14px;
+  margin-right: 50px;
 }
 
 .menu a {
-  color: #fff;
+  font-size: 22px;
+  color: #0b1a3a;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 900;
+  padding: 20px;
+}
+
+.menu a:hover {
+  text-decoration: underline;
 }
 
 .three-columns {
@@ -87,6 +102,25 @@ textarea {
 #wrapper {
   margin: 15px auto;
   width: 95%;
+}
+
+.btn {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 12px 20px;
+  margin: 24px 6px;
+  background-color: #a8c4ff; /* tu azul */
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  border-radius: 8px;
+  box-shadow: 1px 2px 6px rgba(17, 24, 39, 0.18);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #95b7ff; /* un toque más intenso */
+  box-shadow: 2px 4px 10px rgba(17, 24, 39, 0.22);
+  transform: translateY(-2px);
 }
 
 @media screen and (min-width: 1440px) {
