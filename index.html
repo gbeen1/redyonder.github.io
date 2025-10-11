@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCR List</title>
+</head>
+<body>
+
+    <!--Barebones filters and table so I can start doing javascript without having to worry about filters or the table changing. I think this has all the fields we need for filters and columns for data we'll display when editing. I think it would be good to change colour to grey on hover for every row except the table head. Feel free to do whatever with the labels, I don't really need them. The create new can be a button or just text be in the header with it's own div, but I'll need to add an event listener to it so it needs a unique id-->
+
+
+    <div id="filters">
+        <div class="filterItem" id="NCRNoFilter">
+            <label for="numNCRNoFilter" class="inputlLbl" id="lblNCRNoFilter">Filter by NCR number: </label>
+            <input type="number" class="filterInput" id="numNCRNoFilter">
+        </div>
+        <div class="filterItem" id="PONoFilter">
+            <label for="numPONoFilter" class="inputlLbl" id="lblPONoFilter">Filter by PO number: </label>
+            <input type="number" class="filterInput" id="numPONoFilter">
+        </div>
+        <div class="filterItem" id="SuppFilter">
+            <label for="txtSuppFilter" class="inputlLbl" id="lblSuppFilter">Filter by supplier: </label>
+            <input type="text" class="filterInput" id="txtSuppFilter">
+        </div>
+        <div class="filterItem" id="SAPNoFilter">
+            <label for="numSAPNoFilter" class="inputlLbl" id="lblSAPNoFilter">Filter by SAP Number: </label>
+            <input type="number" class="filterInput" id="numSAPNoFilter">
+        </div>
+        <div class="filterItem" id="ProdDescFilter">
+            <label for="txtProdDescFilter" class="inputlLbl" id="lblProdDescFilter">Filter by product description: </label>
+            <input type="text" class="filterInput" id="txtProdDescFilter">
+        </div>
+        <div class="filterItem" id="DateFilter">
+            <label for="sltDateFilter" class="inputlLbl" id="lblDateFilter">Sort date by: </label>
+            <select class="filterInput" id="sltDateFilter">
+                <option value="none">None</option>
+                <option value="new">New</option>
+                <option value="old">Old</option>
+            </select>
+        </div>
+        <div class="filterItem" id="ActiveFilter">
+            <label for="chkActiveFilter" class="inputlLbl" id="lblActiveFilter">Show active: </label>
+            <input type="checkbox" class="filterInput" id="chkActiveFilter" checked="true">
+        </div>
+        <div class="filterItem" id="ClosedFilter">
+            <label for="chkClosedFilter" class="inputLbl" id="lblClosedFilter">Show closed: </label>
+            <input type="checkbox" class="filterInput" id="chkClosedFilter">
+        </div>
+    </div>
+    <table id="list">
+        <tr id="tableHead">
+            <th>NCR Number</th>
+            <th>PO or Prod No.</th>
+            <th>Supplier</th>
+            <th>SAP No.</th>
+            <th>Product Desc.</th>
+            <th>Date Opened</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>####</td>
+            <td>####</td>
+            <td>####</td>
+            <td>####</td>
+            <td>####</td>
+            <td>####</td>
+            <td>####</td>
+        </tr>
+    </table>
+</body>
+</html>
