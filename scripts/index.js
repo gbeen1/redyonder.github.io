@@ -106,11 +106,17 @@ function UpdateList(){
         DescCell.innerHTML = ncr.productDesc;
         DateOpenedCell.innerHTML = ncr.ncrDateOpened.toLocaleDateString('en-US');
         StatusCell.innerHTML = ncr.ncrActive ? "Active" : "Closed";
+
+        row.addEventListener("click", () => {
+            localStorage.setItem("ID", ncr.ID);
+            document.location.replace("createNCR.html");
+        });
     });
 }
 
 function moveToCreate()
 {
+    localStorage.setItem("ID", NCR.GetNewNCRNo())
     location.replace("./createNCR.html")
 }
 
@@ -118,3 +124,4 @@ btnCreateNCR.addEventListener('click', moveToCreate)
 
 
 ShownItemsNumChanged();
+
