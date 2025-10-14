@@ -117,11 +117,12 @@ function UpdateList(){
 function moveToCreate()
 {
     localStorage.setItem("ID", NCR.GetNewNCRNo())
-    location.replace("./createNCR.html")
+    location.replace("createNCR.html")
 }
 
 btnCreateNCR.addEventListener('click', moveToCreate)
 
 
 ShownItemsNumChanged();
+
 
