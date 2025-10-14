@@ -30,11 +30,11 @@ function ShownItemsNumChanged(){
     pageNum = 1;
     pageNumSpan.innerHTML = "Page " + pageNum;
     pageButtons[0].disabled = true;
+    UpdateList();
     if(nonCollapsableFilterInputs[0].value == 0 || pageNum * nonCollapsableFilterInputs[0].value >= listLength)
         pageButtons[1].disabled = true;
     else
         pageButtons[1].disabled = false;
-    UpdateList();
 }
 
 pageButtons[0].addEventListener("click", () => {
@@ -115,5 +115,6 @@ function moveToCreate()
 }
 
 btnCreateNCR.addEventListener('click', moveToCreate)
+
 
 ShownItemsNumChanged();
