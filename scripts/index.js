@@ -109,4 +109,11 @@ function UpdateList(){
     });
 }
 
+function moveToCreate()
+{
+    location.replace("./createNCR.html")
+}
+
+btnCreateNCR.addEventListener('click', moveToCreate)
+
 ShownItemsNumChanged();
