@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create NCR</title>
-    <link rel="stylesheet" href="createNCR.css" />
+    <link rel="stylesheet" href="styles/createNCR.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
       rel="stylesheet"
@@ -16,7 +16,7 @@
       <nav class="navbar" aria-label="main menu">
         <a href="homePage.html">
           <img
-            src="images/Crossfire_Logo-removebg-preview.ico"
+            src="images/crossfire-logo.png"
             alt="Crossfire NCR System"
           />
         </a>
@@ -24,28 +24,24 @@
         <ul class="menu">
           <li><a href="homePage.html">See NCRs</a></li>
           <li><a href="createNCR.html">New NCR</a></li>
+          <li><a href="editNCR.html">Edit NCR</a></li>
         </ul>
       </nav>
     </header>
     <div id="wrapper">
-      <section class="form-header" aria-label="NCR form header">
-        <div class="three-columns">
-          <div class="center">NCR No.</div>
-          <div class="center">Document Title:</div>
-          <div class="center">Date:</div>
-        </div>
-        <hr />
-        <div class="three-columns">
-          <div class="center">3241112</div>
-          <div class="center">Non-Conformance Report</div>
-          <div class="center"></div>
-        </div>
-      </section>
-
       <main>
+        <div class="grid-container">
         <form method="post">
-          <fieldset>
-            <p><strong>Identify Process Applicable:</strong></p>
+            <small>
+              <strong>Note:</strong> Fields marked with an asterisk 
+              (<span class="required-asterisk">*</span>) are required.
+            </small>
+            <button id="btnHelp" class="help-button">Help?</button>
+            <p>
+              <strong>
+                Identify Process Applicable:<span class="required-asterisk">*</span>
+              </strong>
+            </p>
 
             <div class="two-columns padding">
               <div>
@@ -71,13 +67,14 @@
               </div>
 
               <div>
-                <label for="supplierName">Supplier Name: </label>
+                <label for="supplierName">
+                  Supplier Name:<span class="required-asterisk">*</span> 
+                </label>
                 <input
                   id="supplierName"
                   class="qualityRep"
                   name="supplierName"
                   type="text"
-                  placeholder="John"
                   required
                   aria-required="true"
                 />
@@ -98,7 +95,9 @@
               </div>
 
               <div>
-                <label for="prodNum">PO or Prod. No.</label>
+                <label for="prodNum">
+                  PO or Prod. No.<span class="required-asterisk">*</span>
+                </label>
                 <input
                   id="prodNum"
                   class="qualityRep"
@@ -110,7 +109,9 @@
               </div>
 
               <div>
-                <label for="salesNum">Sales Order No.</label>
+                <label for="salesNum">
+                  Sales Order No.<span class="required-asterisk">*</span>
+                </label>
                 <input
                   id="salesNum"
                   class="qualityRep"
@@ -122,7 +123,9 @@
               </div>
 
               <div>
-                <label for="qualityRec">Quality Recieved</label>
+                <label for="qualityRec">
+                  Quality Recieved<span class="required-asterisk">*</span>
+                </label>
                 <input
                   id="qualityRec"
                   class="qualityRep"
@@ -134,7 +137,9 @@
               </div>
 
               <div>
-                <label for="qualityDef">Quality Defective</label>
+                <label for="qualityDef">
+                  Quality Defective<span class="required-asterisk">*</span>
+                </label>
                 <input
                   id="qualityDef"
                   class="qualityRep"
@@ -148,7 +153,10 @@
 
             <div class="padding">
               <div>
-                <label for="itemDescription">Description of Item</label><br />
+                <label for="itemDescription">
+                  Description of Item<span class="required-asterisk">*</span>
+                </label>
+                <br />
                 <textarea
                   id="itemDescription"
                   class="qualityRep"
@@ -159,10 +167,12 @@
               </div>
             </div>
 
-            <div class="padding">
+            <div>
               <div>
-                <label for="defectDescription">Description of Defect</label
-                ><br />
+                <label for="defectDescription">
+                  Description of Defect<span class="required-asterisk">*</span>
+                </label>
+                <br />
                 <textarea
                   id="defectDescription"
                   class="qualityRep textarea-height"
@@ -173,9 +183,11 @@
               </div>
             </div>
 
-            <div class="two-columns padding">
+            <div class="two-columns">
               <div>
-                <p>Item Marked Nonconfroming</p>
+                <p>
+                  Item Marked Nonconfroming<span class="required-asterisk">*</span>
+                </p>
                 <input
                   id="yesMarked"
                   class="qualityRep"
@@ -207,9 +219,11 @@
               </div>
             </div>
 
-            <div class="two-columns padding">
+            <div class="two-columns">
               <div>
-                <label for="qualityRepName">Quality Rep Name:</label>
+                <label for="qualityRepName">
+                  Quality Rep Name:<span class="required-asterisk">*</span>
+                </label>
                 <input
                   id="qualityRepName"
                   class="qualityRep"
@@ -219,15 +233,30 @@
                   aria-required="true"
                 />
               </div>
+              <div>
+                <label for="qualityDate">
+                  Date:<span class="required-asterisk">*</span>
+                </label>
+                <input
+                  id="qualityDate"
+                  class="qualityRep"
+                  name="qualityDate"
+                  type="date"
+                  required
+                  aria-required="true"
+                />
+              </div>
             </div>
+            
             <div>
-              <button id="btnSubmit" class="btn">Submit</button>
+              <button id="btnSubmit" class="btn">Finish</button>
               <button id="btnSave" class="btn">Save</button>
               <button id="btnClear" class="btn">Clear</button>
             </div>
-          </fieldset>
         </form>
+      </div>
       </main>
     </div>
+    <script src="scripts/createNCR.js"></script>
   </body>
 </html>
