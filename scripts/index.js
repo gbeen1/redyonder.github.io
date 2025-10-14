@@ -40,20 +40,20 @@ function ShownItemsNumChanged(){
 pageButtons[0].addEventListener("click", () => {
     pageNum--;
     pageNumSpan.innerHTML = "Page " + pageNum;
+    UpdateList();
     if(pageNum == 1)
         pageButtons[0].disabled = true;
     if(pageNum * nonCollapsableFilterInputs[0].value < listLength)
         pageButtons[1].disabled = false;
-    UpdateList();
 });
 
 pageButtons[1].addEventListener("click", () => {
     pageNum++;
     pageNumSpan.innerHTML = "Page " + pageNum;
+    UpdateList();
     pageButtons[0].disabled = false;
     if(pageNum * nonCollapsableFilterInputs[0].value >= listLength)
         pageButtons[1].disabled = true;
-    UpdateList();
 })
 
 const collapsableFilterInputs = document.querySelectorAll(".collapsableFilterInput");
@@ -124,5 +124,6 @@ btnCreateNCR.addEventListener('click', moveToCreate)
 
 
 ShownItemsNumChanged();
+
 
 
