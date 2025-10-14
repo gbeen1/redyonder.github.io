@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NCR List</title>
-    <!--<script src="scripts/pseudobackend.js"></script>-->
+    <script src="scripts/pseudobackend.js"></script>
     <script src="scripts/index.js" defer></script>
 </head>
 <body>
@@ -13,6 +13,7 @@
 
 
     <div id="filters">
+
         <div class="nonCollapsableFilterItem">
             <label for="sltNumShown" class="nonCollapsableInputLbl" id="lblNumShown1">Showing </label>
             <select class="nonCollapsableFilterInput" id="sltNumShown">
@@ -23,6 +24,7 @@
             </select>
             <label for="sltNumShown" class="nonCollapsableInputLbl" id="lblNumShown2"> items per page.</label>
         </div>
+
         <div class="nonCollapsableFilterItem">
             <button class="nonCollapsableFilterInput" id="btnToggleShowFilters">Show Filters</button>
         </div>
@@ -63,12 +65,12 @@
             </div>
 
             <div class="collapsableFilterItem" id="ActiveFilter">
-                <label for="chkActiveFilter" class="collapsableI" id="lblActiveFilter">Show active: </label>
-                <input type="checkbox" class="collapsableFilterInput" id="chkActiveFilter" checked="true">
+                <label for="chkActiveFilter" class="collapsableI" id="lblActiveFilter">Hide active: </label>
+                <input type="checkbox" class="collapsableFilterInput" id="chkActiveFilter">
             </div>
 
             <div class="collapsableFilterItem" id="ClosedFilter">
-                <label for="chkClosedFilter" class="inputLbl" id="lblClosedFilter">Show closed: </label>
+                <label for="chkClosedFilter" class="inputLbl" id="lblClosedFilter">Hide closed: </label>
                 <input type="checkbox" class="collapsableFilterInput" id="chkClosedFilter">
             </div>
         </div>
@@ -98,5 +100,10 @@
             </tr>
         </tbody>
     </table>
+    <button class="pageButtons" id="back">Back</button>
+    <span id="pageNumber">Page 1</span>
+    <button class="pageButtons" id="next">Next</button>
+
+    
 </body>
 </html>
