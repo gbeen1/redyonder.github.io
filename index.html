@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NCR List</title>
-    <script src="pseudobackend.js"></script>
-    <script src="index.js" defer></script>
+    <!--<script src="scripts/pseudobackend.js"></script>-->
+    <script src="scripts/index.js" defer></script>
 </head>
 <body>
 
@@ -13,42 +13,66 @@
 
 
     <div id="filters">
-        <div class="filterItem" id="NCRNoFilter">
-            <label for="numNCRNoFilter" class="inputlLbl" id="lblNCRNoFilter">Filter by NCR number: </label>
-            <input type="number" class="filterInput" id="numNCRNoFilter">
-        </div>
-        <div class="filterItem" id="PONoFilter">
-            <label for="numPONoFilter" class="inputlLbl" id="lblPONoFilter">Filter by PO number: </label>
-            <input type="number" class="filterInput" id="numPONoFilter">
-        </div>
-        <div class="filterItem" id="SuppFilter">
-            <label for="txtSuppFilter" class="inputlLbl" id="lblSuppFilter">Filter by supplier: </label>
-            <input type="text" class="filterInput" id="txtSuppFilter">
-        </div>
-        <div class="filterItem" id="SAPNoFilter">
-            <label for="numSAPNoFilter" class="inputlLbl" id="lblSAPNoFilter">Filter by SAP Number: </label>
-            <input type="number" class="filterInput" id="numSAPNoFilter">
-        </div>
-        <div class="filterItem" id="ProdDescFilter">
-            <label for="txtProdDescFilter" class="inputlLbl" id="lblProdDescFilter">Filter by product description: </label>
-            <input type="text" class="filterInput" id="txtProdDescFilter">
-        </div>
-        <div class="filterItem" id="DateFilter">
-            <label for="sltDateFilter" class="inputlLbl" id="lblDateFilter">Sort date by: </label>
-            <select class="filterInput" id="sltDateFilter">
-                <option value="none">None</option>
-                <option value="new">New</option>
-                <option value="old">Old</option>
+        <div class="nonCollapsableFilterItem">
+            <label for="sltNumShown" class="nonCollapsableInputLbl" id="lblNumShown1">Showing </label>
+            <select class="nonCollapsableFilterInput" id="sltNumShown">
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="0">All</option>
             </select>
+            <label for="sltNumShown" class="nonCollapsableInputLbl" id="lblNumShown2"> items per page.</label>
         </div>
-        <div class="filterItem" id="ActiveFilter">
-            <label for="chkActiveFilter" class="inputlLbl" id="lblActiveFilter">Show active: </label>
-            <input type="checkbox" class="filterInput" id="chkActiveFilter" checked="true">
+        <div class="nonCollapsableFilterItem">
+            <button class="nonCollapsableFilterInput" id="btnToggleShowFilters">Show Filters</button>
         </div>
-        <div class="filterItem" id="ClosedFilter">
-            <label for="chkClosedFilter" class="inputLbl" id="lblClosedFilter">Show closed: </label>
-            <input type="checkbox" class="filterInput" id="chkClosedFilter">
+
+        <div id="collapsableFilterItems">
+            <div class="collapsableFilterItem" id="NCRNoFilter">
+                <label for="numNCRNoFilter" class="collapsableInputlLbl" id="lblNCRNoFilter">Filter by NCR number: </label>
+                <input type="number" class="collapsableFilterInput" id="numNCRNoFilter">
+            </div>
+
+            <div class="collapsableFilterItem" id="PONoFilter">
+                <label for="numPONoFilter" class="collapsableI" id="lblPONoFilter">Filter by PO number: </label>
+                <input type="number" class="collapsableFilterInput" id="numPONoFilter">
+            </div>
+
+            <div class="collapsableFilterItem" id="SuppFilter">
+                <label for="txtSuppFilter" class="collapsableI" id="lblSuppFilter">Filter by supplier: </label>
+                <input type="text" class="collapsableFilterInput" id="txtSuppFilter">
+            </div>
+
+            <div class="collapsableFilterItem" id="SAPNoFilter">
+                <label for="numSAPNoFilter" class="collapsableI" id="lblSAPNoFilter">Filter by SAP Number: </label>
+                <input type="number" class="collapsableFilterInput" id="numSAPNoFilter">
+            </div>
+
+            <div class="collapsableFilterItem" id="ProdDescFilter">
+                <label for="txtProdDescFilter" class="collapsableI" id="lblProdDescFilter">Filter by product description: </label>
+                <input type="text" class="collapsableFilterInput" id="txtProdDescFilter">
+            </div>
+
+            <div class="collapsableFilterItem" id="DateFilter">
+                <label for="sltDateFilter" class="collapsableI" id="lblDateFilter">Sort date by: </label>
+                <select class="collapsableFilterInput" id="sltDateFilter">
+                    <option value="none">None</option>
+                    <option value="new">New</option>
+                    <option value="old">Old</option>
+                </select>
+            </div>
+
+            <div class="collapsableFilterItem" id="ActiveFilter">
+                <label for="chkActiveFilter" class="collapsableI" id="lblActiveFilter">Show active: </label>
+                <input type="checkbox" class="collapsableFilterInput" id="chkActiveFilter" checked="true">
+            </div>
+
+            <div class="collapsableFilterItem" id="ClosedFilter">
+                <label for="chkClosedFilter" class="inputLbl" id="lblClosedFilter">Show closed: </label>
+                <input type="checkbox" class="collapsableFilterInput" id="chkClosedFilter">
+            </div>
         </div>
+        
     </div>
     <table id="list">
         <thead id="tableHead">
