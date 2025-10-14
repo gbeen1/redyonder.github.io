@@ -562,11 +562,11 @@ class NCR{
                 if(poNo != null && poNo != '')
                     filterFits[1] = (ncr.poID + '').includes(poNo + '');
                 if(suppName != null && suppName != '')
-                    filterFits[2] = ncr.supplierName.includes(suppName);
+                    filterFits[2] = ncr.supplierName.toUpperCase().includes(suppName.toUpperCase());
                 if(sapNo != null && sapNo != '')
                     filterFits[3] = (ncr.productID + '').includes(sapNo + '');
                 if(prodDesc != null && prodDesc != '')
-                    filterFits[4] = ncr.productDesc.includes(prodDesc)
+                    filterFits[4] = ncr.productDesc.toUpperCase.includes(prodDesc.toUpperCase())
                 if(hideActive)
                     filterFits[5] = ncr.ncrActive != true;
                 if(hideClosed)
@@ -604,3 +604,4 @@ class NCR{
         return this.GetNCRs().find(ncr => ncr.ID == id);
     }
 }
+
