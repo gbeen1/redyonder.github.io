@@ -1,110 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NCR List</title>
     <script src="scripts/pseudobackend.js"></script>
     <script src="scripts/index.js" defer></script>
-</head>
-<body>
+    <link rel="stylesheet" href="styleHome.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar" aria-label="main menu">
+        <a href="index.html">
+          <img
+            src="images/Crossfire_Logo-removebg-preview.ico"
+            alt="Crossfire NCR System"
+          />
+        </a>
+        <ul class="menu">
+          <li><a href="index.html">See NCRs</a></li>
+          <li><a href="createNCR.html">New NCR</a></li>
+        </ul>
+      </nav>
+    </header>
 
     <!--Barebones filters and table so I can start doing javascript without having to worry about filters or the table changing. I think this has all the fields we need for filters and columns for data we'll display when editing. I think it would be good to change colour to grey on hover for every row except the table head. Feel free to do whatever with the labels, I don't really need them. The create new can be a button or just text be in the header with it's own div, but I'll need to add an event listener to it so it needs a unique id-->
 
-
     <div id="filters">
+      <div class="nonCollapsableFilterItem">
+        <label
+          for="sltNumShown"
+          class="nonCollapsableInputLbl"
+          id="lblNumShown1"
+          >Showing
+        </label>
+        <select class="nonCollapsableFilterInput" id="sltNumShown">
+          <option value="20">20</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+          <option value="0">All</option>
+        </select>
+        <label
+          for="sltNumShown"
+          class="nonCollapsableInputLbl"
+          id="lblNumShown2"
+        >
+          Items per page.</label
+        >
+      </div>
 
-        <div class="nonCollapsableFilterItem">
-            <label for="sltNumShown" class="nonCollapsableInputLbl" id="lblNumShown1">Showing </label>
-            <select class="nonCollapsableFilterInput" id="sltNumShown">
-                <option value="20">20</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="0">All</option>
-            </select>
-            <label for="sltNumShown" class="nonCollapsableInputLbl" id="lblNumShown2"> items per page.</label>
+      <div class="nonCollapsableFilterItem">
+        <button class="nonCollapsableFilterInput" id="btnToggleShowFilters">
+          Show Filters
+        </button>
+        <button class="nonCollapsableFilterInput" id="btnCreateNCR">
+          Create
+        </button>
+        <!--made 'moveToCreate' func. because if I use hyperlink, button text color turn into blue/purple.-->
+      </div>
+
+      <div id="collapsableFilterItems">
+        <div class="collapsableFilterItem" id="NCRNoFilter">
+          <label
+            for="numNCRNoFilter"
+            class="collapsableInputlLbl"
+            id="lblNCRNoFilter"
+            >Filter by NCR number:
+          </label>
+          <input
+            type="number"
+            class="collapsableFilterInput"
+            id="numNCRNoFilter"
+          />
         </div>
 
-        <div class="nonCollapsableFilterItem">
-            <button class="nonCollapsableFilterInput" id="btnToggleShowFilters">Show Filters</button>
-            <button class="nonCollapsableFilterInput" id="btnCreateNCR">Create</button> <!--made 'moveToCreate' func. because if I use hyperlink, button text color turn into blue/purple.-->
+        <div class="collapsableFilterItem" id="PONoFilter">
+          <label for="numPONoFilter" class="collapsableI" id="lblPONoFilter"
+            >Filter by PO number:
+          </label>
+          <input
+            type="number"
+            class="collapsableFilterInput"
+            id="numPONoFilter"
+          />
         </div>
 
-        <div id="collapsableFilterItems">
-            <div class="collapsableFilterItem" id="NCRNoFilter">
-                <label for="numNCRNoFilter" class="collapsableInputlLbl" id="lblNCRNoFilter">Filter by NCR number: </label>
-                <input type="number" class="collapsableFilterInput" id="numNCRNoFilter">
-            </div>
-
-            <div class="collapsableFilterItem" id="PONoFilter">
-                <label for="numPONoFilter" class="collapsableI" id="lblPONoFilter">Filter by PO number: </label>
-                <input type="number" class="collapsableFilterInput" id="numPONoFilter">
-            </div>
-
-            <div class="collapsableFilterItem" id="SuppFilter">
-                <label for="txtSuppFilter" class="collapsableI" id="lblSuppFilter">Filter by supplier: </label>
-                <input type="text" class="collapsableFilterInput" id="txtSuppFilter">
-            </div>
-
-            <div class="collapsableFilterItem" id="SAPNoFilter">
-                <label for="numSAPNoFilter" class="collapsableI" id="lblSAPNoFilter">Filter by SAP Number: </label>
-                <input type="number" class="collapsableFilterInput" id="numSAPNoFilter">
-            </div>
-
-            <div class="collapsableFilterItem" id="ProdDescFilter">
-                <label for="txtProdDescFilter" class="collapsableI" id="lblProdDescFilter">Filter by product description: </label>
-                <input type="text" class="collapsableFilterInput" id="txtProdDescFilter">
-            </div>
-
-            <div class="collapsableFilterItem" id="DateFilter">
-                <label for="sltDateFilter" class="collapsableI" id="lblDateFilter">Sort date by: </label>
-                <select class="collapsableFilterInput" id="sltDateFilter">
-                    <option value="none">None</option>
-                    <option value="new">New</option>
-                    <option value="old">Old</option>
-                </select>
-            </div>
-
-            <div class="collapsableFilterItem" id="ActiveFilter">
-                <label for="chkActiveFilter" class="collapsableI" id="lblActiveFilter">Hide active: </label>
-                <input type="checkbox" class="collapsableFilterInput" id="chkActiveFilter">
-            </div>
-
-            <div class="collapsableFilterItem" id="ClosedFilter">
-                <label for="chkClosedFilter" class="inputLbl" id="lblClosedFilter">Hide closed: </label>
-                <input type="checkbox" class="collapsableFilterInput" id="chkClosedFilter">
-            </div>
+        <div class="collapsableFilterItem" id="SuppFilter">
+          <label for="txtSuppFilter" class="collapsableI" id="lblSuppFilter"
+            >Filter by supplier:
+          </label>
+          <input
+            type="text"
+            class="collapsableFilterInput"
+            id="txtSuppFilter"
+          />
         </div>
-        
+
+        <div class="collapsableFilterItem" id="SAPNoFilter">
+          <label for="numSAPNoFilter" class="collapsableI" id="lblSAPNoFilter"
+            >Filter by SAP Number:
+          </label>
+          <input
+            type="number"
+            class="collapsableFilterInput"
+            id="numSAPNoFilter"
+          />
+        </div>
+
+        <div class="collapsableFilterItem" id="ProdDescFilter">
+          <label
+            for="txtProdDescFilter"
+            class="collapsableI"
+            id="lblProdDescFilter"
+            >Filter by product description:
+          </label>
+          <input
+            type="text"
+            class="collapsableFilterInput"
+            id="txtProdDescFilter"
+          />
+        </div>
+
+        <div class="collapsableFilterItem" id="DateFilter">
+          <label for="sltDateFilter" class="collapsableI" id="lblDateFilter"
+            >Sort date by:
+          </label>
+          <select class="collapsableFilterInput" id="sltDateFilter">
+            <option value="none">None</option>
+            <option value="new">New</option>
+            <option value="old">Old</option>
+          </select>
+        </div>
+
+        <div class="collapsableFilterItem" id="ActiveFilter">
+          <label for="chkActiveFilter" class="collapsableI" id="lblActiveFilter"
+            >Hide active:
+          </label>
+          <input
+            type="checkbox"
+            class="collapsableFilterInput"
+            id="chkActiveFilter"
+          />
+        </div>
+
+        <div class="collapsableFilterItem" id="ClosedFilter">
+          <label for="chkClosedFilter" class="inputLbl" id="lblClosedFilter"
+            >Hide closed:
+          </label>
+          <input
+            type="checkbox"
+            class="collapsableFilterInput"
+            id="chkClosedFilter"
+          />
+        </div>
+      </div>
     </div>
     <table id="list">
-        <thead id="tableHead">
-            <tr>
-                <th>NCR Number</th>
-                <th>PO or Prod No.</th>
-                <th>Supplier</th>
-                <th>SAP No.</th>
-                <th>Product Desc.</th>
-                <th>Date Opened</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody id="tableBody">
-            <tr>
-                <td>####</td>
-                <td>####</td>
-                <td>####</td>
-                <td>####</td>
-                <td>####</td>
-                <td>####</td>
-                <td class="status">####</td>
-            </tr>
-        </tbody>
+      <thead id="tableHead">
+        <tr>
+          <th>NCR Number</th>
+          <th>PO or Prod No.</th>
+          <th>Supplier</th>
+          <th>SAP No.</th>
+          <th>Product Desc.</th>
+          <th>Date Opened</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <tr>
+          <td>####</td>
+          <td>####</td>
+          <td>####</td>
+          <td>####</td>
+          <td>####</td>
+          <td>####</td>
+          <td class="status">####</td>
+        </tr>
+      </tbody>
     </table>
-    <button class="pageButtons" id="back">Back</button>
-    <span id="pageNumber">Page 1</span>
-    <button class="pageButtons" id="next">Next</button>
-
-    
-</body>
+    <div class="navForm">
+      <button class="pageButtons" id="back">Back</button>
+      <span id="pageNumber">Page 1</span>
+      <button class="pageButtons" id="next">Next</button>
+    </div>
+  </body>
 </html>

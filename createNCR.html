@@ -10,19 +10,20 @@
       rel="stylesheet"
     />
     <link rel="icon" href="images/crossfire-logo.png" />
+    <link rel="stylesheet" href="createNCR.css" />
   </head>
   <body>
     <header>
       <nav class="navbar" aria-label="main menu">
-        <a href="homePage.html">
+        <a href="index.html">
           <img
-            src="images/crossfire-logo.png"
+            src="images/Crossfire_Logo-removebg-preview.ico"
             alt="Crossfire NCR System"
           />
         </a>
 
         <ul class="menu">
-          <li><a href="homePage.html">See NCRs</a></li>
+          <li><a href="index.html">See NCRs</a></li>
           <li><a href="createNCR.html">New NCR</a></li>
         </ul>
       </nav>
@@ -30,15 +31,19 @@
     <div id="wrapper">
       <main>
         <div class="grid-container">
-        <form method="post">
+          <form method="post">
             <small>
-              <strong>Note:</strong> Fields marked with an asterisk 
-              (<span class="required-asterisk">*</span>) are required.
+              <strong>Note:</strong> Fields marked with an asterisk (<span
+                class="required-asterisk"
+                >*</span
+              >) are required.
             </small>
             <button id="btnHelp" class="help-button">Help?</button>
             <p>
               <strong>
-                Identify Process Applicable:<span class="required-asterisk">*</span>
+                Identify Process Applicable:<span class="required-asterisk"
+                  >*</span
+                >
               </strong>
             </p>
 
@@ -67,7 +72,7 @@
 
               <div>
                 <label for="supplierName">
-                  Supplier Name:<span class="required-asterisk">*</span> 
+                  Supplier Name:<span class="required-asterisk">*</span>
                 </label>
                 <input
                   id="supplierName"
@@ -185,7 +190,9 @@
             <div class="two-columns">
               <div>
                 <p>
-                  Item Marked Nonconfroming<span class="required-asterisk">*</span>
+                  Item Marked Nonconfroming<span class="required-asterisk"
+                    >*</span
+                  >
                 </p>
                 <input
                   id="yesMarked"
@@ -246,17 +253,16 @@
                 />
               </div>
             </div>
-            
+
             <div>
               <button id="btnSubmit" class="btn">Finish</button>
               <button id="btnSave" class="btn">Save</button>
               <button id="btnClear" class="btn">Clear</button>
             </div>
-        </form>
-      </div>
+          </form>
+        </div>
       </main>
     </div>
     <script src="scripts/createNCR.js"></script>
   </body>
 </html>
-
