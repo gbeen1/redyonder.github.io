@@ -26,8 +26,8 @@ if(typeof ncr == "undefined"){
 else{
     infospans[1].innerHTML = ncr.ncrDateOpened.toLocaleDateString();
     inputs[0].value = ncr.poID;
-    inputs[1].value = ncr.supplierName;
-    inputs[2].value = ncr.productID;
+    inputs[1].value = ncr.productID;
+    inputs[2].value = ncr.supplierName;
     inputs[3].checked = ncr.qaOptSupOrRecInsp;
     inputs[4].checked = ncr.qaOptWIP;
     inputs[5].value = ncr.poSalesOrderNum;
@@ -38,8 +38,8 @@ else{
     inputs[10].checked = ncr.qaNonConforming;
     inputs[11].checked = ncr.qaEngNeeded;
     ValidatePONo();
-    ValidateSuppName();
     ValidateSAPNo();
+    ValidateSuppName();
     ValidateApplProcess();
     ValidateSalesOrderNo();
     ValidateQuantityRec();
@@ -57,8 +57,8 @@ else{
 }
 
 inputs[0].addEventListener("input", ValidatePONo);// PO
-inputs[1].addEventListener("input", ValidateSuppName);// supplier
-inputs[2].addEventListener("input", ValidateSAPNo);// SAP
+inputs[1].addEventListener("input", ValidateSAPNo);// SAP
+inputs[2].addEventListener("input", ValidateSuppName);// supplier
 inputs[3].addEventListener("input", ValidateApplProcess);// Appl Process 1
 inputs[4].addEventListener("input", ValidateApplProcess);// Appl Process 2
 inputs[5].addEventListener("input", ValidateSalesOrderNo);// Sales Order No.
@@ -77,8 +77,8 @@ function ValidatePONo(){
     CheckEnableButtons();
 }
 
-function ValidateSuppName(){
-    IsValid[1] = inputs[1].value.length > 0;
+function ValidateSAPNo(){
+    IsValid[1] = inputs[1].value.length > 0 && /^\d+$/.test(inputs[1].value);
     if(IsValid[1])
         asterisks[1].style.color = "green";
     else
@@ -86,12 +86,12 @@ function ValidateSuppName(){
     CheckEnableButtons();
 }
 
-function ValidateSAPNo(){
-    IsValid[2] = inputs[2].value.length > 0 && /^\d+$/.test(inputs[2].value);
+function ValidateSuppName(){
+    IsValid[2] = inputs[2].value.length > 0;
     if(IsValid[2])
         asterisks[2].style.color = "green";
     else
-        asterisks[2].style.color = "red";
+        asterisks[2].style.color = "orange";
     CheckEnableButtons();
 }
 
@@ -151,9 +151,9 @@ function ValidateDefectDesc(){
 
 // enables buttons if required fields are filled for respective buttons
 function CheckEnableButtons(){
-    if(IsValid[0] && IsValid[1] && IsValid[2]){
+    if(IsValid[0] && IsValid[1]){
         buttons[0].disabled = false;
-        if(IsValid[3] && IsValid[4] && IsValid[5] && IsValid[6] && IsValid[7] && IsValid[8])
+        if(IsValid[2] && IsValid[3] && IsValid[4] && IsValid[5] && IsValid[6] && IsValid[7] && IsValid[8])
             buttons[1].disabled = false;
         else
             buttons[1].disabled = true
@@ -168,9 +168,8 @@ function CheckEnableButtons(){
 buttons[0].addEventListener("click", async function(event){
     event.preventDefault();
     ValidatePONo();
-    ValidateSuppName();
     ValidateSAPNo();
-    if(IsValid[0] && IsValid[1] && IsValid[2]){
+    if(IsValid[0] && IsValid[1]){
         const formData = new FormData(document.querySelector("#frmNCR"));
         try{
             const response = await fetch(null, {
