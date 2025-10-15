@@ -216,4 +216,10 @@ buttons[1].addEventListener("click", async function(event){
     }
     else
         window.alert("Save failed! Ensure all required fields are properly filled.")
+
+});
+
+buttons[2].addEventListener("click", function(event){
+    event.preventDefault();
+    window.location.replace("index.html");
 });
