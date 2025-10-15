@@ -10,20 +10,19 @@
       rel="stylesheet"
     />
     <link rel="icon" href="images/crossfire-logo.png" />
-    <link rel="stylesheet" href="createNCR.css" />
   </head>
   <body>
     <header>
       <nav class="navbar" aria-label="main menu">
-        <a href="index.html">
+        <a href="homePage.html">
           <img
-            src="images/Crossfire_Logo-removebg-preview.ico"
+            src="images/crossfire-logo.png"
             alt="Crossfire NCR System"
           />
         </a>
 
         <ul class="menu">
-          <li><a href="index.html">See NCRs</a></li>
+          <li><a href="homePage.html">See NCRs</a></li>
           <li><a href="createNCR.html">New NCR</a></li>
         </ul>
       </nav>
@@ -31,19 +30,15 @@
     <div id="wrapper">
       <main>
         <div class="grid-container">
-          <form method="post">
+        <form method="post" id="frmCreate">
             <small>
-              <strong>Note:</strong> Fields marked with an asterisk (<span
-                class="required-asterisk"
-                >*</span
-              >) are required.
+              <strong>Note:</strong> Fields marked with an asterisk 
+              (<span class="required-asterisk">*</span>) are required.
             </small>
             <button id="btnHelp" class="help-button">Help?</button>
             <p>
               <strong>
-                Identify Process Applicable:<span class="required-asterisk"
-                  >*</span
-                >
+                Identify Process Applicable:<span class="required-asterisk">*</span>
               </strong>
             </p>
 
@@ -54,8 +49,6 @@
                   class="qualityRep"
                   name="radQuality"
                   type="radio"
-                  required
-                  aria-required="true"
                 />
                 <label for="supplierOrRecInsp">Supplier or Rec-Insp</label>
                 <br />
@@ -64,37 +57,33 @@
                   class="qualityRep"
                   name="radQuality"
                   type="radio"
-                  required
-                  aria-required="true"
                 />
                 <label for="wip">WIP (Production Order)</label>
               </div>
 
               <div>
                 <label for="supplierName">
-                  Supplier Name:<span class="required-asterisk">*</span>
+                  Supplier Name:<span class="required-asterisk">*</span> 
                 </label>
                 <input
                   id="supplierName"
                   class="qualityRep"
                   name="supplierName"
                   type="text"
-                  required
-                  aria-required="true"
                 />
               </div>
             </div>
 
             <div class="five-columns padding">
               <div>
-                <label for="ncrNum">NCR No.</label>
+                <label for="ncrNum">
+                  NCR No.<span class="required-asterisk">*</span>
+                </label>
                 <input
                   id="ncrNum"
                   class="qualityRep"
                   name="ncrNum"
                   type="text"
-                  required
-                  aria-required="true"
                 />
               </div>
 
@@ -107,8 +96,6 @@
                   class="qualityRep"
                   name="prodNum"
                   type="text"
-                  required
-                  aria-required="true"
                 />
               </div>
 
@@ -121,36 +108,30 @@
                   class="qualityRep"
                   name="salesNum"
                   type="text"
-                  required
-                  aria-required="true"
                 />
               </div>
 
               <div>
                 <label for="qualityRec">
-                  Quality Recieved<span class="required-asterisk">*</span>
+                  Quantity Recieved<span class="required-asterisk">*</span>
                 </label>
                 <input
                   id="qualityRec"
                   class="qualityRep"
                   name="qualityRec"
                   type="number"
-                  required
-                  aria-required="true"
                 />
               </div>
 
               <div>
                 <label for="qualityDef">
-                  Quality Defective<span class="required-asterisk">*</span>
+                  Quantity Defective<span class="required-asterisk">*</span>
                 </label>
                 <input
                   id="qualityDef"
                   class="qualityRep"
                   name="qualityDef"
                   type="number"
-                  required
-                  aria-required="true"
                 />
               </div>
             </div>
@@ -165,8 +146,6 @@
                   id="itemDescription"
                   class="qualityRep"
                   name="itemDescription"
-                  required
-                  aria-required="true"
                 ></textarea>
               </div>
             </div>
@@ -181,8 +160,6 @@
                   id="defectDescription"
                   class="qualityRep textarea-height"
                   name="defectDescription"
-                  required
-                  aria-required="true"
                 ></textarea>
               </div>
             </div>
@@ -190,9 +167,7 @@
             <div class="two-columns">
               <div>
                 <p>
-                  Item Marked Nonconfroming<span class="required-asterisk"
-                    >*</span
-                  >
+                  Item Marked Nonconfroming<span class="required-asterisk">*</span>
                 </p>
                 <input
                   id="yesMarked"
@@ -200,8 +175,6 @@
                   name="marked"
                   type="radio"
                   value="yes"
-                  required
-                  aria-required="true"
                 />
                 <label for="yesMarked">Yes</label>
                 <input
@@ -210,8 +183,6 @@
                   name="marked"
                   type="radio"
                   value="no"
-                  required
-                  aria-required="true"
                 />
                 <label for="noMarked">No</label>
               </div>
@@ -235,8 +206,6 @@
                   class="qualityRep"
                   name="qualityRepName"
                   type="text"
-                  required
-                  aria-required="true"
                 />
               </div>
               <div>
@@ -248,19 +217,16 @@
                   class="qualityRep"
                   name="qualityDate"
                   type="date"
-                  required
-                  aria-required="true"
                 />
               </div>
             </div>
-
+            
             <div>
-              <button id="btnSubmit" class="btn">Finish</button>
-              <button id="btnSave" class="btn">Save</button>
               <button id="btnClear" class="btn">Clear</button>
+              <button id="btnCreate" class="btn">Complete</button>
             </div>
-          </form>
-        </div>
+        </form>
+      </div>
       </main>
     </div>
     <script src="scripts/createNCR.js"></script>
