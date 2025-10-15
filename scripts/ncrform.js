@@ -1,18 +1,21 @@
+// nav bar
 document.querySelector("#navHome").addEventListener("click", () => location.replace("index.html"));
 document.querySelector("#navNewForm").addEventListener("click", () => {
     window.localStorage.setItem("ID", NCR.GetNewNCRNo());
     window.location.replace("ncrform.html");
 });
 
+// form save, complete & cancel buttons
 const buttons = document.querySelectorAll(".btn");// save, complete, close
 buttons[0].disabled = true;
 buttons[1].disabled = true;
 
+// form fields, asterisks, and validity of each field
 const inputs = document.querySelectorAll(".qualityRep");
 const asterisks = document.querySelectorAll(".asterisk");
-
 const IsValid = [false, false, false, false, false, false, false, false, false]
 
+// fills in available fields if ncr number matches existing ncr, otherwise just ncr no, date, active
 const ncr = NCR.GetNCRByID(window.localStorage.getItem("ID"));
 const infospans = document.querySelectorAll(".infospans")
 infospans[0].innerHTML = window.localStorage.getItem("ID");
@@ -64,6 +67,7 @@ inputs[7].addEventListener("input", ValidateQuantityDefect);// Quantity Defect
 inputs[8].addEventListener("input", ValidateItemDesc);// Item Desc
 inputs[9].addEventListener("input", ValidateDefectDesc);// Defect Desc
 
+// validation functions check if fields are valid, sets asterisk to appropriate colour based on validity, checks if buttons should be enabled
 function ValidatePONo(){
     IsValid[0] = inputs[0].value.length > 0 && /^\d+$/.test(inputs[0].value);
     if(IsValid[0])
@@ -137,7 +141,6 @@ function ValidateItemDesc(){
 }
 
 function ValidateDefectDesc(){
-    
     IsValid[8] = inputs[10].value.length > 0;
     if(IsValid[8])
         asterisks[8].style.color = "green";
@@ -146,6 +149,7 @@ function ValidateDefectDesc(){
     CheckEnableButtons();
 }
 
+// enables buttons if required fields are filled for respective buttons
 function CheckEnableButtons(){
     if(IsValid[0] && IsValid[1] && IsValid[2]){
         buttons[0].disabled = false;
@@ -160,6 +164,7 @@ function CheckEnableButtons(){
     }
 }
 
+// save button checks valid fields, submits form
 buttons[0].addEventListener("click", async function(event){
     event.preventDefault();
     ValidatePONo();
@@ -184,6 +189,8 @@ buttons[0].addEventListener("click", async function(event){
         window.alert("Save failed! Ensure all required fields are properly filled.")
 });
 
+
+// complete button checks valid fields, submits forms, disables all fields
 buttons[1].addEventListener("click", async function(event){
     event.preventDefault();
     ValidatePONo();
@@ -216,9 +223,9 @@ buttons[1].addEventListener("click", async function(event){
     }
     else
         window.alert("Save failed! Ensure all required fields are properly filled.")
-
 });
 
+// cancel button returns to lists
 buttons[2].addEventListener("click", function(event){
     event.preventDefault();
     window.location.replace("index.html");

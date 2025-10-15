@@ -1,3 +1,4 @@
+// page navigation
 document.querySelector("#navHome").addEventListener("click", () => location.replace("index.html"));
 document.querySelector("#navNewForm").addEventListener("click", () => {
     window.localStorage.setItem("ID", NCR.GetNewNCRNo());
@@ -12,6 +13,7 @@ const nonCollapsableFilterInputs = document.querySelectorAll(".nonCollapsableFil
 nonCollapsableFilterInputs[0].addEventListener("input", FilterChanged);
 nonCollapsableFilterInputs[1].addEventListener("click", ToggleFilters);
 
+// collapses filters, disables them
 function ToggleFilters(){
     if(collapsableFilts.style.display == "none"){
         nonCollapsableFilterInputs[1].textContent = "Hide Filters"
@@ -27,11 +29,12 @@ function ToggleFilters(){
     }
 }
 
+
 const pageButtons = document.querySelectorAll(".pageButtons");
 const pageNumSpan = document.querySelector("#pageNumber");
 let listLength = 0;
 
-
+// sets page to 1, updates list, enables or disables next and back buttons as required
 function FilterChanged(){
     pageNum = 1;
     pageNumSpan.innerHTML = "Page " + pageNum;
@@ -43,6 +46,7 @@ function FilterChanged(){
         pageButtons[1].disabled = false;
 }
 
+// back page button updates list to new page, enables or disables page buttons as required
 pageButtons[0].addEventListener("click", () => {
     pageNum--;
     pageNumSpan.innerHTML = "Page " + pageNum;
@@ -54,6 +58,7 @@ pageButtons[0].addEventListener("click", () => {
     document.querySelector("thead").scrollIntoView();
 });
 
+// next page button updates list to new page, enables or disables page buttons as required
 pageButtons[1].addEventListener("click", () => {
     pageNum++;
     pageNumSpan.innerHTML = "Page " + pageNum;
@@ -64,9 +69,11 @@ pageButtons[1].addEventListener("click", () => {
     document.querySelector("thead").scrollIntoView();
 });
 
+// filters will update list when interacted with
 const collapsableFilterInputs = document.querySelectorAll(".collapsableFilterInput");
 collapsableFilterInputs.forEach((input) => input.addEventListener("input", FilterChanged));
 
+// gets list of NCRs according to filters, applies them to table as clickable rows leading to the form page. Also gets length of list to help enabling & disabling back and next page buttons
 function UpdateList(){
     const NCRs = NCR.GetTabledNCRs(
         applyFilters, 
@@ -122,6 +129,7 @@ function UpdateList(){
     });
 }
 
+// initial list on startup
 FilterChanged();
 
 
