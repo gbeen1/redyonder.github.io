@@ -1,9 +1,15 @@
+document.querySelector("#navHome").addEventListener("click", () => location.replace("index.html"));
+document.querySelector("#navNewForm").addEventListener("click", () => {
+    window.localStorage.setItem("ID", NCR.GetNewNCRNo());
+    window.location.replace("ncrform.html");
+});
+
 const collapsableFilts = document.querySelector("#collapsableFilterItems");
 collapsableFilts.style.display = "none";
 let applyFilters = false;
 
 const nonCollapsableFilterInputs = document.querySelectorAll(".nonCollapsableFilterInput");
-nonCollapsableFilterInputs[0].addEventListener("input", ShownItemsNumChanged);
+nonCollapsableFilterInputs[0].addEventListener("input", FilterChanged);
 nonCollapsableFilterInputs[1].addEventListener("click", ToggleFilters);
 
 function ToggleFilters(){
@@ -26,7 +32,7 @@ const pageNumSpan = document.querySelector("#pageNumber");
 let listLength = 0;
 
 
-function ShownItemsNumChanged(){
+function FilterChanged(){
     pageNum = 1;
     pageNumSpan.innerHTML = "Page " + pageNum;
     pageButtons[0].disabled = true;
@@ -45,6 +51,7 @@ pageButtons[0].addEventListener("click", () => {
         pageButtons[0].disabled = true;
     if(pageNum * nonCollapsableFilterInputs[0].value < listLength)
         pageButtons[1].disabled = false;
+    document.querySelector("thead").scrollIntoView();
 });
 
 pageButtons[1].addEventListener("click", () => {
@@ -54,10 +61,11 @@ pageButtons[1].addEventListener("click", () => {
     pageButtons[0].disabled = false;
     if(pageNum * nonCollapsableFilterInputs[0].value >= listLength)
         pageButtons[1].disabled = true;
-})
+    document.querySelector("thead").scrollIntoView();
+});
 
 const collapsableFilterInputs = document.querySelectorAll(".collapsableFilterInput");
-collapsableFilterInputs.forEach((input) => input.addEventListener("input", () => UpdateList(true)));
+collapsableFilterInputs.forEach((input) => input.addEventListener("input", FilterChanged));
 
 function UpdateList(){
     const NCRs = NCR.GetTabledNCRs(
@@ -108,22 +116,13 @@ function UpdateList(){
         StatusCell.innerHTML = ncr.ncrActive ? "Active" : "Closed";
 
         row.addEventListener("click", () => {
-            localStorage.setItem("ID", ncr.ID);
-            document.location.replace("createNCR.html");
+            window.localStorage.setItem("ID", ncr.ID);
+            window.location.replace("ncrform.html");
         });
     });
 }
 
-function moveToCreate()
-{
-    localStorage.setItem("ID", NCR.GetNewNCRNo())
-    location.replace("createNCR.html")
-}
-
-btnCreateNCR.addEventListener('click', moveToCreate)
-
-
-ShownItemsNumChanged();
+FilterChanged();
 
 
 
