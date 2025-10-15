@@ -230,3 +230,8 @@ buttons[2].addEventListener("click", function(event){
     event.preventDefault();
     window.location.replace("index.html");
 });
+
+document.querySelector("#btnHelp").addEventListener("click", function(event){
+    event.preventDefault();
+    alert("Please complete all fields with the asterisk attached to it. \n\nFor the fields, NCR No., PO or Prod. No., Sales Order No., Quantity Recieved and Quantity Defective, please only enter valid numbers. \n(No Negatives) \n\nWhen completed, please review your information and select the \"Complete\" button to send your part to the Engineer.");
+});
