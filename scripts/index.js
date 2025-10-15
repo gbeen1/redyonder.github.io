@@ -132,5 +132,7 @@ function UpdateList(){
 // initial list on startup
 FilterChanged();
 
-
-
+document.querySelector("#btnHelp").addEventListener("click", function(event){
+    event.preventDefault();
+    alert("Click show filters to begin filtering items.\n\nClick on a table item to edit or view active or closed forms respectively.");
+});
