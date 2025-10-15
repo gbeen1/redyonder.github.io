@@ -66,10 +66,6 @@ header {
   -ms-flex-align: start;
 }
 
-.nonCollapsableInputLbl {
-  font-weight: 600;
-}
-
 .nonCollapsableFilterInput {
   min-height: 36px;
   padding: 6px 10px;
@@ -117,10 +113,7 @@ header {
   margin-top: 10px;
 }
 
-.collapsableInputlLbl,
-.inputLbl {
-  font-weight: 600;
-}
+
 
 .collapsableFilterInput {
   min-height: 36px;
