@@ -113,8 +113,6 @@ header {
   margin-top: 10px;
 }
 
-
-
 .collapsableFilterInput {
   min-height: 36px;
   margin: 20;
@@ -242,36 +240,35 @@ select.nonCollapsableFilterInput,
   }
 }
 
-
 /* section for form*/
 
 body {
-    font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial,
-      sans-serif;
-    background: #f5f7fa;
-    color: #111827;
-    line-height: 1.45;
-    margin: 0;
-  }
-  
-  input[type="text"],
-  input[type="number"],
-  input[type="date"] {
-    display: block;
-    width: 100%;
-    min-height: 1.75rem;
-  }
-  
-  textarea {
-    width: 100%;
-  }
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
+  background: #f5f7fa;
+  color: #111827;
+  line-height: 1.45;
+  margin: 0;
+}
 
-.grid-container{
-    display: grid;
-    background: #ffffff;
-    border-radius: 10px;
-    padding: 18px;
-    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06)
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+  display: block;
+  width: 100%;
+  min-height: 1.75rem;
+}
+
+textarea {
+  width: 100%;
+}
+
+.grid-container {
+  display: grid;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
 }
 
 #frmNCR {
@@ -281,58 +278,58 @@ body {
   gap: 12px;
 }
 
-  .three-columns {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-  }
-
-  .two-columns {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-
-  .four-columns {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-  }
-
-  .span-two {
-    grid-column: span 2;
-  }
-  
-  .one-column,
-  .inspector-columns {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-  
-  .center {
-    text-align: center;
-    padding-bottom: 15px;
-  }
-  
-  .padding {
-    padding-bottom: 15px;
-  }
-  
-  .textarea-height {
-    min-height: 85px;
-  }
-
-  .orange-asterisk{
-	color: orange;
-	font-weight: bold;
+.three-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 
-.red-asterisk{
-	color: red;
-	font-weight: bold;
+.two-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
-  
+
+.four-columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.span-two {
+  grid-column: span 2;
+}
+
+.one-column,
+.inspector-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.center {
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.padding {
+  padding-bottom: 15px;
+}
+
+.textarea-height {
+  min-height: 85px;
+}
+
+.orange-asterisk {
+  color: orange;
+  font-weight: bold;
+}
+
+.red-asterisk {
+  color: red;
+  font-weight: bold;
+}
+
 .btn {
   cursor: pointer;
   border: 1.5px solid #0b1a3a;
@@ -355,43 +352,42 @@ body {
 }
 
 .help-button {
-    background-color: #a8c4ff;
-    font-weight: 600;
-    font-size: 12px;
-    border: 1px solid rgba(17, 24, 39, 0.08);
-    border-radius: 8px;
-    box-shadow: 1px 2px 6px rgba(17, 24, 39, 0.18);
+  background-color: #a8c4ff;
+  font-weight: 600;
+  font-size: 12px;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  border-radius: 8px;
+  box-shadow: 1px 2px 6px rgba(17, 24, 39, 0.18);
 }
-  
 
-  .help-button:hover {
-    background-color: #95b7ff;
-    box-shadow: 2px 4px 10px rgba(17, 24, 39, 0.22);
-    transform: translateY(-2px);
-  }
-  
+.help-button:hover {
+  background-color: #95b7ff;
+  box-shadow: 2px 4px 10px rgba(17, 24, 39, 0.22);
+  transform: translateY(-2px);
+}
+
+#wrapper {
+  margin: 15px auto;
+  width: 95%;
+}
+
+@media screen and (min-width: 1440px) {
   #wrapper {
-    margin: 15px auto;
-    width: 95%;
+    width: 65%;
   }
-  
-  @media screen and (min-width: 1440px) {
-    #wrapper {
-      width: 65%;
-    }
-  
-    .five-columns {
-      grid-template-columns: repeat(5, 1fr);
-    }
-  
-    .one-column {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  
-    .inspector-columns {
-      grid-template-columns: repeat(3, 1fr);
-    }
+
+  .five-columns {
+    grid-template-columns: repeat(5, 1fr);
   }
+
+  .one-column {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .inspector-columns {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 
 /* get rid of arrows on number boxes */
 input::-webkit-outer-spin-button,
@@ -400,6 +396,6 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }

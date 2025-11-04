@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NCR Form</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"/>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    />
     <link rel="icon" href="images/crossfire-logo.png" />
     <link rel="stylesheet" href="style.css" />
     <script src="scripts/pseudobackend.js"></script>
@@ -30,19 +33,24 @@
       <main>
         <div class="grid-container">
           <div class="three-columns">
-            <p>NCR Number: <strong><span class="infospans"></span></strong></p>
-            <p>Date Opened: <strong><span class="infospans"></span></strong></p>
-            <p>Status: <strong><span class="infospans"></span></strong></p>
+            <p>
+              NCR Number: <strong><span class="infospans"></span></strong>
+            </p>
+            <p>
+              Date Opened: <strong><span class="infospans"></span></strong>
+            </p>
+            <p>
+              Status: <strong><span class="infospans"></span></strong>
+            </p>
           </div>
           <form method="post" id="frmNCR">
             <small>
               <strong>Note:</strong> Fields marked with a red asterisk (<span
                 class="red-asterisk"
                 >*</span
-              >) are required to save the form. Fields marked with an orange asterisk (<span 
-                class="orange-asterisk"
-                >*</span
-              >) are required to complete the form.
+              >) are required to save the form. Fields marked with an orange
+              asterisk (<span class="orange-asterisk">*</span>) are required to
+              complete the form.
             </small>
             <button class="help-button" id="btnHelp">Help?</button>
 
@@ -85,14 +93,15 @@
                   aria-required="true"
                 />
               </div>
-
-
             </div>
 
             <div class="four-columns padding">
               <div>
-                <label for="radSupplierOrRecInsp">Applicable Process: <span class="orange-asterisk asterisk">*</span></label>
-                <br>
+                <label for="radSupplierOrRecInsp"
+                  >Applicable Process:
+                  <span class="orange-asterisk asterisk">*</span></label
+                >
+                <br />
                 <input
                   id="radSupplierOrRecInsp"
                   class="qualityRep"
@@ -116,7 +125,8 @@
 
               <div>
                 <label for="numSalesOrderNo">
-                  Sales Order No.: <span class="orange-asterisk asterisk">*</span>
+                  Sales Order No.:
+                  <span class="orange-asterisk asterisk">*</span>
                 </label>
                 <input
                   id="numSalesOrderNo"
@@ -129,7 +139,8 @@
 
               <div>
                 <label for="numQuantityRec">
-                  Quantity Recieved: <span class="orange-asterisk asterisk">*</span>
+                  Quantity Recieved:
+                  <span class="orange-asterisk asterisk">*</span>
                 </label>
                 <input
                   id="numQuantityRec"
@@ -142,7 +153,8 @@
 
               <div>
                 <label for="numQuantityDefective">
-                  Quantity Defective: <span class="orange-asterisk asterisk">*</span>
+                  Quantity Defective:
+                  <span class="orange-asterisk asterisk">*</span>
                 </label>
                 <input
                   id="numQuantityDefective"
@@ -157,7 +169,9 @@
             <div class="padding">
               <div>
                 <label for="txtProdDesc">
-                  Description of Item<span class="orange-asterisk asterisk">*</span>
+                  Description of Item<span class="orange-asterisk asterisk"
+                    >*</span
+                  >
                 </label>
                 <br />
                 <textarea
@@ -172,7 +186,8 @@
             <div>
               <div>
                 <label for="txaDefectDesc">
-                  Description of Defect: <span class="orange-asterisk asterisk">*</span>
+                  Description of Defect:
+                  <span class="orange-asterisk asterisk">*</span>
                 </label>
                 <br />
                 <textarea
@@ -191,7 +206,7 @@
                   class="qualityRep"
                   name="qaNonConforming"
                   type="checkbox"
-                >
+                />
                 <label for="chkNonConforming">
                   Item Marked Nonconforming?
                 </label>
@@ -203,10 +218,8 @@
                   class="qualityRep"
                   name="qaEngNeeded"
                   type="checkbox"
-                >
-                <label for="chkEngNeeded">
-                  Engineer Disposition Needed?
-                </label>
+                />
+                <label for="chkEngNeeded"> Engineer Disposition Needed? </label>
               </div>
             </div>
 
@@ -221,6 +234,3 @@
     </div>
   </body>
 </html>
-
-
-

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NCR Form - Engineering Review</title>
+    <link rel="stylesheet" href="styleEngPage.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar" aria-label="main menu">
+        <a href="index.html" class="logo">
+          <img
+            src="images/Crossfire_Logo-removebg-preview.ico"
+            alt="Crossfire NCR System"
+          />
+        </a>
+        <ul class="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="createNCR.html">New NCR</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="wrapper">
+      <form id="frmEngReview" class="card" method="post" novalidate>
+        <h1 class="sr-only" id="cf-eng-title">Review by CF Engineering</h1>
+
+        <section class="section" aria-labelledby="cf-eng-title">
+          <p class="sectionHint">
+            <strong>Review By CF Engineering</strong> (Indicate disposition by
+            checking one)
+          </p>
+
+          <fieldset class="field-group" aria-label="Disposition">
+            <div class="choices">
+              <label class="chip">
+                <input type="radio" name="engDisposition" value="use-as-is" />
+                <span>Use As Is</span>
+              </label>
+              <label class="chip">
+                <input type="radio" name="engDisposition" value="repair" />
+                <span>Repair</span>
+              </label>
+              <label class="chip">
+                <input type="radio" name="engDisposition" value="rework" />
+                <span>Rework</span>
+              </label>
+              <label class="chip">
+                <input type="radio" name="engDisposition" value="scrap" />
+                <span>Scrap</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="band band--blue" aria-label="Customer notification">
+            <legend class="sr-only">
+              Does Customer require notification of NCR?
+            </legend>
+            <div class="yn">
+              <p class="yn__label">
+                Does Customer require notification of NCR?
+              </p>
+              <label class="yn__opt">
+                <input type="radio" name="engCustNotify" value="yes" />
+                <span>Yes</span>
+              </label>
+              <label class="yn__opt">
+                <input type="radio" name="engCustNotify" value="no" />
+                <span>No</span>
+              </label>
+            </div>
+            <p class="yn__note">
+              (If “Yes” then raise message to customer detailing issues)
+            </p>
+          </fieldset>
+
+          <div class="sectionBlock">
+            <label for="engDispositionSteps" class="label">
+              Disposition
+              <span class="label__hint">
+                (Sequence of work steps required when “repair” or “rework”
+                indicated)
+              </span>
+            </label>
+            <textarea
+              id="engDispositionSteps"
+              name="engDispositionSteps"
+              placeholder="Describe the repair/rework steps in order..."
+            ></textarea>
+          </div>
+
+          <fieldset class="band band--blue" aria-label="Drawing update">
+            <legend class="sr-only">Does the drawing require updating?</legend>
+            <div class="yn">
+              <p class="yn__label">Does the drawing require updating</p>
+              <label class="yn__opt">
+                <input type="radio" name="engDrawingUpdate" value="yes" />
+                <span>Yes</span>
+              </label>
+              <label class="yn__opt">
+                <input type="radio" name="engDrawingUpdate" value="no" />
+                <span>No</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="grid mt-12">
+            <div class="field col-3">
+              <label for="engOriginalRevNo" class="label"
+                >Original Rev. Number:</label
+              >
+              <input
+                id="engOriginalRevNo"
+                name="engOriginalRevNo"
+                type="text"
+                class="input"
+              />
+            </div>
+            <div class="field col-3">
+              <label for="engUpdatedRevNo" class="label">Updated Rev.:</label>
+              <input
+                id="engUpdatedRevNo"
+                name="engUpdatedRevNo"
+                type="text"
+                class="input"
+              />
+            </div>
+            <div class="field col-3">
+              <label for="engRevisionDate" class="label">Revision Date:</label>
+              <input
+                id="engRevisionDate"
+                name="engRevisionDate"
+                type="date"
+                class="input"
+              />
+            </div>
+            <div class="field col-3">
+              <label for="engEngineerName" class="label"
+                >Name of Engineer:</label
+              >
+              <input
+                id="engEngineerName"
+                name="engEngineerName"
+                type="text"
+                class="input"
+              />
+            </div>
+          </div>
+
+          <div class="grid mt-12 footer">
+            <div class="field col-8">
+              <label for="engSignature" class="label">Engineering:</label>
+              <input
+                id="engSignature"
+                name="engSignature"
+                type="text"
+                class="input"
+                placeholder="Signature / Approval"
+              />
+            </div>
+            <div class="field col-4">
+              <label for="engSignatureDate" class="label">Date:</label>
+              <input
+                id="engSignatureDate"
+                name="engSignatureDate"
+                type="date"
+                class="input"
+              />
+            </div>
+          </div>
+        </section>
+      </form>
+    </main>
+  </body>
+</html>
