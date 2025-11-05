@@ -172,7 +172,9 @@ select.nonCollapsableFilterInput,
   border-top: 1px solid #eef0f4;
   font-size: 0.95rem;
 }
-
+#tableBody tr{
+  cursor: pointer;
+}
 #tableBody tr:hover {
   transform: scale(1.01);
 }
