@@ -116,7 +116,7 @@ header {
 .collapsableFilterInput {
   min-height: 36px;
   margin: 20;
-  padding: 6px 10px;
+  padding: 6px 3px;
   border: 1px solid #cbd5e1;
   border-radius: 8px;
   background: #fff;
