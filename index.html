@@ -52,99 +52,89 @@
       
 
       <div id="collapsableFilterItems">
-        <div class="collapsableFilterItem" id="NCRNoFilter">
-          <label
-            for="numNCRNoFilter"
-            class="collapsableFilterLblnputlLbl"
-            id="lblNCRNoFilter"
-            >Filter by NCR number:
-          </label>
-          <input
-            type="number"
-            class="collapsableFilterInput"
-            id="numNCRNoFilter"
-          />
-        </div>
+          <div class="collapsableFilterItem" id="NCRNoFilter">
+              <label for="numNCRNoFilter"
+                     class="collapsableFilterLblnputlLbl"
+                     id="lblNCRNoFilter">
+                  Filter by NCR number:
+              </label>
+              <input type="number"
+                     class="collapsableFilterInput"
+                     id="numNCRNoFilter" />
+          </div>
 
-        <div class="collapsableFilterItem" id="PONoFilter">
-          <label for="numPONoFilter" class="collapsableFilterLbl" id="lblPONoFilter"
-            >Filter by PO number:
-          </label>
-          <input
-            type="number"
-            class="collapsableFilterInput"
-            id="numPONoFilter"
-          />
-        </div>
+          <div class="collapsableFilterItem" id="PONoFilter">
+              <label for="numPONoFilter" class="collapsableFilterLbl" id="lblPONoFilter">
+                  Filter by PO number:
+              </label>
+              <input type="number"
+                     class="collapsableFilterInput"
+                     id="numPONoFilter" />
+          </div>
 
-        <div class="collapsableFilterItem" id="SuppFilter">
-          <label for="txtSuppFilter" class="collapsableFilterLbl" id="lblSuppFilter"
-            >Filter by supplier:
-          </label>
-          <input
-            type="text"
-            class="collapsableFilterInput"
-            id="txtSuppFilter"
-          />
-        </div>
+          <div class="collapsableFilterItem" id="SuppFilter">
+              <label for="txtSuppFilter" class="collapsableFilterLbl" id="lblSuppFilter">
+                  Filter by supplier:
+              </label>
+              <input type="text"
+                     class="collapsableFilterInput"
+                     id="txtSuppFilter" />
+          </div>
 
-        <div class="collapsableFilterItem" id="SAPNoFilter">
-          <label for="numSAPNoFilter" class="collapsableFilterLbl" id="lblSAPNoFilter"
-            >Filter by SAP Number:
-          </label>
-          <input
-            type="number"
-            class="collapsableFilterInput"
-            id="numSAPNoFilter"
-          />
-        </div>
+          <div class="collapsableFilterItem" id="SAPNoFilter">
+              <label for="numSAPNoFilter" class="collapsableFilterLbl" id="lblSAPNoFilter">
+                  Filter by SAP Number:
+              </label>
+              <input type="number"
+                     class="collapsableFilterInput"
+                     id="numSAPNoFilter" />
+          </div>
 
-        <div class="collapsableFilterItem" id="ProdDescFilter">
-          <label
-            for="txtProdDescFilter"
-            class="collapsableFilterLbl"
-            id="lblProdDescFilter"
-            >Filter by product description:
-          </label>
-          <input
-            type="text"
-            class="collapsableFilterInput"
-            id="txtProdDescFilter"
-          />
-        </div>
+          <div class="collapsableFilterItem" id="ProdDescFilter">
+              <label for="txtProdDescFilter"
+                     class="collapsableFilterLbl"
+                     id="lblProdDescFilter">
+                  Filter by product description:
+              </label>
+              <input type="text"
+                     class="collapsableFilterInput"
+                     id="txtProdDescFilter" />
+          </div>
 
-        <div class="collapsableFilterItem" id="DateFilter">
-          <label for="sltDateFilter" class="collapsableFilterLbl" id="lblDateFilter"
-            >Sort date by:
-          </label>
-          <select class="collapsableFilterInput" id="sltDateFilter">
-            <option value="none">None</option>
-            <option value="new">New</option>
-            <option value="old">Old</option>
-          </select>
-        </div>
+          <div class="collapsableFilterItem" id="DateFilter">
+              <label for="sltDateFilter" class="collapsableFilterLbl" id="lblDateFilter">
+                  Sort date by:
+              </label>
+              <select class="collapsableFilterInput" id="sltDateFilter">
+                  <option value="none">None</option>
+                  <option value="new">New</option>
+                  <option value="old">Old</option>
+              </select>
+          </div>
 
-        <div class="collapsableFilterItem" id="ActiveFilter">
-          <label for="chkActiveFilter" class="collapsableFilterLbl" id="lblActiveFilter"
-            >Hide active:
-          </label>
-          <input
-            type="checkbox"
-            class="collapsableFilterInput"
-            id="chkActiveFilter"
-          />
-        </div>
+          <div class="collapsableFilterItem" id="ActiveFilter">
+              <label for="chkActiveFilter" class="collapsableFilterLbl" id="lblActiveFilter">
+                  Hide active:
+              </label>
+              <input type="checkbox"
+                     class="collapsableFilterInput"
+                     id="chkActiveFilter" />
+          </div>
 
-        <div class="collapsableFilterItem" id="ClosedFilter">
-          <label for="chkClosedFilter" class="inputLbl" id="lblClosedFilter"
-            >Hide closed:
-          </label>
-          <input
-            type="checkbox"
-            class="collapsableFilterInput"
-            id="chkClosedFilter"
-          />
-        </div>
+          <div class="collapsableFilterItem" id="ClosedFilter">
+              <label for="chkClosedFilter" class="inputLbl" id="lblClosedFilter">
+                  Hide closed:
+              </label>
+              <input type="checkbox"
+                     class="collapsableFilterInput"
+                     id="chkClosedFilter" />
+          </div>
+
+          <div class="collapsableFilterItem" id="ClearButton">
+              <button class="clearButtons" id="btnClear">
+                  <label>Clear</label>
+              </button>
+          </div>
       </div>
     </div>
     <table id="list">
