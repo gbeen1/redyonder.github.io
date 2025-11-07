@@ -195,11 +195,14 @@ select.nonCollapsableFilterInput,
   transition: transform 0.12s ease, box-shadow 0.18s ease, background 0.2s ease;
   box-shadow: 0 6px 14px rgba(11, 26, 58, 0.08);
 }
-.pageButtons:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 12px 22px rgba(11, 26, 58, 0.12);
-  background: #f3f6fb;
-}
+.pageButtons:hover,
+.clearButtons:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 22px rgba(11, 26, 58, 0.12);
+    background: #f3f6fb;
+    cursor: pointer;
+}   /* GeonUk : same desing with pagebuttons:hover and clearbuttons:hover */
+
 .pageButtons:disabled {
   background-color: lightgray;
 }
@@ -213,29 +216,23 @@ select.nonCollapsableFilterInput,
   margin: 0 4px;
 }
 
-.clearButtons:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 12px 22px rgba(11, 26, 58, 0.12);
-    background: #f3f6fb;
-}
+#FilterClearButton #btnFilterClear {
+    cursor: pointer;
+    border: 1.5px solid #0b1a3a;
+    background: #ffffff;
+    color: #0b1a3a;
+    border-radius: 999px;
+    font-weight: 700;
+    padding: 8px 16px;
+    margin: 10px 8px;
+    transition: transform 0.12s ease, box-shadow 0.18s ease, background 0.2s ease;
+    box-shadow: 0 6px 14px rgba(11, 26, 58, 0.08);
+}   /* GeonUk : same desing with .pageButtons */
 
-#ClearButton {
+#FilterClearButton {
     display: flex;
     justify-content: end;
-}
-
-    #ClearButton #btnClear {
-        cursor: pointer;
-        border: 1.5px solid #0b1a3a;
-        background: #ffffff;
-        color: #0b1a3a;
-        border-radius: 999px;
-        font-weight: 700;
-        padding: 8px 16px;
-        margin: 10px 8px;
-        transition: transform 0.12s ease, box-shadow 0.18s ease, background 0.2s ease;
-        box-shadow: 0 6px 14px rgba(11, 26, 58, 0.08);
-    }
+}   /* GeonUk : align the buttons to the right for design stability */
 
 .navForm {
   margin-top: 2%;

@@ -51,7 +51,7 @@
       </div>
       
 
-      <div id="collapsableFilterItems">
+      <form id="collapsableFilterItems">                            <!-- GeonUk : changed from div to form, for clear button -->
           <div class="collapsableFilterItem" id="NCRNoFilter">
               <label for="numNCRNoFilter"
                      class="collapsableFilterLblnputlLbl"
@@ -129,13 +129,11 @@
                      class="collapsableFilterInput"
                      id="chkClosedFilter" />
           </div>
-
-          <div class="collapsableFilterItem" id="ClearButton">
-              <button class="clearButtons" id="btnClear">
-                  <label>Clear</label>
-              </button>
+          <!-- GeonUk : Clear button for reset the input fields -->
+          <div class="collapsableFilterItem" id="FilterClearButton">
+              <button class="clearButtons" id="btnFilterClear" type="button">Clear</button>
           </div>
-      </div>
+      </form>
     </div>
     <table id="list">
       <thead id="tableHead">
