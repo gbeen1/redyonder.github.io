@@ -21,7 +21,7 @@ const infospans = document.querySelectorAll(".infospans")
 infospans[0].innerHTML = window.localStorage.getItem("ID");
 if(typeof ncr == "undefined"){
     infospans[1].innerHTML = new Date().toLocaleDateString();
-    infospans[2].innerHTML = "Active";
+    infospans[2].innerHTML = "Quality Assurance";
 }
 else{
     infospans[1].innerHTML = ncr.ncrDateOpened.toLocaleDateString();
@@ -34,9 +34,9 @@ else{
     inputs[6].value = ncr.poQuantityReceived;
     inputs[7].value = ncr.qaQuantityDefective;
     inputs[8].value = ncr.productDesc;
-    inputs[9].value = ncr.qaDefectDesc;
-    inputs[10].checked = ncr.qaNonConforming;
-    inputs[11].checked = ncr.qaEngNeeded;
+    inputs[11].value = ncr.qaDefectDesc;
+    inputs[9].checked = ncr.qaNonConforming;
+    inputs[10].checked = ncr.qaEngNeeded;
     ValidatePONo();
     ValidateSAPNo();
     ValidateSuppName();
@@ -47,9 +47,9 @@ else{
     ValidateItemDesc();
     ValidateDefectDesc();
     if(ncr.ncrActive)
-        infospans[2].innerHTML = "Active";
+        infospans[2].innerHTML = "Quality Assurance";
     else{
-        infospans[2].innerHTML = "Closed"
+        infospans[2].innerHTML = "Engineering"
         inputs.forEach(input => input.disabled = true);
         buttons[0].disabled = true;
         buttons[1].disabled = true;
@@ -119,11 +119,12 @@ function ValidateQuantityRec(){
         asterisks[5].style.color = "green";
     else
         asterisks[5].style.color = "orange";
-    CheckEnableButtons();
+    ValidateQuantityDefect();
+    //CheckEnableButtons();
 }
 
 function ValidateQuantityDefect(){
-    IsValid[6] = inputs[7].value.length > 0 && /^\d+$/.test(inputs[7].value);
+    IsValid[6] = inputs[7].value.length > 0 && /^\d+$/.test(inputs[7].value) && Number(inputs[7].value) <= Number(inputs[6].value);
     if(IsValid[6])
         asterisks[6].style.color = "green";
     else
@@ -141,7 +142,7 @@ function ValidateItemDesc(){
 }
 
 function ValidateDefectDesc(){
-    IsValid[8] = inputs[10].value.length > 0;
+    IsValid[8] = inputs[11].value.length > 0;
     if(IsValid[8])
         asterisks[8].style.color = "green";
     else
@@ -188,7 +189,6 @@ buttons[0].addEventListener("click", async function(event){
         window.alert("Save failed! Ensure all required fields are properly filled.")
 });
 
-
 // complete button checks valid fields, submits forms, disables all fields
 buttons[1].addEventListener("click", async function(event){
     event.preventDefault();
@@ -201,24 +201,29 @@ buttons[1].addEventListener("click", async function(event){
     ValidateQuantityDefect();
     ValidateItemDesc();
     ValidateDefectDesc();
+    "PO or Prod. No.: " + inputs[0].value + "\nSAP No." + inputs[1].value + "\nSupplier name: " + inputs[2].value + "\nApplicable process: " + inputs[3].checked ? "Supplier or Rec-Insp" : "WIP (Production Order)" + "\nSales Order No.: " + inputs[5].value + "\nQuantity Received: " + inputs[6].value + "\nQuantity Defective: " + inputs[7].value + "\nItem Marked Nonconforming: " + inputs[10].checked + "\nEngineer Disposition Needed: " + inputs[11].checked + "\nDescription of item: " + inputs[8].value
     if(IsValid[0] && IsValid[1] && IsValid[2] && IsValid[3] && IsValid[4] && IsValid[5] && IsValid[6] && IsValid[7] && IsValid[8]){
-        const formData = new FormData(document.querySelector("#frmNCR"));
-        try{
-            const response = await fetch(null, {
-                method: "POST",
-                body: formData
-            });
-            //console.log(await response.json);
-            window.alert("Submission succeeded!");
+        let confirmmessage = "Are you sure you want to complete this form? You won't be able to change it later.\n\nPO or Prod. No.: " + inputs[0].value + "\nSAP No.: " + inputs[1].value + "\nSupplier name: " + inputs[2].value + "\nApplicable process: " + (inputs[3].checked ? "Supplier or Rec-Insp" : "WIP (Production Order)") + "\nSales Order No.: " + inputs[5].value + "\nQuantity Received: " + inputs[6].value + "\nQuantity Defective: " + inputs[7].value + "\nItem Marked Nonconforming: " + inputs[9].checked + "\nEngineer Disposition Needed: " + inputs[10].checked + "\nDescription of item: " + inputs[8].value;
+        if(window.confirm(confirmmessage)){
+            
+            const formData = new FormData(document.querySelector("#frmNCR"));
+            try{
+                const response = await fetch(null, {
+                    method: "POST",
+                    body: formData
+                });
+                //console.log(await response.json);
+                window.alert("Completion succeeded!");
+            }
+            catch (e){
+                console.log(e);
+                window.alert("Completion failed! Going to pretend that it didn't for the sake of the demonstration.");
+            }
+            infospans[2].innerHTML = "Closed"
+            inputs.forEach(input => input.disabled = true);
+            buttons[0].disabled = true;
+            buttons[1].disabled = true;
         }
-        catch (e){
-            console.log(e);
-            window.alert("Save failed! Going to pretend that it didn't for the sake of the demonstration.");
-        }
-        infospans[2].innerHTML = "Closed"
-        inputs.forEach(input => input.disabled = true);
-        buttons[0].disabled = true;
-        buttons[1].disabled = true;
     }
     else
         window.alert("Save failed! Ensure all required fields are properly filled.")
@@ -227,7 +232,9 @@ buttons[1].addEventListener("click", async function(event){
 // cancel button returns to lists
 buttons[2].addEventListener("click", function(event){
     event.preventDefault();
-    window.location.replace("index.html");
+    if(window.confirm("Are you sure you want to close without saving?"))
+        window.location.replace("index.html");
+        
 });
 
 document.querySelector("#btnHelp").addEventListener("click", function(event){
