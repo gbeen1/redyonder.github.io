@@ -38,54 +38,48 @@
           complete the form.
         </small>
         <button class="help-button" id="btnHelp">Help?</button>
-
-        <!--Required field to complete the form -->
         <section class="section padding" aria-labelledby="cf-eng-title">
-          
-          <strong>Review By CF Engineering <span class="orange-asterisk asterisk">*</span></strong> (Indicate disposition by
-          checking one)
-          
+          <!--<p class="sectionHint">-->
+            <strong>Review By CF Engineering <span class="orange-asterisk asterisk">*</span></strong> (Indicate disposition by
+            checking one)
+          <!--</p>-->
 
-          <!--Radio Buttons for Review-->
-          <div class="choices padding">
-            <label class="chip">
-              <input type="radio" name="engDisposition" value="use-as-is" />
-              <span>Use As Is</span>
-            </label>
-            <label class="chip">
-              <input type="radio" name="engDisposition" value="repair" />
-              <span>Repair</span>
-            </label>
-            <label class="chip">
-              <input type="radio" name="engDisposition" value="rework" />
-              <span>Rework</span>
-            </label>
-            <label class="chip">
-              <input type="radio" name="engDisposition" value="scrap" />
-              <span>Scrap</span>
-            </label>
-          </div>
-         
+          <!--<fieldset class="field-group" aria-label="Disposition">-->
+            <div class="choices padding">
+              <label class="chip">
+                <input type="radio" name="engDisposition" value="use-as-is" />
+                <span>Use As Is</span>
+              </label>
+              <label class="chip">
+                <input type="radio" name="engDisposition" value="repair" />
+                <span>Repair</span>
+              </label>
+              <label class="chip">
+                <input type="radio" name="engDisposition" value="rework" />
+                <span>Rework</span>
+              </label>
+              <label class="chip">
+                <input type="radio" name="engDisposition" value="scrap" />
+                <span>Scrap</span>
+              </label>
+            </div>
+          <!--</fieldset>-->
 
-            <!--Optional CheckBoxes for Notifications-->
+          <!-- <fieldset class="band band--blue" aria-label="Customer notification"> -->
+            <legend class="sr-only">
+              Does Customer require notification of NCR?
+            </legend>
             <div class="yn">
-              <p class="yn__label">
-                Does Customer require notification of NCR?
-              </p>
-              <label class="yn__opt">
-                <input type="radio" name="engCustNotify" value="yes" />
-                <span>Yes</span>
+              <label for="engCustNotify" class="yn__label">
+                Customer requires notification of NCR: 
               </label>
-              <label class="yn__opt">
-                <input type="radio" name="engCustNotify" value="no" />
-                <span>No</span>
-              </label>
+                <input type="checkbox" name="engCustNotify" />
             </div>
             <p class="yn__note">
               (If “Yes” then raise message to customer detailing issues)
             </p>
-        
-          <!--Beginning of Required Disposition section-->  
+          <!-- </fieldset> -->
+
           <div class="sectionBlock">
             <label for="engDispositionSteps" class="label">
               Disposition<span class="orange-asterisk asterisk">*</span>
@@ -101,26 +95,19 @@
             ></textarea>
           </div>
 
-          
-          <!--Optional Checkboxes about Updating-->
+          <!-- <fieldset class="band band--blue" aria-label="Drawing update"> -->
+            <legend class="sr-only">Does the drawing require updating?</legend>
             <div class="yn">
-              <p class="yn__label">Does the drawing require updating</p>
-              <label class="yn__opt">
-                <input type="radio" name="engDrawingUpdate" value="yes" />
-                <span>Yes</span>
-              </label>
-              <label class="yn__opt">
-                <input type="radio" name="engDrawingUpdate" value="no" />
-                <span>No</span>
-              </label>
+              <label for="engDrawingUpdate" class="yn__label">Drawing requires updating: </label>
+              <input type="checkbox" name="engDrawingUpdate" />
             </div>
-          
-          
+          <!-- </fieldset> -->
+
           <div class="grid mt-12">
             <div class="field col-3">
-              <!--Optional Input for Original Rev Number-->
               <label for="engOriginalRevNo" class="label"
-                >Original Rev. Number:</label>
+                >Original Rev. Number:</label
+              >
               <input
                 id="engOriginalRevNo"
                 name="engOriginalRevNo"
@@ -129,7 +116,6 @@
               />
             </div>
             <div class="field col-3">
-              <!--Optional Input for Updated Rev Number-->
               <label for="engUpdatedRevNo" class="label">Updated Rev.:</label>
               <input
                 id="engUpdatedRevNo"
@@ -139,7 +125,6 @@
               />
             </div>
             <div class="field col-3">
-              <!--Optional Input for Revision Date-->
               <label for="engRevisionDate" class="label">Revision Date:</label>
               <input
                 id="engRevisionDate"
@@ -149,7 +134,6 @@
               />
             </div>
             <div class="field col-3">
-              <!--Optional Input for Engineer's name-->
               <label for="engEngineerName" class="label"
                 >Name of Engineer:</label
               >
@@ -157,30 +141,6 @@
                 id="engEngineerName"
                 name="engEngineerName"
                 type="text"
-                class="input"
-              />
-            </div>
-          </div>
-
-          <div class="grid mt-12 footer">
-            <div class="field col-8">
-              <!--Required Input for Engineering signiture-->
-              <label for="engSignature" class="label">Engineering:<span class="orange-asterisk asterisk">*</span></label>
-              <input
-                id="engSignature"
-                name="engSignature"
-                type="text"
-                class="input"
-                placeholder="Signature / Approval"
-              />
-            </div>
-            <div class="field col-4">
-              <!--Required Date for the engineering signiture date-->
-              <label for="engSignatureDate" class="label">Date:<span class="orange-asterisk asterisk">*</span></label>
-              <input
-                id="engSignatureDate"
-                name="engSignatureDate"
-                type="date"
                 class="input"
               />
             </div>
