@@ -111,7 +111,15 @@
                   <option value="old">Old</option>
               </select>
           </div>
-
+          <div class="collapsableFilterItem" id="StageFilter">
+            <label for="sltStageFilter" class="collapsableFilterLbl" id="lblStageFilter">Showing forms in stage:</label>
+            <select class="collapsableFilterInput" id="sltStageFilter">
+              <option value="a">All</option>
+              <option value="q">Quality Assurance</option>
+              <option value="e">Engineering</option>
+            </select>
+          </div>
+<!-- OLD
           <div class="collapsableFilterItem" id="ActiveFilter">
               <label for="chkActiveFilter" class="collapsableFilterLbl" id="lblActiveFilter">
                   Hide active:
@@ -129,11 +137,15 @@
                      class="collapsableFilterInput"
                      id="chkClosedFilter" />
           </div>
+        -->
           <!-- GeonUk : Clear button for reset the input fields -->
           <div class="collapsableFilterItem" id="FilterClearButton">
               <button class="clearButtons" id="btnFilterClear" type="button">Clear</button>
           </div>
       </form>
+    </div>
+    <div id="temp">
+      <p>Click on a table item to edit/view its associated NCR form.</p>
     </div>
     <table id="list">
       <thead id="tableHead">
@@ -144,7 +156,7 @@
           <th>SAP Number</th>
           <th>Product Description</th>
           <th>Date Opened</th>
-          <th>Status</th>
+          <th>Stage</th>
         </tr>
       </thead>
       <tbody id="tableBody">
