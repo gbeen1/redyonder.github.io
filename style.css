@@ -58,6 +58,18 @@ header {
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
 }
 
+#temp{
+  max-width: 1200px;
+  margin: 24px auto 10px;
+  padding: 0px 16px 0px;
+  background: #fff;
+  border: 1px solid #e6e8ee;
+  border-radius: 10px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
+  align-items: center;
+}
+
+
 #filters .nonCollapsableFilterItem {
   display: flex;
   align-items: center;
@@ -75,6 +87,23 @@ header {
   color: #111827;
 }
 
+.clearButtons {
+  min-height: 36px;
+  padding: 6px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  background: #fff;
+  color: #111827;
+}
+
+.align-right {
+  padding-left: 350px;
+}
+
+#btnHelpFilter {
+  min-width: auto;
+}
+
 #btnToggleShowFilters,
 #btnCreateNCR {
   cursor: pointer;
@@ -88,6 +117,7 @@ header {
   box-shadow: 0 6px 14px rgba(11, 26, 58, 0.08);
 }
 #btnToggleShowFilters:hover,
+.clearButtons:hover,
 #btnCreateNCR:hover {
   transform: translateY(-1px);
   box-shadow: 0 12px 22px rgba(11, 26, 58, 0.12);
@@ -130,7 +160,7 @@ header {
 }
 
 select.nonCollapsableFilterInput,
-#sltDateFilter {
+#sltDateFilter,  #sltStageFilter{
   appearance: none;
   background-image: linear-gradient(45deg, transparent 50%, #0b1a3a 50%),
     linear-gradient(135deg, #0b1a3a 50%, transparent 50%),
@@ -211,15 +241,6 @@ select.nonCollapsableFilterInput,
   font-weight: 700;
   color: #0b1a3a;
   margin: 0 4px;
-}
-
-.clearButtons {
-  min-height: 36px;
-  padding: 6px 10px;
-  border: 1px solid #cbd5e1;
-  border-radius: 999px;
-  background: #fff;
-  color: #111827;
 }
 
 .clearButtons:hover {
@@ -349,10 +370,6 @@ textarea {
   padding-bottom: 15px;
 }
 
-.align-right {
-  padding-left: 350px;
-}
-
 .padding {
   padding-bottom: 15px;
 }
@@ -398,17 +415,13 @@ textarea {
   font-size: 12px;
   border: 1px solid rgba(17, 24, 39, 0.08);
   border-radius: 8px;
-  box-shadow: 1px 2px 6px rgba(17, 24, 39, 0.18); 
+  box-shadow: 1px 2px 6px rgba(17, 24, 39, 0.18);
 }
 
 .help-button:hover {
   background-color: #95b7ff;
   box-shadow: 2px 4px 10px rgba(17, 24, 39, 0.22);
   transform: translateY(-2px);
-}
-
-#btnHelpFilter {
-  min-width: auto;
 }
 
 #wrapper {
@@ -445,6 +458,20 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .sr-only {
   position: absolute !important;
