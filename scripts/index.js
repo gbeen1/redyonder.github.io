@@ -85,8 +85,7 @@ function UpdateList(){
         collapsableFilterInputs[3].value, 
         collapsableFilterInputs[4].value, 
         collapsableFilterInputs[5].value, 
-        collapsableFilterInputs[6].checked, 
-        collapsableFilterInputs[7].checked
+        collapsableFilterInputs[6].value
     );
 
     listLength = NCR.GetFilteredNCRsLength(
@@ -97,8 +96,7 @@ function UpdateList(){
         collapsableFilterInputs[3].value, 
         collapsableFilterInputs[4].value, 
         collapsableFilterInputs[5].value, 
-        collapsableFilterInputs[6].checked, 
-        collapsableFilterInputs[7].checked
+        collapsableFilterInputs[6].value
     );
 
     const tableBody = document.querySelector("#tableBody");
@@ -120,11 +118,14 @@ function UpdateList(){
         SAPNoCell.innerHTML = ncr.productID;
         DescCell.innerHTML = ncr.productDesc;
         DateOpenedCell.innerHTML = ncr.ncrDateOpened.toLocaleDateString('en-US');
-        StatusCell.innerHTML = ncr.ncrActive ? "Active" : "Closed";
+        StatusCell.innerHTML = ncr.ncrActive ? "Quality Assurance" : "Engineering";
 
         row.addEventListener("click", () => {
             window.localStorage.setItem("ID", ncr.ID);
-            window.location.replace("ncrform.html");
+            if(ncr.ncrActive)
+                window.location.replace("ncrform.html");
+            else
+                window.location.replace("engineerPage.html");
         });
     });
 }
@@ -134,13 +135,7 @@ FilterChanged();
 
 document.querySelector("#btnHelp").addEventListener("click", function(event){
     event.preventDefault();
-    alert("Click show filters to begin filtering items.\n\nClick on a table item to edit or view active or closed forms respectively.");
-});
-
-//Help button for filtering
-document.querySelector("#btnFilterHelp").addEventListener("click", function(event){
-    event.preventDefault();
-    alert("Filter by any of the categories listed on the left.\n\nEnsure that existing and valid data is inputted or else the NCR you are looking for will not be found.");
+    alert("Click show filters to begin filtering items.\n\nFilters are not case sensitive, and items shown are those including filter inputs.");
 });
 
 // GeonUk : Clear button function to reset all input fields and prevent hide filter block
@@ -149,4 +144,3 @@ document.querySelector("#btnFilterClear").addEventListener("click",function(even
     document.querySelector("#collapsableFilterItems").reset();                          // GeonUk : reset all input fields inside the filter block
     FilterChanged();                                                                    // GeonUk : update the list after clearing filters
 });
-
