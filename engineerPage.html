@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NCR Form - Engineering Review</title>
-    <link rel="stylesheet" href="styleEngPage.css" />
+    <!-- <link rel="stylesheet" href="styleEngPage.css" /> -->
+    <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
@@ -20,24 +21,31 @@
           />
         </a>
         <ul class="menu">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="createNCR.html">New NCR</a></li>
+          <li id="navHome">Home</li>
+          <li id="navNewForm">New NCR</li>
         </ul>
       </nav>
     </header>
 
     <main id="wrapper">
       <form id="frmEngReview" class="card" method="post" novalidate>
-        <h1 class="sr-only" id="cf-eng-title">Review by CF Engineering</h1>
-
-        <section class="section" aria-labelledby="cf-eng-title">
-          <p class="sectionHint">
-            <strong>Review By CF Engineering</strong> (Indicate disposition by
+        <small>
+          <strong>Note:</strong> Fields marked with a red asterisk (<span
+            class="red-asterisk"
+            >*</span
+          >) are required to save the form. Fields marked with an orange
+          asterisk (<span class="orange-asterisk">*</span>) are required to
+          complete the form.
+        </small>
+        <button class="help-button" id="btnHelp">Help?</button>
+        <section class="section padding" aria-labelledby="cf-eng-title">
+          <!--<p class="sectionHint">-->
+            <strong>Review By CF Engineering <span class="orange-asterisk asterisk">*</span></strong> (Indicate disposition by
             checking one)
-          </p>
+          <!--</p>-->
 
-          <fieldset class="field-group" aria-label="Disposition">
-            <div class="choices">
+          <!--<fieldset class="field-group" aria-label="Disposition">-->
+            <div class="choices padding">
               <label class="chip">
                 <input type="radio" name="engDisposition" value="use-as-is" />
                 <span>Use As Is</span>
@@ -55,9 +63,9 @@
                 <span>Scrap</span>
               </label>
             </div>
-          </fieldset>
+          <!--</fieldset>-->
 
-          <fieldset class="band band--blue" aria-label="Customer notification">
+          <!-- <fieldset class="band band--blue" aria-label="Customer notification"> -->
             <legend class="sr-only">
               Does Customer require notification of NCR?
             </legend>
@@ -77,11 +85,11 @@
             <p class="yn__note">
               (If “Yes” then raise message to customer detailing issues)
             </p>
-          </fieldset>
+          <!-- </fieldset> -->
 
           <div class="sectionBlock">
             <label for="engDispositionSteps" class="label">
-              Disposition
+              Disposition<span class="orange-asterisk asterisk">*</span>
               <span class="label__hint">
                 (Sequence of work steps required when “repair” or “rework”
                 indicated)
@@ -94,7 +102,7 @@
             ></textarea>
           </div>
 
-          <fieldset class="band band--blue" aria-label="Drawing update">
+          <!-- <fieldset class="band band--blue" aria-label="Drawing update"> -->
             <legend class="sr-only">Does the drawing require updating?</legend>
             <div class="yn">
               <p class="yn__label">Does the drawing require updating</p>
@@ -107,7 +115,7 @@
                 <span>No</span>
               </label>
             </div>
-          </fieldset>
+          <!-- </fieldset> -->
 
           <div class="grid mt-12">
             <div class="field col-3">
@@ -154,7 +162,7 @@
 
           <div class="grid mt-12 footer">
             <div class="field col-8">
-              <label for="engSignature" class="label">Engineering:</label>
+              <label for="engSignature" class="label">Engineering:<span class="orange-asterisk asterisk">*</span></label>
               <input
                 id="engSignature"
                 name="engSignature"
@@ -164,7 +172,7 @@
               />
             </div>
             <div class="field col-4">
-              <label for="engSignatureDate" class="label">Date:</label>
+              <label for="engSignatureDate" class="label">Date:<span class="orange-asterisk asterisk">*</span></label>
               <input
                 id="engSignatureDate"
                 name="engSignatureDate"
@@ -174,6 +182,11 @@
             </div>
           </div>
         </section>
+        <div>
+          <button id="btnSave" class="btn">Save</button>
+          <button id="btnComplete" class="btn">Complete</button>
+          <button id="btnCllose" class="btn">Close</button>
+        </div>
       </form>
     </main>
   </body>
