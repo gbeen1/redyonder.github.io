@@ -554,7 +554,7 @@ class NCR{
     }
 
     //applies filters to ncrs, needed to seperate this from getting a tables worth as I needed to get the length of this for enabling & disabling next page and back buttons
-    static GetFilteredNCRs(applyFilters, ncrNo, poNo, suppName, sapNo, prodDesc, dateSort, hideActive, hideClosed){
+    static GetFilteredNCRs(applyFilters, ncrNo, poNo, suppName, sapNo, prodDesc, dateSort, stage){
         let NCRs = this.GetNCRs();
         if(applyFilters === true){
             NCRs = NCRs.filter(function(ncr){
@@ -569,11 +569,13 @@ class NCR{
                     filterFits[3] = (ncr.productID + '').includes(sapNo + '');
                 if(prodDesc != null && prodDesc != '')
                     filterFits[4] = ncr.productDesc.toUpperCase.includes(prodDesc.toUpperCase())
-                if(hideActive)
-                    filterFits[5] = ncr.ncrActive != true;
-                if(hideClosed)
-                    filterFits[6] = ncr.ncrActive != false;
-                return filterFits[0] && filterFits[1] && filterFits[2] && filterFits[3] && filterFits[4] && filterFits[5] && filterFits[6];
+                if(stage == 'a')
+                    filterFits[5] = true;
+                else if(stage == 'q')
+                    filterFits[5] = ncr.ncrActive;
+                else if(stage == 'e')
+                    filterFits[5] = !ncr.ncrActive;
+                return filterFits[0] && filterFits[1] && filterFits[2] && filterFits[3] && filterFits[4] && filterFits[5];
             });
             if(dateSort == "new")
                 NCRs = NCRs.sort(function(a, b){
@@ -588,13 +590,13 @@ class NCR{
     }
 
     // gets length of entries matching filters to be able to determine when back and next buttons should be disabled
-    static GetFilteredNCRsLength(applyFilters, ncrNo, poNo, suppName, sapNo, prodDesc, dateSort, hideActive, hideClosed){
-        return this.GetFilteredNCRs(applyFilters, ncrNo, poNo, suppName, sapNo, prodDesc, dateSort, hideActive, hideClosed).length;
+    static GetFilteredNCRsLength(applyFilters, ncrNo, poNo, suppName, sapNo, prodDesc, dateSort, stage){
+        return this.GetFilteredNCRs(applyFilters, ncrNo, poNo, suppName, sapNo, prodDesc, dateSort, stage).length;
     }
 
     // gets only a pages worth of ncrs
-    static GetTabledNCRs(applyFilters, pageNum, itemsPerPage, ncrNo, poNo, suppName, sapNo, prodDesc, dateSort, hideActive, hideClosed){
-        let NCRs = this.GetFilteredNCRs(applyFilters, ncrNo, poNo, suppName, sapNo, prodDesc, dateSort, hideActive, hideClosed);
+    static GetTabledNCRs(applyFilters, pageNum, itemsPerPage, ncrNo, poNo, suppName, sapNo, prodDesc, dateSort, stage){
+        let NCRs = this.GetFilteredNCRs(applyFilters, ncrNo, poNo, suppName, sapNo, prodDesc, dateSort, stage);
         if(itemsPerPage != 0)
             NCRs = NCRs.slice(itemsPerPage * (pageNum - 1), itemsPerPage * pageNum);
         return NCRs;
@@ -605,7 +607,7 @@ class NCR{
         return this.GetNCRs().length + 1;
     }
 
-    // fetches an ncr by it's id
+    // fetches an ncr by its id
     static GetNCRByID(id){
         return this.GetNCRs().find(ncr => ncr.ID == id);
     }
