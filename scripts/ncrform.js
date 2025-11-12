@@ -188,7 +188,7 @@ buttons[0].addEventListener("click", async function(event){
     else
         window.alert("Save failed! Ensure all required fields are properly filled.")
 });
-
+let closed = false;
 // complete button checks valid fields, submits forms, disables all fields
 buttons[1].addEventListener("click", async function(event){
     event.preventDefault();
@@ -219,7 +219,8 @@ buttons[1].addEventListener("click", async function(event){
                 console.log(e);
                 window.alert("Completion failed! Going to pretend that it didn't for the sake of the demonstration.");
             }
-            infospans[2].innerHTML = "Closed"
+            infospans[2].innerHTML = "Engineering"
+            closed = true;
             inputs.forEach(input => input.disabled = true);
             buttons[0].disabled = true;
             buttons[1].disabled = true;
@@ -232,7 +233,7 @@ buttons[1].addEventListener("click", async function(event){
 // cancel button returns to lists
 buttons[2].addEventListener("click", function(event){
     event.preventDefault();
-    if(window.confirm("Are you sure you want to close without saving?"))
+    if(closed == true || window.confirm("Are you sure you want to close without saving?"))
         window.location.replace("index.html");
         
 });
