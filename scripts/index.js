@@ -137,9 +137,16 @@ document.querySelector("#btnHelp").addEventListener("click", function(event){
     alert("Click show filters to begin filtering items.\n\nClick on a table item to edit or view active or closed forms respectively.");
 });
 
+//Help button for filtering
+document.querySelector("#btnFilterHelp").addEventListener("click", function(event){
+    event.preventDefault();
+    alert("Filter by any of the categories listed on the left.\n\nEnsure that existing and valid data is inputted or else the NCR you are looking for will not be found.");
+});
+
 // GeonUk : Clear button function to reset all input fields and prevent hide filter block
 document.querySelector("#btnFilterClear").addEventListener("click",function(event) {
     event.preventDefault();                                                             // GeonUk : prevent to hide filter block
     document.querySelector("#collapsableFilterItems").reset();                          // GeonUk : reset all input fields inside the filter block
     FilterChanged();                                                                    // GeonUk : update the list after clearing filters
 });
+
