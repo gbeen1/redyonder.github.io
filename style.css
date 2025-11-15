@@ -214,16 +214,17 @@ select.nonCollapsableFilterInput,
 }
 
 .pageButtons {
-  cursor: pointer;
-  border: 1.5px solid #0b1a3a;
-  background: #ffffff;
-  color: #0b1a3a;
-  border-radius: 999px;
-  font-weight: 700;
-  padding: 8px 16px;
-  margin: 10px 8px 30px;
-  transition: transform 0.12s ease, box-shadow 0.18s ease, background 0.2s ease;
-  box-shadow: 0 6px 14px rgba(11, 26, 58, 0.08);
+    cursor: pointer;
+    border: 1.5px solid #0b1a3a;
+    background: #ffffff;
+    color: #0b1a3a;
+    border-radius: 999px;
+    font-weight: 700;
+    padding: 8px 16px;
+    /*  margin: 10px 8px 30px;*/
+    margin: 0; /*GeonUk : revise the margin for align. If left as it was, the button and the letter top and bottom space do not match.*/
+    transition: transform 0.12s ease, box-shadow 0.18s ease, background 0.2s ease;
+    box-shadow: 0 6px 14px rgba(11, 26, 58, 0.08);
 }
 .pageButtons:hover {
   transform: translateY(-1px);
@@ -234,13 +235,33 @@ select.nonCollapsableFilterInput,
   background-color: lightgray;
 }
 
-#pageNumber {
+/*#pageNumber {
   display: inline-block;
   min-width: 90px;
   text-align: center;
   font-weight: 700;
   color: #0b1a3a;
   margin: 0 4px;
+}*/                         
+/*GeonUk : OLD code, remove for align page buttons to horizontally*/
+
+#pageNumber {
+    display: inline-flex;
+    align-items: middle;
+}
+/*GeonUk : for align page buttons to horizontally*/
+
+#pageInput {
+    width: 50px;
+    min-height: 35px;
+    padding: 5px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #111827;
+    text-align: center;
+    font-weight: 700;
+    box-sizing: border-box;
 }
 
 .clearButtons:hover {
@@ -267,10 +288,20 @@ select.nonCollapsableFilterInput,
         box-shadow: 0 6px 14px rgba(11, 26, 58, 0.08);
     }
 
+/*.navForm {
+    margin-top: 2%;
+    text-align: center;
+}*/                             
+/*GeonUk : OLD code, remove for align page buttons to horizontally*/
+
 .navForm {
-  margin-top: 2%;
-  text-align: center;
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /*GeonUk : got rid of margin in .pagebottom, so add a gap here*/
 }
+/*GeonUk : for align page buttons to horizontally*/
 
 @media (max-width: 1024px) {
   .collapsableFilterItem {
