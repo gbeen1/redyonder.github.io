@@ -173,6 +173,20 @@ function UpdateList(){
         DateOpenedCell.innerHTML = ncr.ncrDateOpened.toLocaleDateString('en-US');
         StatusCell.innerHTML = ncr.ncrActive ? "Quality Assurance" : "Engineering";
 
+        row.tabIndex = 0; // GeonUk : make the row focusable by tab
+
+        // GeonUk : make the row clickable by enter key
+        row.addEventListener("keypress", (event) => {
+            if (event.key === "Enter") {
+                // GeonUk : use same code as row click event
+                window.localStorage.setItem("ID", ncr.ID);
+                if (ncr.ncrActive)
+                    window.location.replace("ncrform.html");
+                else
+                    window.location.replace("engineerPage.html");
+            }
+        });
+
         row.addEventListener("click", () => {
             window.localStorage.setItem("ID", ncr.ID);
             if(ncr.ncrActive)
