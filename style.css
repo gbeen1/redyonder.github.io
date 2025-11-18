@@ -205,15 +205,30 @@ select.nonCollapsableFilterInput,
 }
 
 #tableHead th {
-  text-align: left;
-  padding: 12px 14px;
-  background: #0b1a3a;
-  color: #fff;
-  font-weight: 700;
-  font-size: 0.95rem;
-  position: sticky;
-  top: 0;
-  z-index: 1;
+    text-align: left;
+    padding: 12px 14px;
+    background: #0b1a3a;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    cursor: pointer;
+}
+
+/* GeonUk : when pointer hover on the table head, make it little different */
+#tableHead th[data-sort-key]:hover {
+    background-color: #0F234D;
+}
+
+.sort-arrow {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+    color: #f3f6fb;
 }
 
 #tableBody td {
