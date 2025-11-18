@@ -142,15 +142,16 @@
         </tr>
       </thead>
       <tbody id="tableBody">
-        <tr>
-          <td>####</td>
-          <td>####</td>
-          <td>####</td>
-          <td>####</td>
-          <td>####</td>
-          <td>####</td>
-          <td>####</td>
-        </tr>
+          <tr>
+              <!-- GeonUk : add 'data-sort-key' on table head for sorting. And names matched with backend object properties -->
+              <th data-sort-key="ID">NCR Number</th>
+              <th data-sort-key="poID">PO or Prod. Number</th>
+              <th data-sort-key="supplierName">Supplier</th>
+              <th data-sort-key="productID">SAP Number</th>
+              <th data-sort-key="productDesc">Product Description</th>
+              <th data-sort-key="ncrDateOpened">Date Opened</th>
+              <th data-sort-key="ncrActive">Stage</th>
+          </tr>
       </tbody>
     </table>
     <div class="navForm">
