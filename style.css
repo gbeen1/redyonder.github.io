@@ -31,17 +31,36 @@ header {
 }
 
 .menu {
+  height: auto;
   list-style: none;
   display: flex;
   gap: 14px;
   margin-right: 50px;
 }
+.menu li a {
+  padding: 0;
+}
 .menu li {
+  display: block;
   font-size: 22px;
   color: #0b1a3a;
   text-decoration: none;
   font-weight: 900;
   padding: 20px;
+  cursor: pointer;
+}
+.menu li {
+  display: block;
+  font-size: 22px;
+  color: #0b1a3a;
+  text-decoration: none;
+  font-weight: 900;
+  padding: 20px;
+  cursor: pointer;
+}
+.menu li:hover {
+  text-decoration: underline;
+  color: #49749f;
 }
 .menu li:hover {
   text-decoration: underline;
@@ -58,7 +77,7 @@ header {
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
 }
 
-#temp{
+#temp {
   max-width: 1200px;
   margin: 24px auto 10px;
   padding: 0px 16px 0px;
@@ -68,7 +87,6 @@ header {
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
   align-items: center;
 }
-
 
 #filters .nonCollapsableFilterItem {
   display: flex;
@@ -160,7 +178,8 @@ header {
 }
 
 select.nonCollapsableFilterInput,
-#sltDateFilter,  #sltStageFilter{
+#sltDateFilter,
+#sltStageFilter {
   appearance: none;
   background-image: linear-gradient(45deg, transparent 50%, #0b1a3a 50%),
     linear-gradient(135deg, #0b1a3a 50%, transparent 50%),
@@ -202,7 +221,7 @@ select.nonCollapsableFilterInput,
   border-top: 1px solid #eef0f4;
   font-size: 0.95rem;
 }
-#tableBody tr{
+#tableBody tr {
   cursor: pointer;
 }
 #tableBody tr:hover {
@@ -214,17 +233,17 @@ select.nonCollapsableFilterInput,
 }
 
 .pageButtons {
-    cursor: pointer;
-    border: 1.5px solid #0b1a3a;
-    background: #ffffff;
-    color: #0b1a3a;
-    border-radius: 999px;
-    font-weight: 700;
-    padding: 8px 16px;
-    /*  margin: 10px 8px 30px;*/
-    margin: 0; /*GeonUk : revise the margin for align. If left as it was, the button and the letter top and bottom space do not match.*/
-    transition: transform 0.12s ease, box-shadow 0.18s ease, background 0.2s ease;
-    box-shadow: 0 6px 14px rgba(11, 26, 58, 0.08);
+  cursor: pointer;
+  border: 1.5px solid #0b1a3a;
+  background: #ffffff;
+  color: #0b1a3a;
+  border-radius: 999px;
+  font-weight: 700;
+  padding: 8px 16px;
+  /*  margin: 10px 8px 30px;*/
+  margin: 0; /*GeonUk : revise the margin for align. If left as it was, the button and the letter top and bottom space do not match.*/
+  transition: transform 0.12s ease, box-shadow 0.18s ease, background 0.2s ease;
+  box-shadow: 0 6px 14px rgba(11, 26, 58, 0.08);
 }
 .pageButtons:hover {
   transform: translateY(-1px);
@@ -242,66 +261,75 @@ select.nonCollapsableFilterInput,
   font-weight: 700;
   color: #0b1a3a;
   margin: 0 4px;
-}*/                         
+}*/
 /*GeonUk : OLD code, remove for align page buttons to horizontally*/
 
 #pageNumber {
-    display: inline-flex;
-    align-items: middle;
+  display: inline-flex;
+  align-items: middle;
 }
 /*GeonUk : for align page buttons to horizontally*/
 
 #pageInput {
-    width: 50px;
-    min-height: 35px;
-    padding: 5px 10px;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    background: #ffffff;
-    color: #111827;
-    text-align: center;
-    font-weight: 700;
-    box-sizing: border-box;
+  width: 50px;
+  min-height: 35px;
+  padding: 5px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #111827;
+  text-align: center;
+  font-weight: 700;
+  box-sizing: border-box;
 }
 
 .clearButtons:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 12px 22px rgba(11, 26, 58, 0.12);
-    background: #f3f6fb;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(11, 26, 58, 0.12);
+  background: #f3f6fb;
 }
 
 #ClearButton {
-    display: flex;
-    justify-content: end;
+  display: flex;
+  justify-content: end;
 }
 
-    #ClearButton #btnClear {
-        cursor: pointer;
-        border: 1.5px solid #0b1a3a;
-        background: #ffffff;
-        color: #0b1a3a;
-        border-radius: 999px;
-        font-weight: 700;
-        padding: 8px 16px;
-        margin: 10px 8px;
-        transition: transform 0.12s ease, box-shadow 0.18s ease, background 0.2s ease;
-        box-shadow: 0 6px 14px rgba(11, 26, 58, 0.08);
-    }
+#ClearButton #btnClear {
+  cursor: pointer;
+  border: 1.5px solid #0b1a3a;
+  background: #ffffff;
+  color: #0b1a3a;
+  border-radius: 999px;
+  font-weight: 700;
+  padding: 8px 16px;
+  margin: 10px 8px;
+  transition: transform 0.12s ease, box-shadow 0.18s ease, background 0.2s ease;
+  box-shadow: 0 6px 14px rgba(11, 26, 58, 0.08);
+}
 
 /*.navForm {
     margin-top: 2%;
     text-align: center;
-}*/                             
+}*/
 /*GeonUk : OLD code, remove for align page buttons to horizontally*/
 
 .navForm {
-    margin-top: 2%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px; /*GeonUk : got rid of margin in .pagebottom, so add a gap here*/
+  margin-top: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /*GeonUk : got rid of margin in .pagebottom, so add a gap here*/
 }
 /*GeonUk : for align page buttons to horizontally*/
+
+input::placeholder {
+  color: #999999;
+  opacity: 1;
+}
+textarea::placeholder {
+  color: #999999;
+  opacity: 1;
+}
 
 @media (max-width: 1024px) {
   .collapsableFilterItem {
@@ -350,6 +378,8 @@ textarea {
   width: 100%;
   min-height: 130px;
   resize: vertical;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
 }
 
 .grid-container {
@@ -478,7 +508,6 @@ textarea {
   }
 }
 
-
 /* get rid of arrows on number boxes */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -489,20 +518,6 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .sr-only {
   position: absolute !important;

@@ -37,13 +37,14 @@ header {
   margin-right: 50px;
 }
 
-.menu li a,
-.menu li {
+.menu li a {
+  display: block;
   font-size: 22px;
   color: #0b1a3a;
   text-decoration: none;
   font-weight: 900;
   padding: 20px;
+  cursor: pointer;
 }
 
 .menu li:hover,
