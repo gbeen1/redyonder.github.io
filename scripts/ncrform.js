@@ -238,7 +238,27 @@ buttons[2].addEventListener("click", function(event){
         
 });
 
-document.querySelector("#btnHelp").addEventListener("click", function(event){
+//document.querySelector("#btnHelp").addEventListener("click", function(event){
+    //event.preventDefault();
+    //alert("Please complete all fields with the asterisk attached to it. \n\nFor the fields, NCR No., PO or Prod. No., Sales Order No., Quantity Recieved and Quantity Defective, please only enter valid numbers. \n(No Negatives) \n\nWhen completed, please review your information and select the \"Complete\" button to send your part to the Engineer.");
+//});
+
+//Need Help? pop up instead of alert > Malik Kistodial
+const validationBtn = document.querySelector("#btnValidation");
+const validationModal = document.querySelector("#validationModal");
+const closeValidation = document.querySelector("#closeValidation");
+
+validationBtn.addEventListener("click", function(event){
     event.preventDefault();
-    alert("Please complete all fields with the asterisk attached to it. \n\nFor the fields, NCR No., PO or Prod. No., Sales Order No., Quantity Recieved and Quantity Defective, please only enter valid numbers. \n(No Negatives) \n\nWhen completed, please review your information and select the \"Complete\" button to send your part to the Engineer.");
+    validationModal.style.display = "block";
+});
+
+closeValidation.addEventListener("click", function(){
+    validationModal.style.display = "none";
+});
+
+window.addEventListener("click", function(event){
+    if (event.target === validationModal) {
+        validationModal.style.display = "none";
+    }
 });
