@@ -554,49 +554,75 @@ class NCR{
     }
 
     //applies filters to ncrs, needed to seperate this from getting a tables worth as I needed to get the length of this for enabling & disabling next page and back buttons
-    static GetFilteredNCRs(applyFilters, ncrNo, poNo, suppName, sapNo, prodDesc, dateSort, stage){
+    static GetFilteredNCRs(applyFilters, ncrNo, poNo, suppName, sapNo, prodDesc, sortKey, sortDirection, stage) { // GeonUk : replace from dateSort to 'sortKey' and 'sortDirection' parameters for sort function
         let NCRs = this.GetNCRs();
-        if(applyFilters === true){
-            NCRs = NCRs.filter(function(ncr){
+        if (applyFilters === true) {
+            NCRs = NCRs.filter(function (ncr) {
                 const filterFits = [true, true, true, true, true, true, true];
-                if(ncrNo != null && ncrNo != '')
+                if (ncrNo != null && ncrNo != '')
                     filterFits[0] = (ncr.ID + '').includes(ncrNo + '');
-                if(poNo != null && poNo != '')
+                if (poNo != null && poNo != '')
                     filterFits[1] = (ncr.poID + '').includes(poNo + '');
-                if(suppName != null && suppName != '')
+                if (suppName != null && suppName != '')
                     filterFits[2] = ncr.supplierName.toUpperCase().includes(suppName.toUpperCase());
-                if(sapNo != null && sapNo != '')
+                if (sapNo != null && sapNo != '')
                     filterFits[3] = (ncr.productID + '').includes(sapNo + '');
-                if(prodDesc != null && prodDesc != '')
-                    filterFits[4] = ncr.productDesc.toUpperCase.includes(prodDesc.toUpperCase())
-                if(stage == 'a')
+                if (prodDesc != null && prodDesc != '')
+                    filterFits[4] = ncr.productDesc.toUpperCase().includes(prodDesc.toUpperCase());
+                if (stage == 'a')
                     filterFits[5] = true;
-                else if(stage == 'q')
+                else if (stage == 'q')
                     filterFits[5] = ncr.ncrActive;
-                else if(stage == 'e')
+                else if (stage == 'e')
                     filterFits[5] = !ncr.ncrActive;
                 return filterFits[0] && filterFits[1] && filterFits[2] && filterFits[3] && filterFits[4] && filterFits[5];
             });
-            if(dateSort == "new")
-                NCRs = NCRs.sort(function(a, b){
-                    return b.ncrDateOpened - a.ncrDateOpened;
-                });
-            else if(dateSort == "old")
-                NCRs = NCRs.sort(function(a, b){
-                    return a.ncrDateOpened - b.ncrDateOpened;
-                });
+            // GeonUk : OLD code. move to 'function UpdateList()' in 'index.js'
+            //if(dateSort == "new")
+            //    NCRs = NCRs.sort(function(a, b){
+            //        return b.ncrDateOpened - a.ncrDateOpened;
+            //    });
+            //else if(dateSort == "old")
+            //    NCRs = NCRs.sort(function(a, b){
+            //        return a.ncrDateOpened - b.ncrDateOpened;
+            //    });
         }
+        // GeonUk: sort code
+        //#region sort code
+        if (sortKey) {
+            // sort the 500 NCRs
+            NCRs.sort((ncrA, ncrB) => {
+                // Save values to valA and valB for comparison. valA is from one of the 500 NCRs, valB is from another.
+                let valA = ncrA[sortKey];
+                let valB = ncrB[sortKey];
+                // if varibles are strings, convert to uppercase to ensure case insensitive sorting
+                if (typeof valA === 'string') {
+                    valA = valA.toUpperCase();
+                    valB = valB.toUpperCase();
+                }
+                // compare the two values
+                if (valA < valB) {
+                    return sortDirection === 'asc' ? -1 : 1;
+                }
+                if (valA > valB) {
+                    return sortDirection === 'asc' ? 1 : -1;
+                }
+                // if values are equal return 0
+                return 0;
+            });
+        }
+        //#endregion
         return NCRs;
     }
 
     // gets length of entries matching filters to be able to determine when back and next buttons should be disabled
-    static GetFilteredNCRsLength(applyFilters, ncrNo, poNo, suppName, sapNo, prodDesc, dateSort, stage){
-        return this.GetFilteredNCRs(applyFilters, ncrNo, poNo, suppName, sapNo, prodDesc, dateSort, stage).length;
+    static GetFilteredNCRsLength(applyFilters, ncrNo, poNo, suppName, sapNo, prodDesc, sortKey, sortDirection, stage) { // GeonUk : replace from dateSort to 'sortKey' and 'sortDirection' parameters for sort function
+        return this.GetFilteredNCRs(applyFilters, ncrNo, poNo, suppName, sapNo, prodDesc, sortKey, sortDirection, stage).length;      // GeonUk : replace from dateSort to 'sortKey' and 'sortDirection' parameters for sort function
     }
 
     // gets only a pages worth of ncrs
-    static GetTabledNCRs(applyFilters, pageNum, itemsPerPage, ncrNo, poNo, suppName, sapNo, prodDesc, dateSort, stage){
-        let NCRs = this.GetFilteredNCRs(applyFilters, ncrNo, poNo, suppName, sapNo, prodDesc, dateSort, stage);
+    static GetTabledNCRs(applyFilters, pageNum, itemsPerPage, ncrNo, poNo, suppName, sapNo, prodDesc, sortKey, sortDirection, stage) {   // GeonUk : replace from dateSort to 'sortKey' and 'sortDirection' parameters for sort function
+        let NCRs = this.GetFilteredNCRs(applyFilters, ncrNo, poNo, suppName, sapNo, prodDesc, sortKey, sortDirection, stage);   // GeonUk : replace from dateSort to 'sortKey' and 'sortDirection' parameters for sort function
         if(itemsPerPage != 0)
             NCRs = NCRs.slice(itemsPerPage * (pageNum - 1), itemsPerPage * pageNum);
         return NCRs;

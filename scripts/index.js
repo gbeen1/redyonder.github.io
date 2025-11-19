@@ -10,6 +10,7 @@ collapsableFilts.style.display = "none";
 let applyFilters = false;
 
 const nonCollapsableFilterInputs = document.querySelectorAll(".nonCollapsableFilterInput");
+const collapsableFilterInputs = document.querySelectorAll(".collapsableFilterInput");
 nonCollapsableFilterInputs[0].addEventListener("input", FilterChanged);
 nonCollapsableFilterInputs[1].addEventListener("click", ToggleFilters);
 
@@ -35,6 +36,59 @@ const pageButtons = document.querySelectorAll(".pageButtons");
 const pageInput = document.querySelector("#pageInput");      // GeonUk : using instead of pageNumSpan
 let listLength = 0;
 let pageNum = 1;                                             // GeonUk : initial page number is 1
+
+// GeonUk : sorting function in table head
+// #region sorting function
+let sortKey = "ncrDateOpened"; // default sort value 
+let sortDirection = "desc";    // default sort direction
+
+// up, down arrow display function in table head
+function arrowTableHead() {
+    document.querySelectorAll("#tableHead th").forEach(headerCell => {
+        // before the start, erase the arrows that already exist
+        const existingArrow = headerCell.querySelector('.sort-arrow');
+
+        if (existingArrow) {
+            existingArrow.remove();
+        }
+        // add arrow in currently sorted column
+        if (headerCell.dataset.sortKey === sortKey) {
+            const arrow = document.createElement('span');
+            arrow.className = 'sort-arrow';
+            if (collapsableFilterInputs[5].value !== 'none') {
+                if (headerCell.dataset.sortKey === 'ncrDateOpened') {
+                    arrow.innerHTML = (collapsableFilterInputs[5].value === 'new') ? ' &#x25BC' : ' &#x25B2';
+                    headerCell.appendChild(arrow);
+                }
+            } else {
+                arrow.innerHTML = sortDirection === 'asc' ? ' &#x25B2' : ' &#x25BC';
+                headerCell.appendChild(arrow);
+            }
+        }
+    });
+}
+// excute the event when table head clicked
+document.querySelectorAll("#tableHead th").forEach(headerCell => {
+    if (headerCell.dataset.sortKey) {
+        headerCell.style.cursor = "pointer";
+
+        headerCell.addEventListener("click", () => {
+            const newSortKey = headerCell.dataset.sortKey;
+
+            // before the sort, make dateOpened filter value to 'none'(default))
+            collapsableFilterInputs[5].value = "none";
+
+            if (sortKey === newSortKey) {
+                sortDirection = sortDirection === "asc" ? "desc" : "asc";
+            } else {
+                sortKey = newSortKey;
+                sortDirection = "asc";
+            }
+            UpdateList();
+        });
+    }
+});
+// #endregion
 
 // sets page to 1, updates list, enables or disables next and back buttons as required
 //function FilterChanged(){
@@ -102,11 +156,16 @@ pageInput.addEventListener("change", () => {
 });
 
 // filters will update list when interacted with
-const collapsableFilterInputs = document.querySelectorAll(".collapsableFilterInput");
 collapsableFilterInputs.forEach((input) => input.addEventListener("input", FilterChanged));
 
 // gets list of NCRs according to filters, applies them to table as clickable rows leading to the form page. Also gets length of list to help enabling & disabling back and next page buttons
-function UpdateList(){
+function UpdateList() {
+    const dateSort = collapsableFilterInputs[5].value; // GeonUk : get date sort value. it is from 'GetFilteredNCRs' in pseudobackend.js
+    if (dateSort !== 'none') {
+        sortKey = 'ncrDateOpened';
+        sortDirection = (dateSort === 'new') ? 'desc' : 'asc';
+    }
+
     const NCRs = NCR.GetTabledNCRs(
         applyFilters, 
         pageNum, 
@@ -116,7 +175,9 @@ function UpdateList(){
         collapsableFilterInputs[2].value, 
         collapsableFilterInputs[3].value, 
         collapsableFilterInputs[4].value, 
-        collapsableFilterInputs[5].value, 
+        //collapsableFilterInputs[5].value, // GeonUk : replace date filter parameter
+        sortKey,                            // GeonUk : same as 'collapsableFilterInputs[5].value' in above line
+        sortDirection,                      // GeonUk : new sort direction parameter
         collapsableFilterInputs[6].value
     );
 
@@ -127,11 +188,14 @@ function UpdateList(){
         collapsableFilterInputs[2].value, 
         collapsableFilterInputs[3].value, 
         collapsableFilterInputs[4].value, 
-        collapsableFilterInputs[5].value, 
+        //collapsableFilterInputs[5].value, // GeonUk : replace date filter parameter
+        sortKey,                            // GeonUk : same as 'collapsableFilterInputs[5].value' in above line
+        sortDirection,                      // GeonUk : new sort direction parameter
         collapsableFilterInputs[6].value
     );
 
     // GeonUk : add page calculation codes
+    //#region page calculation codes
     const sltNum = parseInt(nonCollapsableFilterInputs[0].value, 10);
     let totalPage = 1;
     //GeonUk : page calculation only when sltNum > 0
@@ -151,6 +215,7 @@ function UpdateList(){
     pageInput.max = totalPage;
     pageButtons[0].disabled = (pageNum <= 1);
     pageButtons[1].disabled = (pageNum >= totalPage);
+    //#endregion
 
     const tableBody = document.querySelector("#tableBody");
     tableBody.innerHTML = "";
@@ -173,10 +238,13 @@ function UpdateList(){
         DateOpenedCell.innerHTML = ncr.ncrDateOpened.toLocaleDateString('en-US');
         StatusCell.innerHTML = ncr.ncrActive ? "Quality Assurance" : "Engineering";
 
+
+        // GeonUk : table list tab focusable function
+        //#region table list tab focusable function
         row.tabIndex = 0; // GeonUk : make the row focusable by tab
 
         // GeonUk : make the row clickable by enter key
-        row.addEventListener("keypress", (event) => {
+        row.addEventListener("keydown", (event) => {
             if (event.key === "Enter") {
                 // GeonUk : use same code as row click event
                 window.localStorage.setItem("ID", ncr.ID);
@@ -194,7 +262,9 @@ function UpdateList(){
             else
                 window.location.replace("engineerPage.html");
         });
+        //#endregion
     });
+    arrowTableHead(); // GeonUk : arrow update after table update
 }
 
 // initial list on startup

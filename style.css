@@ -205,15 +205,30 @@ select.nonCollapsableFilterInput,
 }
 
 #tableHead th {
-  text-align: left;
-  padding: 12px 14px;
-  background: #0b1a3a;
-  color: #fff;
-  font-weight: 700;
-  font-size: 0.95rem;
-  position: sticky;
-  top: 0;
-  z-index: 1;
+    text-align: left;
+    padding: 12px 14px;
+    background: #0b1a3a;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    cursor: pointer;
+}
+
+/* GeonUk : when pointer hover on the table head, make it little different */
+#tableHead th[data-sort-key]:hover {
+    background-color: #0F234D;
+}
+
+.sort-arrow {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+    color: #f3f6fb;
 }
 
 #tableBody td {
@@ -708,3 +723,51 @@ input::-webkit-inner-spin-button {
 /*input[type="number"] {
   -moz-appearance: textfield;
 }*/
+
+/*#region CSS for report*/
+.docHeadContainer {
+    display: grid;
+    grid-template-columns: auto;
+    grid-column-row: auto;
+}
+
+    .docHeadContainer img {
+        grid-column: 1 span 4;
+        grid-row: 1 span 2;
+        width: 20%;
+        height: auto;
+        object-fit: cover;
+    }
+
+#crossfirecanada {
+    grid-column: 5 span 9;
+    grid-row: 1 span 2;
+    background-color: #A6A6A6;
+}
+
+#IPD {
+    grid-column: 14 span 17;
+    grid-row: 1 span 2;
+    background-color: #A6A6A6;
+}
+
+#stampbox {
+    grid-column: 31 span 4;
+    grid-row: 1 span 4;
+}
+
+#docNo {
+    grid-column: 1 span 5;
+    grid-row: 3;
+}
+
+#docTitle {
+    grid-column: 6 span 20;
+    grid-row: 3;
+}
+
+#docPage {
+    grid-column: 26 span 9;
+    grid-row: 3;
+}
+/*#endregion CSS for report*/
