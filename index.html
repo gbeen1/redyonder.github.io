@@ -45,11 +45,21 @@
 
         <button class="nonCollapsableFilterInput" id="btnToggleShowFilters">Show Filters</button>
         
-        <div class="nonCollapsableFilterItem">
+        <!-- Help Popup Modal by Malik Kistodial-->
+
+        <div id="nonCollapsableFilterItem">
           <button class="help-button" id="btnHelp">Help</button>
         </div>
+
+        <div id="helpModal" class="modal">
+          <div class="modal-content">
+            <span id="closeHelp" class="close">&times;</span>
+            <h2>Help</h2>
+            <p>Click <strong>show filters</strong> to begin filtering items.</p>
+            <p>Filters are not case sensitive, and items shown are those including filter inputs.</p>
+          </div>
       </div>
-      
+      <!--CHANGED BY MALIK ^^^-->
 
       <form id="collapsableFilterItems">                            <!-- GeonUk : changed from div to form, for clear button -->
           <div class="collapsableFilterItem" id="NCRNoFilter">
