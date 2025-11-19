@@ -723,3 +723,51 @@ input::-webkit-inner-spin-button {
 /*input[type="number"] {
   -moz-appearance: textfield;
 }*/
+
+/*#region CSS for report*/
+.docHeadContainer {
+    display: grid;
+    grid-template-columns: auto;
+    grid-column-row: auto;
+}
+
+    .docHeadContainer img {
+        grid-column: 1 span 4;
+        grid-row: 1 span 2;
+        width: 20%;
+        height: auto;
+        object-fit: cover;
+    }
+
+#crossfirecanada {
+    grid-column: 5 span 9;
+    grid-row: 1 span 2;
+    background-color: #A6A6A6;
+}
+
+#IPD {
+    grid-column: 14 span 17;
+    grid-row: 1 span 2;
+    background-color: #A6A6A6;
+}
+
+#stampbox {
+    grid-column: 31 span 4;
+    grid-row: 1 span 4;
+}
+
+#docNo {
+    grid-column: 1 span 5;
+    grid-row: 3;
+}
+
+#docTitle {
+    grid-column: 6 span 20;
+    grid-row: 3;
+}
+
+#docPage {
+    grid-column: 26 span 9;
+    grid-row: 3;
+}
+/*#endregion CSS for report*/
