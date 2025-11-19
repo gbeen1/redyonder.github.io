@@ -29,6 +29,7 @@
         </ul>
       </nav>
     </header>
+
     <div id="wrapper">
       <main>
         <div class="grid-container">
@@ -52,7 +53,7 @@
               asterisk (<span class="orange-asterisk">*</span>) are required to
               complete the form.
             </small>
-            <button class="help-button" id="btnHelp">Help?</button>
+            <button class="help-button" id="btnValidation" type="button">Need Help?</button>
 
             <div class="four-columns padding">
               <div>
@@ -237,6 +238,16 @@
               <button id="btnCllose" class="btn">Close</button>
             </div>
           </form>
+          <!--Changed by Malik Kistodial-->
+          <!--Added description for the CSS-->
+          <div id="validationModal" class="modal">
+            <div class="modal-content">
+              <span id="closeValidation" class="close">&times;</span>
+              <h2>Form Instructions</h2>
+              <p>Please complete all fields with the asterisk attached to it.</p>
+              <p>For the fields <strong>NCR No., PO or Prod. No., Sales Order No., Quantity Received, and Quantity Defective</strong>, please only enter valid numbers. <br>(No negatives)</p>
+              <p>When completed, please review your information and select the <strong>"Complete"</strong> button to send your part to the Engineer.</p>
+            </div>
         </div>
       </main>
     </div>
