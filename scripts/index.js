@@ -271,10 +271,32 @@ function UpdateList() {
 //FilterChanged();      //GeonUk : OLD code, replaced by below code
 UpdateList();
 
-document.querySelector("#btnHelp").addEventListener("click", function(event){
+//document.querySelector("#btnHelp").addEventListener("click", function(event){
+    //event.preventDefault();
+    //alert("Click show filters to begin filtering items.\n\nFilters are not case sensitive, and items shown are those including filter inputs.");
+//});
+
+//make a function pop up instead of a pop-up alert > Malik Kistodial
+
+const helpBtn = document.querySelector("#btnHelp");
+const helpModal = document.querySelector("#helpModal");
+const closeHelp = document.querySelector("#closeHelp");
+
+helpBtn.addEventListener("click", function(event){
     event.preventDefault();
-    alert("Click show filters to begin filtering items.\n\nFilters are not case sensitive, and items shown are those including filter inputs.");
+    helpModal.style.display = "block"; // show the popup
 });
+
+closeHelp.addEventListener("click", function(){
+    helpModal.style.display = "none";
+});
+
+window.addEventListener("click", function(event){
+    if (event.target === helpModal) {
+        helpModal.style.display = "none";
+    }
+});
+
 
 // GeonUk : Clear button function to reset all input fields and prevent hide filter block
 document.querySelector("#btnFilterClear").addEventListener("click",function(event) {
