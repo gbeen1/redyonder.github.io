@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NCR Report</title>
+    <script src="scripts/pseudobackend.js"></script>
+    <script src="scripts/report.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" />
+</head>
+<body>
+    <!-- GeonUk : page head for buttons -->
+    <header>
+        <div class="navForm">
+            <button class="pageButtons" id="btnPrintReport" onclick="window.print()">Print / PDF</button>
+            <button class="pageButtons" id="btnCloseReport" onclick="window.close()">Close</button>
+        </div>
+    </header>
+
+    <!-- GeonUk : document form -->
+    <div class="reportContainer">
+
+        <!-- GeonUk : document head for name and document number -->
+        <div class="docHeadContainer">
+                <img   src="images/Crossfire_Logo-removebg-preview.ico">
+                <label id="crossfirecanda">CrossFire Canada</label>
+                <label id="IPD">Internal Process Document</label>
+                <label id="stampbox">STAMP</label>
+
+                <label id="docNo">Document No.:</label>
+                <label id="docTitle">Document Title:</label>
+                <label id="docPage">Page:</label>
+
+                <label id="actualdocNo">OPS-00011</label>
+                <label id="">Non-Conformance Report</label>
+                <label>1</label>
+                <label>of 2</label>
+        </div>
+
+        <!-- GeonUk : Quality Representative Section -->
+        <div class="section-title cell"><strong>1/ Quality Representative</strong></div>
+
+        <div class="cell label">Identify Process:</div>
+        <div class="cell value">
+            <span id="chkProcessSup">☐</span> Supplier / Rec-Insp<br>
+            <span id="chkProcessWIP">☐</span> WIP (Prod. Order)
+        </div>
+        <div class="cell label">Supplier Name:</div>
+        <div class="cell value" id="rep-supplier"></div>
+        <div class="cell label">NCR No.:</div>
+        <div class="cell value highlight" id="rep-ncr-no"></div>
+
+        <div class="cell label">PO or Prod. No.:</div>
+        <div class="cell value" id="rep-po-no"></div>
+        <div class="cell label">Sales Order No.:</div>
+        <div class="cell value" id="rep-sales-no"></div>
+
+        <div class="cell label full-row">Description of Item (including SAP No.):</div>
+        <div class="cell value full-row" id="rep-item-desc"></div>
+
+        <div class="cell label">Quantity Received:</div>
+        <div class="cell value" id="rep-qty-rec"></div>
+        <div class="cell label">Quantity Defective:</div>
+        <div class="cell value" id="rep-qty-def"></div>
+
+        <div class="cell label full-row">Description of Defect:</div>
+        <div class="cell value full-row large-text" id="rep-defect-desc"></div>
+
+        <div class="cell label">Item Marked Nonconforming?</div>
+        <div class="cell value center-content" id="rep-marked"></div>
+        <div class="cell label">Eng. Disposition Needed?</div>
+        <div class="cell value center-content" id="rep-eng-needed"></div>
+
+        <div class="cell label">Quality Rep Name:</div>
+        <div class="cell value" id="rep-qa-name"></div>
+        <div class="cell label">Date:</div>
+        <div class="cell value" id="rep-qa-date"></div>
+
+
+        <div class="section-title cell" style="margin-top: 10px;"><strong>2/ Engineering</strong></div>
+
+        <div class="cell label full-row">Disposition:</div>
+        <div class="cell value full-row">
+            <span id="chkDispUse">☐</span> Use As Is &nbsp;&nbsp;
+            <span id="chkDispRework">☐</span> Rework &nbsp;&nbsp;
+            <span id="chkDispRepair">☐</span> Repair &nbsp;&nbsp;
+            <span id="chkDispScrap">☐</span> Scrap
+        </div>
+
+        <div class="cell label full-row">Disposition Instructions / Steps:</div>
+        <div class="cell value full-row large-text" id="rep-eng-inst"></div>
+
+        <div class="cell label">Customer Notification?</div>
+        <div class="cell value center-content" id="rep-cust-notify"></div>
+        <div class="cell label">Drawing Update?</div>
+        <div class="cell value center-content" id="rep-draw-update"></div>
+
+        <div class="cell label">Engineer Name:</div>
+        <div class="cell value" id="rep-eng-name"></div>
+        <div class="cell label">Date:</div>
+        <div class="cell value" id="rep-eng-date"></div>
+    </div>
+
+</body>
+</html>

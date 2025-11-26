@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NCR Form - Engineering Review</title>
+    <!-- <link rel="stylesheet" href="styleEngPage.css" /> -->
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar" aria-label="main menu">
+        <a href="index.html" class="logo">
+          <img
+            src="images/Crossfire_Logo-removebg-preview.ico"
+            alt="Crossfire NCR System"
+          />
+        </a>
+        <ul class="menu">
+          <li id="navHome">Engineer Home</li>
+          <li id="navNewForm">New NCR</li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="wrapper">
+      <form id="frmEngReview" class="card" method="post" novalidate>
+        <small>
+          <strong>Note:</strong> Fields marked with a red asterisk (<span
+            class="red-asterisk"
+            >*</span
+          >) are required to save the form. Fields marked with an orange
+          asterisk (<span class="orange-asterisk">*</span>) are required to
+          complete the form.
+        </small>
+        <button class="help-button" id="btnHelp">Help?</button>
+        <section class="section padding" aria-labelledby="cf-eng-title">
+          <!--<p class="sectionHint">-->
+          <strong
+            >Review By CF Engineering
+            <span class="orange-asterisk asterisk">*</span></strong
+          >
+          (Indicate disposition by checking one)
+          <!--</p>-->
+
+          <!--<fieldset class="field-group" aria-label="Disposition">-->
+          <div class="choices padding">
+            <label class="chip">
+              <input type="radio" name="engDisposition" value="use-as-is" />
+              <span>Use As Is</span>
+            </label>
+            <label class="chip">
+              <input type="radio" name="engDisposition" value="repair" />
+              <span>Repair</span>
+            </label>
+            <label class="chip">
+              <input type="radio" name="engDisposition" value="rework" />
+              <span>Rework</span>
+            </label>
+            <label class="chip">
+              <input type="radio" name="engDisposition" value="scrap" />
+              <span>Scrap</span>
+            </label>
+          </div>
+          <!--</fieldset>-->
+
+          <!-- <fieldset class="band band--blue" aria-label="Customer notification"> -->
+          <legend class="sr-only">
+            Does Customer require notification of NCR?
+          </legend>
+          <div class="yn">
+            <label for="engCustNotify" class="yn__label">
+              Customer requires notification of NCR:
+            </label>
+            <input type="checkbox" name="engCustNotify" />
+          </div>
+          <p class="yn__note">
+            (If “Yes” then raise message to customer detailing issues)
+          </p>
+          <!-- </fieldset> -->
+
+          <div class="sectionBlock">
+            <label for="engDispositionSteps" class="label">
+              Disposition<span class="orange-asterisk asterisk">*</span>
+              <span class="label__hint">
+                (Sequence of work steps required when “repair” or “rework”
+                indicated)
+              </span>
+            </label>
+            <textarea
+              id="engDispositionSteps"
+              name="engDispositionSteps"
+              placeholder="Describe the repair/rework steps in order..."
+            ></textarea>
+          </div>
+
+          <!-- <fieldset class="band band--blue" aria-label="Drawing update"> -->
+          <legend class="sr-only">Does the drawing require updating?</legend>
+          <div class="yn">
+            <label for="engDrawingUpdate" class="yn__label"
+              >Drawing requires updating:
+            </label>
+            <input type="checkbox" name="engDrawingUpdate" />
+          </div>
+          <!-- </fieldset> -->
+
+          <div class="grid mt-12">
+            <div class="field col-3">
+              <label for="engOriginalRevNo" class="label"
+                >Original Rev. Number:</label
+              >
+              <input
+                id="engOriginalRevNo"
+                name="engOriginalRevNo"
+                type="text"
+                class="input"
+                placeholder="Enter original revision"
+              />
+            </div>
+            <div class="field col-3">
+              <label for="engUpdatedRevNo" class="label">Updated Rev.:</label>
+              <input
+                id="engUpdatedRevNo"
+                name="engUpdatedRevNo"
+                type="text"
+                class="input"
+                placeholder="Enter updated revision"
+              />
+            </div>
+            <div class="field col-3">
+              <label for="engRevisionDate" class="label">Revision Date:</label>
+              <input
+                id="engRevisionDate"
+                name="engRevisionDate"
+                type="date"
+                class="input"
+              />
+            </div>
+            <div class="field col-3">
+              <label for="engEngineerName" class="label"
+                >Name of Engineer:</label
+              >
+              <input
+                id="engEngineerName"
+                name="engEngineerName"
+                type="text"
+                class="input"
+                placeholder="e.g. Pepito Perez"
+              />
+            </div>
+          </div>
+        </section>
+        <div>
+          <button id="btnSave" class="btn">Save</button>
+          <button id="btnComplete" class="btn">Complete</button>
+          <button id="btnCllose" class="btn">Close</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>
