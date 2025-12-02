@@ -164,7 +164,6 @@ function SetUpQA(sections) {
   });
 }
 
-// 🔹 El usuario confirma el Complete dentro del modal
 btnQaCompleteConfirm.addEventListener("click", function () {
   // Guardamos los valores en el objeto NCR igual que antes
   ncr.poID = formFields[0].value;
@@ -372,6 +371,7 @@ function SetUpEng(sections) {
     event.preventDefault();
     window.alert("Saved!");
   });
+  //Buttom Complete to check the summarize by David
   btns[2].addEventListener("click", function (event) {
     event.preventDefault();
     ValidateQA();
@@ -387,7 +387,6 @@ function SetUpEng(sections) {
       valid[7] &&
       valid[8]
     ) {
-      // Armamos el mismo texto que antes, pero ahora para el modal
       let dialogue =
         "Are you sure you want to complete this form?\nYou won't be able to make changes to it later.\n";
       dialogue += "\nPO or Prod. No.: " + formFields[0].value;
