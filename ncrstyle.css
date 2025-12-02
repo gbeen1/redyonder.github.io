@@ -62,41 +62,40 @@ header {
 /* Form & display section */
 
 #wrapper {
-    display:grid;
-    background: #ffffff;
-    border-radius: 10px;
-    padding: 18px;
-    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
+  display: grid;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
 
-    margin: 15px auto;
-    width: 90%;
+  margin: 15px auto;
+  width: 90%;
 }
 
-section{
-    
-    border-top: 1px dashed #e5e7eb;
+section {
+  border-top: 1px dashed #e5e7eb;
 }
 
 #ncrhead {
-    border-top: none;
+  border-top: none;
 }
 
 .two-columns {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
 }
 
 .three-columns {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
 }
 
 .four-columns {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
 }
 
 .help-button {
@@ -106,7 +105,7 @@ section{
   border: 1px solid rgba(17, 24, 39, 0.08);
   border-radius: 8px;
   box-shadow: 1px 2px 6px rgba(17, 24, 39, 0.18);
-  
+
   padding: 4px 8px;
   margin: 5px 4px;
 }
@@ -120,32 +119,32 @@ section{
 /* Display & form items */
 
 .span-two {
-    grid-column: span 1;
+  grid-column: span 1;
 }
 
 .span-three {
-    grid-column: span 1;
+  grid-column: span 1;
 }
 
 .span-four {
-    grid-column: span 1;
+  grid-column: span 1;
 }
 
-.asterisk{
+.asterisk {
   color: red;
 }
 
 .displayField {
-    font-weight: bolder;
+  font-weight: bolder;
 }
 
 /* inputs */
 
-form{
-  gap: 50px
+form {
+  gap: 50px;
 }
 
-button{
+button {
   cursor: pointer;
   border: 1.5px solid #0b1a3a;
   background: #ffffff;
@@ -158,29 +157,33 @@ button{
   box-shadow: 0 6px 14px rgba(11, 26, 58, 0.08);
 }
 
-button:hover{
+button:hover {
   transform: translateY(-1px);
   box-shadow: 0 12px 22px rgba(11, 26, 58, 0.12);
   background: #f3f6fb;
 }
 
-button:disabled{
+button:disabled {
   background: lightgrey;
 }
 
-input[type="number"], input[type="text"], input[type="date"]{
+input[type="number"],
+input[type="text"],
+input[type="date"] {
   display: block;
   width: 100%;
   min-height: 1.75rem;
 }
 
-input[type="radio"], input[type="checkbox"]{
+input[type="radio"],
+input[type="checkbox"] {
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
   accent-color: #0b1a3a;
 }
 
-input[type="radio"]:hover, input[type="checkbox"]:hover{
+input[type="radio"]:hover,
+input[type="checkbox"]:hover {
   transform: scale(1.2);
 }
 
@@ -190,12 +193,50 @@ textarea {
   resize: vertical;
 }
 
-.inline-wrapper{
+.inline-wrapper {
   display: flex;
   gap: 100px;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+#qaCompleteModal {
+  /* 🔴 Importante: solo este display, nada de otro después */
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+#qaCompleteModal .modal-content {
+  background-color: #ffffff;
+  padding: 32px;
+  border-radius: 16px;
+  width: 480px;
+  max-width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+#qaCompleteModal .modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* X de cierre */
+#closeQaComplete {
+  cursor: pointer;
+  font-size: 1.4rem;
 }
 
 /* for desktop */
@@ -204,15 +245,15 @@ textarea {
     width: 65%;
   }
 
-  .two-columns{
+  .two-columns {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .three-columns{
+  .three-columns {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .four-columns{
+  .four-columns {
     grid-template-columns: repeat(4, 1fr);
   }
 
