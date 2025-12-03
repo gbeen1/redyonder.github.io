@@ -325,6 +325,9 @@ function SetUpQADisplay(section) {
 
   let toggledisplay = section.querySelector("button");
   let displayWrapper = section.querySelector(".displaywrapper");
+
+  displayWrapper.style.display = "grid";  // GeonUk : add display grid by default for two columns view
+
   toggledisplay.addEventListener("click", () => {
     if (toggledisplay.innerHTML == "Hide") {
       displayWrapper.style.display = "none";
@@ -535,6 +538,9 @@ function SetUpEngDisplay(section) {
 
   let toggledisplay = section.querySelector("button");
   let displayWrapper = section.querySelector(".displaywrapper");
+
+  displayWrapper.style.display = "grid";  // GeonUk : add display grid by default for two columns view
+
   toggledisplay.addEventListener("click", () => {
     if (toggledisplay.innerHTML == "Hide") {
       displayWrapper.style.display = "none";
