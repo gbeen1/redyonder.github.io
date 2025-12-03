@@ -10,7 +10,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #45100a, #071a6a, #2b6cb0);
+  background: linear-gradient(135deg, #000000, #acb5dc, #ffb8b8);
   background-size: 200% 200%;
   animation: moveBg 16s ease-in-out infinite;
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial,
@@ -58,7 +58,7 @@ body {
   border-bottom: 1px solid silver;
   font-size: 28px;
   font-weight: 600;
-  color: #fff;
+  color: #000000;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
@@ -121,7 +121,7 @@ form .password {
 input[type="submit"] {
   width: 100%;
   height: 50px;
-  background: rgb(197, 58, 31);
+  background: rgb(2, 69, 162);
   border: none;
   color: #fff;
   font-size: 16px;
@@ -146,7 +146,7 @@ input[type="submit"]:hover {
 }
 
 .remember a {
-  color: #f54927;
+  color: #a02e2e;
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
@@ -154,6 +154,6 @@ input[type="submit"]:hover {
 }
 
 .remember a:hover {
-  color: #ff7b5c;
+  color: #313e5c;
   text-decoration: underline;
 }
