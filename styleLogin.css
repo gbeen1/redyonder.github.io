@@ -10,7 +10,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #000000, #acb5dc, #ffb8b8);
+  background: linear-gradient(135deg, #dbe2fa, #eeefff, #ffffff);
   background-size: 200% 200%;
   animation: moveBg 16s ease-in-out infinite;
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial,
