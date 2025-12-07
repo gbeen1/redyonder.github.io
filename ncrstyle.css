@@ -7,40 +7,37 @@ body {
   margin: 0;
 }
 
-/* Header styling */
-
+/* Header area */
 header {
   background: #acb0b6;
-  color: #0b1a3a;
-  padding: 8px 16px;
-  margin-top: 0;
-  border: 1px solid #b7babf;
+  padding: 0;
+  border-bottom: 1px solid #b7babf;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
+  height: 80px; /* CLEAN, not 180px */
   padding: 0 20px;
-  box-sizing: border-box;
 }
 
+/* Logo sizing — visible and balanced */
 .navbar img {
-  height: 180px;
+  height: 110px;       /* big but not huge */
   width: auto;
-  margin: 10px 0 0 100px;
+  margin: 0;           /* remove crazy offsets */
 }
 
-.menu {
+/*.menu {
   height: auto;
   list-style: none;
   display: flex;
   gap: 14px;
   margin-right: 50px;
-}
+}*/
 
-.menu li {
+/*.menu li {
   display: block;
   font-size: 22px;
   color: #0b1a3a;
@@ -48,14 +45,28 @@ header {
   font-weight: 900;
   padding: 20px;
   cursor: pointer;
+}*/
+
+/* Menu */
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 22px;
 }
+
+.menu li {
+  font-size: 22px;
+  font-weight: 900;
+  color: #0b1a3a;
+  cursor: pointer;
+}
+
 
 .menu li a {
   padding: 0;
 }
 
 .menu li:hover {
-  text-decoration: underline;
   color: #49749f;
 }
 
@@ -237,6 +248,47 @@ textarea {
   font-size: 1.4rem;
 }
 
+/* Overlay background altered by Malik */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999; /* make sure it appears above everything */
+  inset: 0; /* shorthand for top:0; right:0; bottom:0; left:0; */
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Popup box altered by Malik*/
+.modal-content {
+  background: #fff;
+  width: 600px;       /* Increase width */
+  max-width: 90%;     /* Keep responsive on small screens */
+  padding: 30px 40px; /* Add more padding around text */
+  border-radius: 12px;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.25);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;   /* Center title */
+  line-height: 1.6;  /* Spread out lines */
+  font-size: 1.0em;    /* Slightly bigger text */
+  margin-bottom: 20px; /*Space below the title */
+}
+
+/* Close button altered by Malik*/
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Smooth popup animation altered by Malik*/
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
 /* for desktop */
 @media screen and (min-width: 1440px) {
   #wrapper {
@@ -280,3 +332,73 @@ input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
 }
+
+/* Wrap navbar + user bar so all widths match */
+.nav-wrapper {
+  max-width: 1200px;      /* same as your table + layout width */
+  margin: 0 auto;         /* centers everything */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 6px 20px;
+  overflow: hidden;
+}
+
+/* USER INFO ABOVE NAV */
+/* Username row */
+#topUserBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: -10px;   /* pulls it closer to menu */
+}
+
+
+/* Username text */
+#usernameDisplay {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0b1a3a;
+}
+
+/* Logout button */
+#logoutBtn {
+  background-color: #e63946;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#logoutBtn:hover {
+  background-color: #c62828;
+}
+
+/* Flex container for logo + right column */
+.navbar {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Prevent horizontal scroll on all screens */
+html, body {
+  overflow-x: hidden;
+}
+/* Right side (username + menu) */
+.rightNav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;            /* good spacing */
+}
+
+
+
+
