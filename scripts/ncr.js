@@ -1,3 +1,22 @@
+// Show username in header on NCR pages
+//updated/edited by Malik Kistodial
+const userDisplay = document.getElementById("usernameDisplay");
+const storedUser = localStorage.getItem("loggedInUser");
+
+if (userDisplay && storedUser) {
+  userDisplay.textContent = storedUser;
+}
+
+// Logout button
+const logoutBtn = document.getElementById("logoutBtn");
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("loggedInUser");
+    location.replace("logIn.html");
+  });
+}
+//----------------------------------------------------------------\\\\
+
 // nav bar
 document
   .querySelector("#navHome")
@@ -97,7 +116,7 @@ function SetUpQA(sections) {
   formFields[10].addEventListener("input", ValidateQA);
   formFields[11].addEventListener("input", ValidateQA);
 
-  btns = sections[1].querySelectorAll("button");
+  /*btns = sections[1].querySelectorAll("button");
   asterisks = sections[1].querySelectorAll(".asterisk");
   ValidateQA();
   btns[0].addEventListener("click", function (event) {
@@ -105,6 +124,25 @@ function SetUpQA(sections) {
     window.alert(
       'Please complete all fields with the asterisk attached to it. \n\nFor the fields, NCR No., PO or Prod. No., Sales Order No., Quantity Recieved and Quantity Defective, please only enter valid numbers. \n(No Negatives) \n\nWhen completed, please review your information and select the "Complete" button to send your part to the Engineer.'
     );
+  });*/
+  //Need Help? pop up instead of alert > Malik Kistodial
+  const validationBtn = document.querySelector("#btnValidation");
+  const validationModal = document.querySelector("#validationModal");
+  const closeValidation = document.querySelector("#closeValidation");
+
+  validationBtn.addEventListener("click", function(event){
+    event.preventDefault();
+    validationModal.style.display = "block";
+  });
+
+  closeValidation.addEventListener("click", function(){
+    validationModal.style.display = "none";
+  });
+
+  window.addEventListener("click", function(event){
+    if (event.target === validationModal) {
+        validationModal.style.display = "none";
+    }
   });
   btns[1].addEventListener("click", function (event) {
     event.preventDefault();
@@ -587,3 +625,4 @@ function SetUpClosed(sections) {
     window.location.replace("index.html")
   );
 }
+
