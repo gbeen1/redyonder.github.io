@@ -15,17 +15,29 @@
   <body>
     <header>
       <nav class="navbar" aria-label="main menu">
-        <a href="index.html">
-          <img
-            src="images/Crossfire_Logo-removebg-preview.ico"
-            alt="Crossfire NCR System"
-          />
-        </a>
-        <ul class="menu">
-          <li id="navHome">Home</li>
-          <li id="navNewForm">New NCR</li>
-        </ul>
-      </nav>
+    
+    <a href="index.html">
+      <img
+        src="images/Crossfire_Logo-removebg-preview.ico"
+        alt="Crossfire NCR System"
+      />
+    </a>
+
+    <!-- added by Malik-->
+    <div class="rightNav">
+      <div id="topUserBar">
+        <span id="usernameDisplay"></span>
+        <button id="logoutBtn">LOG OUT</button>
+      </div>
+
+      <ul class="menu">
+        <li id="navHome">Home</li>
+        <li id="navNewForm">New NCR</li>
+      </ul>
+    </div>
+
+</nav>
+
     </header>
 
     <div id="wrapper">
@@ -57,7 +69,7 @@
             <span class="asterisk">Required</span> are required to save the
             form.</small
           >
-          <button class="help-button">help</button>
+          <button class="help-button" id="btnValidation" type="button">Need Help?</button>
           <br />
           <br />
           <div class="four-columns">
@@ -567,6 +579,19 @@
         <div>
           <button id="btnPrint">Print to PDF</button>
           <button id="btnClose">Close</button>
+        </div>
+      </section>
+      <section>
+        <!--Changed by Malik Kistodial-->
+          <!--Added description for the CSS-->
+          <div id="validationModal" class="modal">
+            <div class="modal-content">
+              <span id="closeValidation" class="close">&times;</span>
+              <h2>Form Instructions</h2>
+              <p>Please complete all fields with the asterisk attached to it.</p>
+              <p>For the fields <strong>NCR No., PO or Prod. No., Sales Order No., Quantity Received, and Quantity Defective</strong>, please only enter valid numbers. <br>(No negatives)</p>
+              <p>When completed, please review your information and select the <strong>"Complete"</strong> button to send your part to the Engineer.</p>
+            </div>
         </div>
       </section>
     </div>
