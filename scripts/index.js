@@ -266,9 +266,30 @@ function UpdateList() {
 //FilterChanged();      //GeonUk : OLD code, replaced by below code
 UpdateList();
 
-document.querySelector("#btnHelp").addEventListener("click", function(event){
+/*document.querySelector("#btnHelp").addEventListener("click", function(event){
     event.preventDefault();
     alert("Click show filters to begin filtering items.\n\nFilters are not case sensitive.");
+});*/
+
+//make a function pop up instead of a pop-up alert > Malik Kistodial
+
+const helpBtn = document.querySelector("#btnHelp");
+const helpModal = document.querySelector("#helpModal");
+const closeHelp = document.querySelector("#closeHelp");
+
+helpBtn.addEventListener("click", function(event){
+    event.preventDefault();
+    helpModal.style.display = "block"; // show the popup
+});
+
+closeHelp.addEventListener("click", function(){
+    helpModal.style.display = "none";
+});
+
+window.addEventListener("click", function(event){
+    if (event.target === helpModal) {
+        helpModal.style.display = "none";
+    }
 });
 
 // GeonUk : Clear button function to reset all input fields and prevent hide filter block
@@ -277,3 +298,21 @@ document.querySelector("#btnFilterClear").addEventListener("click",function(even
     document.querySelector("#collapsableFilterItems").reset();                          // GeonUk : reset all input fields inside the filter block
     FilterChanged();                                                                    // GeonUk : update the list after clearing filters
 });
+
+const usernameDisplay = document.getElementById("usernameDisplay");
+const logoutBtn = document.getElementById("logoutBtn");
+
+const loggedInUser = localStorage.getItem("loggedInUser");
+
+if (!loggedInUser) {
+    location.replace("logIn.html");
+} else {
+    usernameDisplay.textContent = loggedInUser;
+}
+
+logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("loggedInUser");
+    location.replace("logIn.html");
+});
+
+
