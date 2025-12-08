@@ -108,14 +108,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // #endregion
 
     // #region Quality Department Section
-    if (ncr.ncrStage === /*"Quality"*/ || ncr.ncrStage === "Closed") {
-        if (ncr./*NCR Closed*/ === true) {
-            setChecked("reqr_chk_close_yes", true);
-        }
+    //if (ncr.ncrStage === /*"Quality"*/ || ncr.ncrStage === "Closed") {
+    //    if (ncr./*NCR Closed*/ === true) {
+    //        setChecked("reqr_chk_close_yes", true);
+    //    }
 
-        setText("reqr_name", ncr.qaCompletedBy);
-        setDate("reqr_date", ncr./*Re-Quality Department date*/);
-    }
+    //    setText("reqr_name", ncr.qaCompletedBy);
+    //    setDate("reqr_date", ncr./*Re-Quality Department date*/);
+    //}
     // #endregion
 
     // Document Bottom
