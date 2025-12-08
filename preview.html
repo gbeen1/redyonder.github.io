@@ -4,399 +4,266 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document Priview</title>
-    <style>
-        @page {
-            size: letter;
-            margin: 0;
-        }
-
-        body {
-            background-color: #555;
-            display: flex;
-            justify-content: center;
-            margin: 0;
-            padding: 20px;
-            font-family: "Arial", sans-serif;
-            min-width: 220mm;
-        }
-
-        .page {
-            background-color: white;
-            width: 215.9mm;
-            min-height: 279.4mm;
-            padding: 10mm;
-            box-sizing: border-box;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .grid-row {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            border-left: 2px solid black;
-            border-right: 2px solid black;
-        }
-
-        .col-2 { grid-column: span 2; } /* 17% */
-        .col-3 { grid-column: span 3; } /* 25% */
-        .col-4 { grid-column: span 4; } /* 33.3% */
-        .col-6 { grid-column: span 6; } /* 50% */
-        .col-12 { grid-column: span 12 } /* 100% */
-
-        .cell {
-            border-right: 1px solid #ccc;
-            border-bottom: 1px solid #ccc;
-            padding: 2px 4px;
-            font-size: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            min-height: 18px;
-        }
-
-        .last-col {
-            border-right: none;
-        }
-
-        .bold-top {
-            border-top: 2px solid black;
-        }
-
-        .bold-bottom-thick {
-            border-bottom: 2px solid black;
-        }
-
-        .bold-right {
-            border-right: 2px solid black;
-        }
-
-        .gray-bg {
-            background-color: #eee;
-        }
-
-        .color-bg {
-            background-color: #0b1a3a;
-            color: white;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .center {
-            text-align: center;
-            align-items: center;
-        }
-
-        .right {
-            text-align: right;
-            align-items: flex-end;
-        }
-
-        .label {
-            font-size: 9px;
-            font-weight: bold;
-            color: #555;
-        }
-
-        .chk-group {
-            font-size: 10px;
-            display: flex;
-            flex-direction: row !important;
-            gap: 15px;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .chkbox {
-            font-size: 10px;
-            display: flex;
-            align-items: center;
-            padding: 0;
-        }
-
-        input[type="checkbox"] {
-            margin: 0;
-            vertical-align: middle;
-        }
-
-        .h-large {
-            min-height: 80px !important;
-            height: auto !important;
-        }
-
-        @media print {
-            body {
-                padding: 0;
-                background: none;
-                min-width: 0;
-            }
-
-            .page {
-                border: none;
-                box-shadow: none;
-                padding: 10mm;
-                width: 100%;
-                height: 100%;
-            }
-        }
-    </style>
+    <script src="scripts/pseudobackend.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" />
 </head>
 <body>
+    <div id="print-preview-wrapper">
+        <div class="page">
 
-    <div class="page">
-
-        <!-- Document Head -->
-        <div class="grid-row bold-top bold-bottom-thick">
-            <div class="cell col-3 center bold-right">
-                <img src="images/Crossfire_Logo-removebg-preview.ico" alt="Logo" style="max-height: 30px; width: auto;">
-            </div>
-            <div class="cell col-6 center gray-bg bold-right">
-                <h3 style="margin: 0;">Internal Process Document</h3>
-            </div>
-            <div class="cell col-3 center last-col">
-            </div>
-        </div>
-
-        <!-- Document Title -->
-        <div class="grid-row">
-            <div class="cell col-6 gray-bg label center" style="font-size:5px; padding:0;">Doc No:</div>
-            <div class="cell col-6 gray-bg label center last-col" style="font-size:5px; padding:0;">Title:</div>
-        </div>
-
-        <div class="grid-row bold-bottom-thick">
-            <div class="cell col-6 gray-bg center"><strong>OPS-00011</strong></div>
-            <div class="cell col-6 gray-bg center last-col"><strong>Non-ConFormance Report</strong></div>
-        </div>
-
-        <!-- Quality Representative Section -->
-        <section id="qrsection">
-            <div class="grid-row bold-bottom-thick">
-                <div class="cell col-12 color-bg">QUALITY REPRESENTATIVE</div>
-            </div>
-
-            <div class="grid-row">
-                <div class="cell col-3 gray-bg label center">Identify Process Applicable</div>
-                <div class="cell col-3 gray-bg label center">Supplier Name</div>
-                <div class="cell col-3 gray-bg label center">NCR No.</div>
-                <div class="cell col-3 last-col" id="qr_ncrno"></div>
-            </div>
-
-            <div class="grid-row">
-                <div class="cell col-3" style="border-bottom:none"><label class="chkbox"><input type="checkbox" id="qr_chk_ipa_suprec" disabled> Supplier or Rec-Insp</label></div>
-                <div class="cell col-3" style="border-bottom:none" id="qr_supname"></div>
-                <div class="cell col-3 gray-bg label center">PO or Prod. No.</div>
-                <div class="cell col-3 last-col" id="qr_pono"></div>
-            </div>
-
-            <div class="grid-row">
-                <div class="cell col-3"><label class="chkbox"><input type="checkbox" id="qr_chk_ipa_wip" disabled> WIP (Production Order)</label></div>
-                <div class="cell col-3"></div>
-                <div class="cell col-3 gray-bg label center">Sales Order No.</div>
-                <div class="cell col-3 last-col" id="qr_salesno"></div>
-            </div>
-
-            <div class="grid-row">
-                <div class="cell col-6 gray-bg label center">Description of Item (including SAP No.)</div>
-                <div class="cell col-3 gray-bg label center">Quantity Received</div>
-                <div class="cell col-3 last-col" id="qr_qtyrecieve"></div>
-            </div>
-
-            <div class="grid-row">
-                <div class="cell col-6"></div>
-                <div class="cell col-3 gray-bg label center">Quantity Defective</div>
-                <div class="cell col-3 last-col" id="qr_qtydefect"></div>
-            </div>
-
-            <div class="grid-row">
-                <div class="cell col-12 label gray-bg center last-col">Description of Defect: (in as much detail as possible, use page 2 if necessary)</div>
-                <div class="cell col-12 h-large last-col" id="qr_descrip"></div>
-            </div>
-
-            <div class="grid-row">
-                <div class="cell col-3 gray-bg label center">Item Nonconforming?</div>
-                <div class="cell col-3 chk-group">
-                    <label><input type="checkbox" id="qr_chk_nonconform_yes" disabled> Yes</label>
-                    <label><input type="checkbox" id="qr_chk_nonconform_no" disabled> No</label>
+            <!-- Document Head -->
+            <div class="grid-row bold-top bold-bottom-thick">
+                <div class="cell col-3 center bold-right">
+                    <img src="images/Crossfire_Logo-removebg-preview.ico" alt="Logo" style="max-height: 30px; width: auto;">
                 </div>
-                <div class="cell col-6 last-col center gray-bg" style="font-size:6px; padding:0;">Completed NCR to be forwarded to HBC Engineering and Operations Manager complete with any relevant documents attached (pictures, actual measurements, material certs, etc.)</div>
+                <div class="cell col-6 center gray-bg bold-right">
+                    <h3 style="margin: 0;">Internal Process Document</h3>
+                </div>
+                <div class="cell col-3 center last-col">
+                </div>
+            </div>
+
+            <!-- Document Title -->
+            <div class="grid-row">
+                <div class="cell col-6 gray-bg label center" style="font-size:5px; padding:0;">Doc No:</div>
+                <div class="cell col-6 gray-bg label center last-col" style="font-size:5px; padding:0;">Title:</div>
             </div>
 
             <div class="grid-row bold-bottom-thick">
-                <div class="cell col-3 gray-bg label right">Quality Representative's Name</div>
-                <div class="cell col-3" id="qr_name"></div>
-                <div class="cell col-3 gray-bg label right">Date</div>
-                <div class="cell col-3 last-col" id="qr_date"></div>
+                <div class="cell col-6 gray-bg center"><strong>OPS-00011</strong></div>
+                <div class="cell col-6 gray-bg center last-col"><strong>Non-ConFormance Report</strong></div>
             </div>
-        </section>
 
-        <!-- Engineering Section -->
-        <section id="engsection">
+            <!-- Quality Representative Section -->
+            <section id="qrsection">
+                <div class="grid-row bold-bottom-thick">
+                    <div class="cell col-12 color-bg">QUALITY REPRESENTATIVE</div>
+                </div>
+
+                <div class="grid-row">
+                    <div class="cell col-3 gray-bg label center">Identify Process Applicable</div>
+                    <div class="cell col-3 gray-bg label center">Supplier Name</div>
+                    <div class="cell col-3 gray-bg label center">NCR No.</div>
+                    <div class="cell col-3 last-col" id="qr_ncrno"></div>
+                </div>
+
+                <div class="grid-row">
+                    <div class="cell col-3" style="border-bottom:none"><label class="chkbox"><input type="checkbox" id="qr_chk_ipa_suprec" disabled> Supplier or Rec-Insp</label></div>
+                    <div class="cell col-3" style="border-bottom:none" id="qr_supname"></div>
+                    <div class="cell col-3 gray-bg label center">PO or Prod. No.</div>
+                    <div class="cell col-3 last-col" id="qr_pono"></div>
+                </div>
+
+                <div class="grid-row">
+                    <div class="cell col-3"><label class="chkbox"><input type="checkbox" id="qr_chk_ipa_wip" disabled> WIP (Production Order)</label></div>
+                    <div class="cell col-3"></div>
+                    <div class="cell col-3 gray-bg label center">Sales Order No.</div>
+                    <div class="cell col-3 last-col" id="qr_salesno"></div>
+                </div>
+
+                <div class="grid-row">
+                    <div class="cell col-6 gray-bg label center">Description of Item (including SAP No.)</div>
+                    <div class="cell col-3 gray-bg label center">Quantity Received</div>
+                    <div class="cell col-3 last-col" id="qr_qtyrecieve"></div>
+                </div>
+
+                <div class="grid-row">
+                    <div class="cell col-6"></div>
+                    <div class="cell col-3 gray-bg label center">Quantity Defective</div>
+                    <div class="cell col-3 last-col" id="qr_qtydefect"></div>
+                </div>
+
+                <div class="grid-row">
+                    <div class="cell col-12 label gray-bg center last-col">Description of Defect: (in as much detail as possible, use page 2 if necessary)</div>
+                    <div class="cell col-12 h-large last-col" id="qr_descrip"></div>
+                </div>
+
+                <div class="grid-row">
+                    <div class="cell col-3 gray-bg label center">Item Nonconforming?</div>
+                    <div class="cell col-3 chk-group">
+                        <label><input type="checkbox" id="qr_chk_nonconform_yes" disabled> Yes</label>
+                        <label><input type="checkbox" id="qr_chk_nonconform_no" disabled> No</label>
+                    </div>
+                    <div class="cell col-6 last-col center gray-bg" style="font-size:6px; padding:0;">Completed NCR to be forwarded to HBC Engineering and Operations Manager complete with any relevant documents attached (pictures, actual measurements, material certs, etc.)</div>
+                </div>
+
+                <div class="grid-row bold-bottom-thick">
+                    <div class="cell col-3 gray-bg label right">Quality Representative's Name</div>
+                    <div class="cell col-3" id="qr_name"></div>
+                    <div class="cell col-3 gray-bg label right">Date</div>
+                    <div class="cell col-3 last-col" id="qr_date"></div>
+                </div>
+            </section>
+
+            <!-- Engineering Section -->
+            <section id="engsection">
+                <div class="grid-row bold-bottom-thick">
+                    <div class="cell col-12 color-bg">ENGINEERING</div>
+                </div>
+
+                <div class="grid-row">
+                    <div class="cell col-12 label gray-bg center last-col">Review by CF Engineering:  (indicate disposition by "checking" one of the following)</div>
+                </div>
+
+                <div class="grid-row">
+                    <div class="cell col-6 gray-bg label center">Review Disposition</div>
+                    <div class="cell col-6 gray-bg label center" style="font-size:8px !important">Customer Notification? (If "Yes" then raise message to customer detailing issues)</div>
+                </div>
+
+                <div class="grid-row bold-bottom">
+                    <div class="cell col-6 chk-group">
+                        <label><input type="checkbox" id="eng_chk_revdispo_use" disabled> Use As Is</label>
+                        <label><input type="checkbox" id="eng_chk_revdispo_repair" disabled> Repair</label>
+                        <label><input type="checkbox" id="eng_chk_revdispo_rework" disabled> Rework</label>
+                        <label><input type="checkbox" id="eng_chk_revdispo_scrap" disabled> Scrap</label>
+                    </div>
+                    <div class="cell col-6 chk-group last-col">
+                        <label><input type="checkbox" id="eng_chk_customnoti_yes" disabled> Yes</label>
+                        <label><input type="checkbox" id="eng_chk_customnoti_no" disabled> No</label>
+                    </div>
+                </div>
+
+                <div class="grid-row">
+                    <div class="cell col-12 label gray-bg center last-col">Disposition (Sequence of work steps required when "repair" or "rework" indicated)</div>
+                    <div class="cell col-12 h-large last-col" id="eng_dispo"></div>
+                </div>
+
+                <div class="grid-row">
+                    <div class="cell col-6 gray-bg label right">Drawing Update?</div>
+                    <div class="cell col-6 chk-group">
+                        <label><input type="checkbox" id="eng_chk_drawupdate_yes" disabled> Yes</label>
+                        <label><input type="checkbox" id="eng_chk_drawupdate_no" disabled> No</label>
+                    </div>
+                </div>
+
+                <div class="grid-row">
+                    <div class="cell col-3 gray-bg label right">Original Rev</div>
+                    <div class="cell col-3 label" id="eng_orirev"></div>
+                    <div class="cell col-3 gray-bg label right">Updated Rev. Number</div>
+                    <div class="cell col-3 last-col" id="eng_updaterev"></div>
+                </div>
+
+                <div class="grid-row">
+                    <div class="cell col-3 gray-bg label right">Name of Engineer</div>
+                    <div class="cell col-3 label" id="eng_engname"></div>
+                    <div class="cell col-3 gray-bg label right">Revision Date</div>
+                    <div class="cell col-3 last-col" id="eng_revdate"></div>
+                </div>
+
+                <div class="grid-row bold-bottom-thick">
+                    <div class="cell col-3 gray-bg label right">Engineering</div>
+                    <div class="cell col-3" id="eng_name"></div>
+                    <div class="cell col-3 gray-bg label right">Date</div>
+                    <div class="cell col-3 last-col" id="eng_date"></div>
+                </div>
+            </section>
+
+            <!-- Purchaing Section -->
+            <section id="pursection">
+                <div class="grid-row bold-bottom-thick">
+                    <div class="cell col-12 color-bg">PURCHASING / OPERATIONS</div>
+                </div>
+
+                <div class="grid-row">
+                    <div class="cell col-6 gray-bg label center">Purchasing's Preliminary Decision</div>
+                    <div class="cell col-6 chk-group" style="border-bottom:none !important;">
+                        <label><input type="checkbox" id="pur_chk_dicision_return" disabled>Return to Supplier for either "rework" or "replacement"</label>
+                    </div>
+                </div>
+
+                <div class="grid-row">
+                    <div class="cell col-12 chk-group" style="font-size:10px;">
+                        <div class="col-4"><label><input type="checkbox" id="pur_chk_dicision_rework" disabled>Rework "In-House"</label></div>
+                        <div class="col-4"><label><input type="checkbox" id="pur_chk_dicision_srcap" disabled>Scrap in House</label></div>
+                        <div class="col-4"><label><input type="checkbox" id="pur_chk_dicision_defer" disabled>Defer for HBC Engineering Review</label></div>
+                    </div>
+                </div>
+
+                <div class="grid-row">
+                    <div class="cell col-3 gray-bg label right">Was CAR raised?</div>
+                    <div class="cell col-3 chk-group" style="border-right:none">
+                        <label><input type="checkbox" id="pur_chk_CAR_yes" disabled>Yes</label>
+                        <label><input type="checkbox" id="pur_chk_CAR_no" disabled>No</label>
+                    </div>
+                    <div class="cell col-6 last-col" style="font-size: 8px">If "Yes" indicate CAR #</div>
+                </div>
+
+                <div class="grid-row">
+                    <div class="cell col-3 gray-bg label right">Follow-up Required?</div>
+                    <div class="cell col-3 chk-group" style="border-right:none">
+                        <label><input type="checkbox" id="pur_chk_followup_yes" disabled>Yes</label>
+                        <label><input type="checkbox" id="pur_chk_followup_no" disabled>No</label>
+                    </div>
+                    <div class="cell col-6 last-col" style="font-size: 8px">If "Yes" indicate type & expected date</div>
+                </div>
+
+                <div class="grid-row bold-bottom-thick">
+                    <div class="cell col-3 gray-bg label right">Operations Manager</div>
+                    <div class="cell col-3" id="pur_name"></div>
+                    <div class="cell col-3 gray-bg label right">Date</div>
+                    <div class="cell col-3 last-col" id="pur_date"></div>
+                </div>
+            </section>
+
+            <!-- Re-Inspect Section -->
+            <section id="inssection">
+                <div class="grid-row">
+                    <div class="cell col-3 gray-bg label right">Follow-up Required?</div>
+                    <div class="cell col-3 chk-group" style="border-right:none">
+                        <label><input type="checkbox" id="ins_chk_follow_yes" disabled>Yes</label>
+                        <label><input type="checkbox" id="ins_chk_follow_no" disabled>No</label>
+                    </div>
+                    <div class="cell col-6 last-col" style="font-size: 8px;">(If "No" then record new NCR number)</div>
+                </div>
+
+                <div class="grid-row">
+                    <div class="cell col-6 gray-bg label right">New NCR Number</div>
+                    <div class="cell col-6 last-col" id="ins_newNCR"></div>
+                </div>
+
+                <div class="grid-row bold-bottom-thick">
+                    <div class="cell col-3 gray-bg label right">Inspector's Name</div>
+                    <div class="cell col-3" id="ins_name"></div>
+                    <div class="cell col-3 gray-bg label right">Date</div>
+                    <div class="cell col-3 last-col" id="ins_date"></div>
+                </div>
+            </section>
+
+            <!-- Re-Quality Section -->
+            <section id="reqrsection">
+                <div class="grid-row">
+                    <div class="cell col-6 gray-bg label right">NCR Closed</div>
+                    <div class="cell col-6 chk-group" style="border-right:none">
+                        <label><input type="checkbox" id="reqr_chk_close_yes" disabled>Yes</label>
+                    </div>
+                </div>
+
+                <div class="grid-row bold-bottom-thick">
+                    <div class="cell col-3 gray-bg label right">Quality Department</div>
+                    <div class="cell col-3" id="reqr_name"></div>
+                    <div class="cell col-3 gray-bg label right">Date</div>
+                    <div class="cell col-3 last-col" id="reqr_date"></div>
+                </div>
+            </section>
+
+            <!-- Document Bottom -->
+            <div class="grid-row">
+                <div class="cell col-2 gray-bg label center">Document Author</div>
+                <div class="cell col-2 gray-bg label center">Revision Date</div>
+                <div class="cell col-4 gray-bg label center">Approved By</div>
+                <div class="cell col-2 gray-bg label center">Revision Date</div>
+                <div class="cell col-2 gray-bg label center last-col">Revision No</div>
+            </div>
+
             <div class="grid-row bold-bottom-thick">
-                <div class="cell col-12 color-bg">ENGINEERING</div>
+                <div class="cell col-2 center" id="doc_docauther"></div>
+                <div class="cell col-2 center" id="doc_docdate"></div>
+                <div class="cell col-4 center" id="doc_approvedby"></div>
+                <div class="cell col-2 center" id="doc_revdate"></div>
+                <div class="cell col-2 center last-col" id="doc_revno"></div>
             </div>
-
-            <div class="grid-row">
-                <div class="cell col-12 label gray-bg center last-col">Review by CF Engineering:  (indicate disposition by "checking" one of the following)</div>
-            </div>
-
-            <div class="grid-row">
-                <div class="cell col-6 gray-bg label center">Review Disposition</div>
-                <div class="cell col-6 gray-bg label center" style="font-size:8px !important">Customer Notification? (If "Yes" then raise message to customer detailing issues)</div>
-            </div>
-
-            <div class="grid-row bold-bottom">
-                <div class="cell col-6 chk-group">
-                    <label><input type="checkbox" id="eng_chk_revdispo_use" disabled> Use As Is</label>
-                    <label><input type="checkbox" id="eng_chk_revdispo_repair" disabled> Repair</label>
-                    <label><input type="checkbox" id="eng_chk_revdispo_rework" disabled> Rework</label>
-                    <label><input type="checkbox" id="eng_chk_revdispo_scrap" disabled> Scrap</label>
-                </div>
-                <div class="cell col-6 chk-group last-col">
-                    <label><input type="checkbox" id="eng_chk_customnoti_yes" disabled> Yes</label>
-                    <label><input type="checkbox" id="eng_chk_customnoti_no" disabled> No</label>
-                </div>
-            </div>
-
-            <div class="grid-row">
-                <div class="cell col-12 label gray-bg center last-col">Disposition (Sequence of work steps required when "repair" or "rework" indicated)</div>
-                <div class="cell col-12 h-large last-col" id="eng_dispo"></div>
-            </div>
-
-            <div class="grid-row">
-                <div class="cell col-6 gray-bg label right">Drawing Update?</div>
-                <div class="cell col-6 chk-group">
-                    <label><input type="checkbox" id="eng_chk_drawupdate_yes" disabled> Yes</label>
-                    <label><input type="checkbox" id="eng_chk_drawupdate_no" disabled> No</label>
-                </div>
-            </div>
-
-            <div class="grid-row">
-                <div class="cell col-3 gray-bg label right">Original Rev</div>
-                <div class="cell col-3 label" id="eng_orirev"></div>
-                <div class="cell col-3 gray-bg label right">Updated Rev. Number</div>
-                <div class="cell col-3 last-col" id="eng_updaterev"></div>
-            </div>
-
-            <div class="grid-row">
-                <div class="cell col-3 gray-bg label right">Name of Engineer</div>
-                <div class="cell col-3 label" id="eng_engname"></div>
-                <div class="cell col-3 gray-bg label right">Revision Date</div>
-                <div class="cell col-3 last-col" id="eng_revdate"></div>
-            </div>
-
-            <div class="grid-row bold-bottom-thick">
-                <div class="cell col-3 gray-bg label right">Engineering</div>
-                <div class="cell col-3" id="eng_name"></div>
-                <div class="cell col-3 gray-bg label right">Date</div>
-                <div class="cell col-3 last-col" id="eng_date"></div>
-            </div>
-        </section>
-
-        <!-- Purchaing Section -->
-        <section id="pursection">
-            <div class="grid-row bold-bottom-thick">
-                <div class="cell col-12 color-bg">PURCHASING / OPERATIONS</div>
-            </div>
-
-            <div class="grid-row">
-                <div class="cell col-6 gray-bg label center">Purchasing's Preliminary Decision</div>
-                <div class="cell col-6 chk-group" style="border-bottom:none !important;">
-                    <label><input type="checkbox" id="pur_chk_dicision_return" disabled>Return to Supplier for either "rework" or "replacement"</label>
-                </div>
-            </div>
-
-            <div class="grid-row">
-                <div class="cell col-12 chk-group" style="font-size:10px;">
-                    <div class="col-4"><label><input type="checkbox" id="pur_chk_dicision_rework" disabled>Rework "In-House"</label></div>
-                    <div class="col-4"><label><input type="checkbox" id="pur_chk_dicision_srcap" disabled>Scrap in House</label></div>
-                    <div class="col-4"><label><input type="checkbox" id="pur_chk_dicision_defer" disabled>Defer for HBC Engineering Review</label></div>
-                </div>
-            </div>
-
-            <div class="grid-row">
-                <div class="cell col-3 gray-bg label right">Was CAR raised?</div>
-                <div class="cell col-3 chk-group" style="border-right:none">
-                    <label><input type="checkbox" id="pur_chk_CAR_yes" disabled>Yes</label>
-                    <label><input type="checkbox" id="pur_chk_CAR_no" disabled>No</label>
-                </div>
-                <div class="cell col-6 last-col" style="font-size: 8px">If "Yes" indicate CAR #</div>
-            </div>
-
-            <div class="grid-row">
-                <div class="cell col-3 gray-bg label right">Follow-up Required?</div>
-                <div class="cell col-3 chk-group" style="border-right:none">
-                    <label><input type="checkbox" id="pur_chk_followup_yes" disabled>Yes</label>
-                    <label><input type="checkbox" id="pur_chk_followup_no" disabled>No</label>
-                </div>
-                <div class="cell col-6 last-col" style="font-size: 8px">If "Yes" indicate type & expected date</div>
-            </div>
-
-            <div class="grid-row bold-bottom-thick">
-                <div class="cell col-3 gray-bg label right">Operations Manager</div>
-                <div class="cell col-3" id="pur_name"></div>
-                <div class="cell col-3 gray-bg label right">Date</div>
-                <div class="cell col-3 last-col" id="pur_date"></div>
-            </div>
-        </section>
-
-        <!-- Re-Inspect Section -->
-        <section id="inssection">
-            <div class="grid-row">
-                <div class="cell col-3 gray-bg label right">Follow-up Required?</div>
-                <div class="cell col-3 chk-group" style="border-right:none">
-                    <label><input type="checkbox" id="ins_chk_follow_yes" disabled>Yes</label>
-                    <label><input type="checkbox" id="ins_chk_follow_no" disabled>No</label>
-                </div>
-                <div class="cell col-6 last-col" style="font-size: 8px;">(If "No" then record new NCR number)</div>
-            </div>
-
-            <div class="grid-row">
-                <div class="cell col-6 gray-bg label right">New NCR Number</div>
-                <div class="cell col-6 last-col" id="ins_newNCR"></div>
-            </div>
-
-            <div class="grid-row bold-bottom-thick">
-                <div class="cell col-3 gray-bg label right">Inspector's Name</div>
-                <div class="cell col-3" id="ins_name"></div>
-                <div class="cell col-3 gray-bg label right">Date</div>
-                <div class="cell col-3 last-col" id="ins_date"></div>
-            </div>
-        </section>
-
-        <!-- Re-Quality Section -->
-        <section id="reqrsection">
-            <div class="grid-row">
-                <div class="cell col-6 gray-bg label right">NCR Closed</div>
-                <div class="cell col-6 chk-group" style="border-right:none">
-                    <label><input type="checkbox" id="reqr_chk_close_yes" disabled>Yes</label>
-                </div>
-            </div>
-
-            <div class="grid-row bold-bottom-thick">
-                <div class="cell col-3 gray-bg label right">Quality Department</div>
-                <div class="cell col-3" id="reqr_name"></div>
-                <div class="cell col-3 gray-bg label right">Date</div>
-                <div class="cell col-3 last-col" id="reqr_date"></div>
-            </div>
-        </section>
-
-        <!-- Document Bottom -->
-        <div class="grid-row">
-            <div class="cell col-2 gray-bg label center">Document Author</div>
-            <div class="cell col-2 gray-bg label center">Revision Date</div>
-            <div class="cell col-4 gray-bg label center">Approved By</div>
-            <div class="cell col-2 gray-bg label center">Revision Date</div>
-            <div class="cell col-2 gray-bg label center last-col">Revision No</div>
-        </div>
-
-        <div class="grid-row bold-bottom-thick">
-            <div class="cell col-2 center" id="doc_docauther"></div>
-            <div class="cell col-2 center" id="doc_docdate"></div>
-            <div class="cell col-4 center" id="doc_approvedby"></div>
-            <div class="cell col-2 center" id="doc_revdate"></div>
-            <div class="cell col-2 center last-col" id="doc_revno"></div>
         </div>
     </div>
-
 </body>
 </html>
