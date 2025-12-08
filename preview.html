@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Priview</title>
+    <title>Document Priview</title>
     <style>
         @page {
             size: letter;
@@ -38,30 +38,11 @@
             border-right: 2px solid black;
         }
 
-        .col-2 {
-            grid-column: span 2;
-        }
-
-        .col-3 {
-            grid-column: span 3;
-        }
-        /* 25% */
-        .col-4 {
-            grid-column: span 4;
-        }
-        /* 33.3% */
-        .col-6 {
-            grid-column: span 6;
-        }
-        /* 50% */
-        .col-9 {
-            grid-column: span 9;
-        }
-        /* 75% */
-        .col-12 {
-            grid-column: span 12;
-        }
-        /* 100% */
+        .col-2 { grid-column: span 2; } /* 17% */
+        .col-3 { grid-column: span 3; } /* 25% */
+        .col-4 { grid-column: span 4; } /* 33.3% */
+        .col-6 { grid-column: span 6; } /* 50% */
+        .col-12 { grid-column: span 12 } /* 100% */
 
         .cell {
             border-right: 1px solid #ccc;
@@ -78,15 +59,15 @@
             border-right: none;
         }
 
-        .b-top {
+        .bold-top {
             border-top: 2px solid black;
         }
 
-        .b-bottom-thick {
+        .bold-bottom-thick {
             border-bottom: 2px solid black;
         }
 
-        .thick-right {
+        .bold-right {
             border-right: 2px solid black;
         }
 
@@ -94,7 +75,7 @@
             background-color: #eee;
         }
 
-        .dark-bg {
+        .color-bg {
             background-color: #0b1a3a;
             color: white;
             font-weight: bold;
@@ -115,12 +96,6 @@
             font-size: 9px;
             font-weight: bold;
             color: #555;
-        }
-
-        .value {
-            font-weight: 600;
-            color: black;
-            font-size: 12px;
         }
 
         .chk-group {
@@ -149,11 +124,6 @@
             height: auto !important;
         }
 
-        .h-medium {
-            min-height: 80px;
-            justify-content: flex-start;
-        }
-
         @media print {
             body {
                 padding: 0;
@@ -176,11 +146,11 @@
     <div class="page">
 
         <!-- Document Head -->
-        <div class="grid-row b-top b-bottom-thick">
-            <div class="cell col-3 center thick-right">
+        <div class="grid-row bold-top bold-bottom-thick">
+            <div class="cell col-3 center bold-right">
                 <img src="images/Crossfire_Logo-removebg-preview.ico" alt="Logo" style="max-height: 30px; width: auto;">
             </div>
-            <div class="cell col-6 center gray-bg thick-right">
+            <div class="cell col-6 center gray-bg bold-right">
                 <h3 style="margin: 0;">Internal Process Document</h3>
             </div>
             <div class="cell col-3 center last-col">
@@ -193,15 +163,15 @@
             <div class="cell col-6 gray-bg label center last-col" style="font-size:5px; padding:0;">Title:</div>
         </div>
 
-        <div class="grid-row b-bottom-thick">
+        <div class="grid-row bold-bottom-thick">
             <div class="cell col-6 gray-bg center"><strong>OPS-00011</strong></div>
             <div class="cell col-6 gray-bg center last-col"><strong>Non-ConFormance Report</strong></div>
         </div>
 
         <!-- Quality Representative Section -->
         <section id="qrsection">
-            <div class="grid-row b-bottom-thick">
-                <div class="cell col-12 dark-bg">QUALITY REPRESENTATIVE</div>
+            <div class="grid-row bold-bottom-thick">
+                <div class="cell col-12 color-bg">QUALITY REPRESENTATIVE</div>
             </div>
 
             <div class="grid-row">
@@ -242,7 +212,7 @@
                 <div class="cell col-12 h-large last-col" id="qr_descrip"></div>
             </div>
 
-            <div class="grid-row b-bottom">
+            <div class="grid-row">
                 <div class="cell col-3 gray-bg label center">Item Nonconforming?</div>
                 <div class="cell col-3 chk-group">
                     <label><input type="checkbox" id="qr_chk_nonconform_yes" disabled> Yes</label>
@@ -251,7 +221,7 @@
                 <div class="cell col-6 last-col center gray-bg" style="font-size:6px; padding:0;">Completed NCR to be forwarded to HBC Engineering and Operations Manager complete with any relevant documents attached (pictures, actual measurements, material certs, etc.)</div>
             </div>
 
-            <div class="grid-row b-bottom-thick">
+            <div class="grid-row bold-bottom-thick">
                 <div class="cell col-3 gray-bg label right">Quality Representative's Name</div>
                 <div class="cell col-3" id="qr_name"></div>
                 <div class="cell col-3 gray-bg label right">Date</div>
@@ -261,8 +231,8 @@
 
         <!-- Engineering Section -->
         <section id="engsection">
-            <div class="grid-row b-bottom-thick">
-                <div class="cell col-12 dark-bg">2. ENGINEERING</div>
+            <div class="grid-row bold-bottom-thick">
+                <div class="cell col-12 color-bg">ENGINEERING</div>
             </div>
 
             <div class="grid-row">
@@ -274,7 +244,7 @@
                 <div class="cell col-6 gray-bg label center" style="font-size:8px !important">Customer Notification? (If "Yes" then raise message to customer detailing issues)</div>
             </div>
 
-            <div class="grid-row b-bottom">
+            <div class="grid-row bold-bottom">
                 <div class="cell col-6 chk-group">
                     <label><input type="checkbox" id="eng_chk_revdispo_use" disabled> Use As Is</label>
                     <label><input type="checkbox" id="eng_chk_revdispo_repair" disabled> Repair</label>
@@ -314,7 +284,7 @@
                 <div class="cell col-3 last-col" id="eng_revdate"></div>
             </div>
 
-            <div class="grid-row b-bottom-thick">
+            <div class="grid-row bold-bottom-thick">
                 <div class="cell col-3 gray-bg label right">Engineering</div>
                 <div class="cell col-3" id="eng_name"></div>
                 <div class="cell col-3 gray-bg label right">Date</div>
@@ -324,8 +294,8 @@
 
         <!-- Purchaing Section -->
         <section id="pursection">
-            <div class="grid-row b-bottom-thick">
-                <div class="cell col-12 dark-bg">3. PURCHASING / OPERATIONS</div>
+            <div class="grid-row bold-bottom-thick">
+                <div class="cell col-12 color-bg">PURCHASING / OPERATIONS</div>
             </div>
 
             <div class="grid-row">
@@ -361,7 +331,7 @@
                 <div class="cell col-6 last-col" style="font-size: 8px">If "Yes" indicate type & expected date</div>
             </div>
 
-            <div class="grid-row b-bottom-thick">
+            <div class="grid-row bold-bottom-thick">
                 <div class="cell col-3 gray-bg label right">Operations Manager</div>
                 <div class="cell col-3" id="pur_name"></div>
                 <div class="cell col-3 gray-bg label right">Date</div>
@@ -385,7 +355,7 @@
                 <div class="cell col-6 last-col" id="ins_newNCR"></div>
             </div>
 
-            <div class="grid-row b-bottom-thick">
+            <div class="grid-row bold-bottom-thick">
                 <div class="cell col-3 gray-bg label right">Inspector's Name</div>
                 <div class="cell col-3" id="ins_name"></div>
                 <div class="cell col-3 gray-bg label right">Date</div>
@@ -402,7 +372,7 @@
                 </div>
             </div>
 
-            <div class="grid-row b-bottom-thick">
+            <div class="grid-row bold-bottom-thick">
                 <div class="cell col-3 gray-bg label right">Quality Department</div>
                 <div class="cell col-3" id="reqr_name"></div>
                 <div class="cell col-3 gray-bg label right">Date</div>
@@ -419,7 +389,7 @@
             <div class="cell col-2 gray-bg label center last-col">Revision No</div>
         </div>
 
-        <div class="grid-row b-bottom-thick">
+        <div class="grid-row bold-bottom-thick">
             <div class="cell col-2 center" id="doc_docauther"></div>
             <div class="cell col-2 center" id="doc_docdate"></div>
             <div class="cell col-4 center" id="doc_approvedby"></div>
