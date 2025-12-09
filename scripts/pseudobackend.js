@@ -654,3 +654,34 @@ class NCR{
     }
 }
 
+// GeonUk : add default users for demo
+class Account {
+    constructor(username, password, name, role) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.role = role;
+    }
+
+    static GetAccounts() {
+        return [
+            new Account("admin", "Pa55w@rd", "System Administrator", "Administrator"),
+            new Account("quality", "Pa55w@rd", "Quality Representative", "Quality Assurance"),
+            new Account("engineer", "Pa55w@rd", "Engineering Manager", "Engineering Manager"),
+            new Account("purchasing", "Pa55w@rd", "Purchasing Manager", "Purchasing Manager"),
+            new Account("operation", "Pa55w@rd", "Operations Manager", "Operations Manager")
+        ];
+    }
+
+    static GetAccountByUsername(username) {
+        return this.GetAccounts().find(user => user.username === username);
+    }
+
+    static ValidateAccount(username, password) {
+        const user = this.GetAccountByUsername(username);
+        if (user && user.password === password) {
+            return user;
+        }
+        return null;
+    }
+}
