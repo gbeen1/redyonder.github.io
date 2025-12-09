@@ -132,3 +132,42 @@ registerForm.addEventListener("submit", function (e) {
   localStorage.setItem("loggedInUser", displayName);
   location.replace("index.html");
 });
+
+// GeonUk : autofill login form from dropdown selection
+document.addEventListener("DOMContentLoaded", () => {
+    const accountSelect = document.getElementById("accountSelect");
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+
+    const accounts = Account.GetAccounts();
+
+    const currentStoredUsers = getUsers();
+
+    // save userdata from pseudobackend js to localstorage
+    accounts.forEach(account => {
+        const exists = currentStoredUsers.find(u => u.username === account.username);
+    });
+
+    saveUsers(currentStoredUsers);
+
+    // dropdown
+    accounts.forEach(user => {
+        const option = document.createElement("option");
+        option.value = user.username;
+        option.textContent = `${user.role}`;
+        accountSelect.appendChild(option);
+    });
+
+    // autofill
+    accountSelect.addEventListener("change", function () {
+        const selectedUsername = this.value;
+        const selectedUser = accounts.find(u => u.username === selectedUsername);
+
+        if (selectedUser) {
+            usernameInput.value = selectedUser.username;
+            passwordInput.value = selectedUser.password;
+            usernameInput.focus();
+            passwordInput.focus();
+        }
+    });
+});
