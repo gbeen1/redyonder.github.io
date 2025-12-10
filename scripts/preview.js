@@ -64,66 +64,73 @@ document.addEventListener("DOMContentLoaded", () => {
     // #endregion
 
     // #region Purchasing Section
-    //if (ncr.ncrStage === "Purchasing" || ncr.ncrStage === "Closed") {
-    //    if (ncr./*Purchasing's Preliminary Decision*/ === "Return") {
-    //        setChecked("pur_chk_dicision_return", true);
-    //    } else if (ncr./*Purchasing's Preliminary Decision*/ === "Rework") {
-    //        setChecked("pur_chk_dicision_rework", true);
-    //    } else if (ncr./*Purchasing's Preliminary Decision*/ === "Scrap") {
-    //        setChecked("pur_chk_dicision_scrap", true);
-    //    } else if (ncr./*Purchasing's Preliminary Decision*/ === "Defer") {
-    //        setChecked("pur_chk_dicision_defer", true);
-    //    }
+    if (ncr.ncrStage === "Purchasing" || ncr.ncrStage === "Closed") {
+        if (ncr.purchPrelimDec === "Return to supplier for either rework or replacement") {
+            setChecked("pur_chk_dicision_return", true);
+        } else if (ncr.purchPrelimDec === "Rework in-house") {
+            setChecked("pur_chk_dicision_rework", true);
+        } else if (ncr.purchPrelimDec === "Scrap in-house") {
+            setChecked("pur_chk_dicision_scrap", true);
+        } else if (ncr.purchPrelimDec === "Defer for HBC Engineering review") {
+            setChecked("pur_chk_dicision_defer", true);
+        }
 
-    //    if (ncr./*Was CAR raised?*/ === true) {
-    //        setChecked("pur_chk_CAR_yes", true);
-    //    } else if (ncr./*Was CAR raised?*/ === false) {
-    //        setChecked("pur_chk_CAR_no", true);
-    //    }
+        if (ncr.purchCAR === true) {
+            setChecked("pur_chk_CAR_yes", true);
+        } else if (ncr.purchCAR === false) {
+            setChecked("pur_chk_CAR_no", true);
+        }
 
-    //    if (ncr./*Follow-up Required?*/ === true) {
-    //        setChecked("pur_chk_followup_yes", true);
-    //    } else if (ncr./*Follow-up Required?*/ === false) {
-    //        setChecked("pur_chk_followup_no", true);
-    //    }
+        if (ncr.purchFollowUp === true) {
+            setChecked("pur_chk_followup_yes", true);
+        } else if (ncr.purchFollowUp === false) {
+            setChecked("pur_chk_followup_no", true);
+        }
 
-    //    setText("pur_name", ncr./*Operations Manager Name*/);
-    //    setDate("pur_date", ncr./*Purchasing / operations section date*/);
-    //}
+        setText("pur_name", ncr.purchCompletedBy);
+        setDate("pur_date", ncr.purchCompletedOn);
+    }
     // #endregion
 
     // #region Inspector Section
-    //if (ncr.ncrStage === "Inspector" || ncr.ncrStage === "Closed") {
-    //    if (ncr./*Follow-up Required?*/ === true) {
-    //        setChecked("ins_chk_follow_yes", true);
-    //    } else if (ncr./*Follow-up Required?*/ === false) {
-    //        setChecked("ins_chk_followup_no", true);
-    //    }
+    if (ncr.ncrStage === "Inspector" || ncr.ncrStage === "Closed") {
+        if (ncr.purchFollowUp === true) {
+            setChecked("ins_chk_follow_yes", true);
+        } else if (ncr.purchFollowUp === false) {
+            setChecked("ins_chk_followup_no", true);
+        }
 
-    //    setText("ins_newNCR", ncr./*New NCR Number*/);
+        setText("ins_newNCR", ncr.qa2NewNCR);
 
-    //    setText("ins_name", ncr./*Inspector's Name*/);
-    //    setDate("ins_date", ncr./*Inspector section date*/);
-    //}
-    // #endregion
+        setText("ins_name", ncr.purchCompletedBy);
+        setDate("ins_date", ncr.purchCompletedOn);
+    }
+     // #endregion
 
-    // #region Quality Department Section
-    //if (ncr.ncrStage === /*"Quality"*/ || ncr.ncrStage === "Closed") {
-    //    if (ncr./*NCR Closed*/ === true) {
-    //        setChecked("reqr_chk_close_yes", true);
-    //    }
+     //#region Quality Department Section
+    if (ncr.ncrStage === qa2ReinspectAccept || ncr.ncrStage === "Closed") {
+        if (ncr.ncrStage === "Closed") {
+            setChecked("reqr_chk_close_yes", true);
+        }
 
-    //    setText("reqr_name", ncr.qaCompletedBy);
-    //    setDate("reqr_date", ncr./*Re-Quality Department date*/);
-    //}
+        setText("reqr_name", ncr.qa2CompletedBy);
+        setDate("reqr_date", ncr.qa2CompletedOn);
+    }
     // #endregion
 
     // Document Bottom
     setText("doc_docauther", ncr.qaCompletedBy);
     setDate("doc_docdate", ncr.ncrDateOpened);
-    //setText("doc_approvedby", ncr./*Operations Manager Name*/);
-    //setDate("doc_revdate", ncr./*Revision Date*/);
-    //setText("doc_revno", ncr./*Revision Number*/);
+    setText("doc_approvedby", ncr.purchCompletedBy);
+    setDate("doc_revdate", ncr.qa2CompletedBy);
+    if (ncr.qaDateCompleted = qa2CompletedBy) {
+        const revNum = 1;
+        setText("doc_revno", revNum);
+    } else {
+        const revNum = 2;
+        setText("doc_revno", revNum);
+    }
+    
     });
 
 function setText(elementID, value) {
